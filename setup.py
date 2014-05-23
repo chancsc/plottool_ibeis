@@ -3,9 +3,9 @@ from __future__ import absolute_import, division, print_function
 
 if __name__ == '__main__':
     from utool.util_setup import setuptools_setup
-    import plottool
     setuptools_setup(
-        module=plottool,
+        package_name='plottool',
+        version='1.0.0.dev1',
         description=('Plottool - tools matplotlib computer vision plots'),
         url='https://github.com/Erotemic/plottool',
         keywords='',
