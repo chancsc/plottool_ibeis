@@ -1,0 +1,1567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>plottool package &mdash; plottool 1.0.0.dev1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0.dev1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="plottool 1.0.0.dev1 documentation" href="index.html" />
+    <link rel="next" title="plottool.tests package" href="plottool.tests.html" />
+    <link rel="prev" title="Welcome to plottool’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="plottool.tests.html" title="plottool.tests package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to plottool’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">plottool 1.0.0.dev1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="plottool-package">
+<h1>plottool package<a class="headerlink" href="#plottool-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plottool.tests.html">plottool.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plottool.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plottool.tests.html#module-plottool.tests.test_helpers">plottool.tests.test_helpers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plottool.tests.html#module-plottool.tests.test_interact_multi_image">plottool.tests.test_interact_multi_image module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plottool.tests.html#module-plottool.tests.test_viz_image2">plottool.tests.test_viz_image2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plottool.tests.html#module-plottool.tests.test_viz_images">plottool.tests.test_viz_images module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plottool.tests.html#module-plottool.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-plottool.abstract_interaction">
+<span id="plottool-abstract-interaction-module"></span><h2>plottool.abstract_interaction module<a class="headerlink" href="#module-plottool.abstract_interaction" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plottool.abstract_interaction.AbstractInteraction">
+<em class="property">class </em><tt class="descclassname">plottool.abstract_interaction.</tt><tt class="descname">AbstractInteraction</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="plottool.abstract_interaction.AbstractInteraction.append_button">
+<tt class="descname">append_button</tt><big>(</big><em>text</em>, <em>divider=None</em>, <em>rect=None</em>, <em>callback=None</em>, <em>size='9%'</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction.append_button"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction.append_button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a button to the current page</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.abstract_interaction.AbstractInteraction.bring_to_front">
+<tt class="descname">bring_to_front</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction.bring_to_front"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction.bring_to_front" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.abstract_interaction.AbstractInteraction.clean_scope">
+<tt class="descname">clean_scope</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction.clean_scope"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction.clean_scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes any widgets saved in the interaction scope</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.abstract_interaction.AbstractInteraction.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.abstract_interaction.AbstractInteraction.draw">
+<tt class="descname">draw</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction.draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.abstract_interaction.AbstractInteraction.show">
+<tt class="descname">show</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.abstract_interaction.AbstractInteraction.update">
+<tt class="descname">update</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/abstract_interaction.html#AbstractInteraction.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.abstract_interaction.AbstractInteraction.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plottool.color_funcs">
+<span id="plottool-color-funcs-module"></span><h2>plottool.color_funcs module<a class="headerlink" href="#module-plottool.color_funcs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.color_funcs.add_alpha">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">add_alpha</tt><big>(</big><em>colors</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#add_alpha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.add_alpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.color_funcs.adjust_sat_and_val_rgb">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">adjust_sat_and_val_rgb</tt><big>(</big><em>rgb</em>, <em>sat_adjust</em>, <em>val_adjust</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#adjust_sat_and_val_rgb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.adjust_sat_and_val_rgb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.color_funcs.assert_base01">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">assert_base01</tt><big>(</big><em>channels</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#assert_base01"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.assert_base01" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.color_funcs.brighten">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">brighten</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#brighten"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.brighten" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.color_funcs.brighten_rgb">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">brighten_rgb</tt><big>(</big><em>rgb</em>, <em>amount</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#brighten_rgb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.brighten_rgb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.color_funcs.distinct_colors">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">distinct_colors</tt><big>(</big><em>N</em>, <em>brightness=0.878</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#distinct_colors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.distinct_colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.color_funcs.lighten_rgb">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">lighten_rgb</tt><big>(</big><em>rgb</em>, <em>amount</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#lighten_rgb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.lighten_rgb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.color_funcs.to_base255">
+<tt class="descclassname">plottool.color_funcs.</tt><tt class="descname">to_base255</tt><big>(</big><em>color01</em><big>)</big><a class="reference internal" href="_modules/plottool/color_funcs.html#to_base255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.color_funcs.to_base255" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.custom_constants">
+<span id="plottool-custom-constants-module"></span><h2>plottool.custom_constants module<a class="headerlink" href="#module-plottool.custom_constants" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.custom_constants.FontProp">
+<tt class="descclassname">plottool.custom_constants.</tt><tt class="descname">FontProp</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_constants.html#FontProp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_constants.FontProp" title="Permalink to this definition">¶</a></dt>
+<dd><p>overwrite fontproperties with custom settings</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_constants.golden_wh">
+<tt class="descclassname">plottool.custom_constants.</tt><tt class="descname">golden_wh</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_constants.html#golden_wh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_constants.golden_wh" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a width / height with a golden aspect ratio</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_constants.golden_wh2">
+<tt class="descclassname">plottool.custom_constants.</tt><tt class="descname">golden_wh2</tt><big>(</big><em>sz</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_constants.html#golden_wh2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_constants.golden_wh2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.custom_figure">
+<span id="plottool-custom-figure-module"></span><h2>plottool.custom_figure module<a class="headerlink" href="#module-plottool.custom_figure" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.custom_figure.cla">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">cla</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#cla"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.cla" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.clf">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">clf</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#clf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.clf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.customize_figure">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">customize_figure</tt><big>(</big><em>fig</em>, <em>docla</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#customize_figure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.customize_figure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.figure">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">figure</tt><big>(</big><em>fnum=None</em>, <em>docla=False</em>, <em>title=None</em>, <em>pnum=(1</em>, <em>1</em>, <em>1)</em>, <em>figtitle=None</em>, <em>doclf=False</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#figure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>fnum = fignum = figure number
+pnum = plotnum = plot tuple</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.gca">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">gca</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#gca"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.gca" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.gcf">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">gcf</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#gcf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.gcf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.get_ax">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">get_ax</tt><big>(</big><em>fnum=None</em>, <em>pnum=None</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#get_ax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.get_ax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.get_fig">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">get_fig</tt><big>(</big><em>fnum=None</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#get_fig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.get_fig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.prepare_figure_for_save">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">prepare_figure_for_save</tt><big>(</big><em>fnum</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#prepare_figure_for_save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.prepare_figure_for_save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.prepare_figure_fpath">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">prepare_figure_fpath</tt><big>(</big><em>fig</em>, <em>fpath</em>, <em>fnum</em>, <em>usetitle</em>, <em>defaultext</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#prepare_figure_fpath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.prepare_figure_fpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.sanatize_img_fname">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">sanatize_img_fname</tt><big>(</big><em>fname</em>, <em>defaultext=None</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#sanatize_img_fname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.sanatize_img_fname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.sanatize_img_fpath">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">sanatize_img_fpath</tt><big>(</big><em>fpath</em>, <em>defaultext</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#sanatize_img_fpath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.sanatize_img_fpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.save_figure">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">save_figure</tt><big>(</big><em>fnum=None</em>, <em>fpath=None</em>, <em>usetitle=False</em>, <em>overwrite=True</em>, <em>defaultext=None</em>, <em>verbose=2</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#save_figure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.save_figure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.set_figtitle">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">set_figtitle</tt><big>(</big><em>figtitle</em>, <em>subtitle=''</em>, <em>forcefignum=True</em>, <em>incanvas=True</em>, <em>font='figtitle'</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#set_figtitle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.set_figtitle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.set_ticks">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">set_ticks</tt><big>(</big><em>xticks</em>, <em>yticks</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#set_ticks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.set_ticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.set_title">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">set_title</tt><big>(</big><em>title=''</em>, <em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#set_title"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.set_title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.set_xlabel">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">set_xlabel</tt><big>(</big><em>lbl</em>, <em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#set_xlabel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.set_xlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.set_xticks">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">set_xticks</tt><big>(</big><em>tick_set</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#set_xticks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.set_xticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.set_ylabel">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">set_ylabel</tt><big>(</big><em>lbl</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#set_ylabel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.set_ylabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.custom_figure.set_yticks">
+<tt class="descclassname">plottool.custom_figure.</tt><tt class="descname">set_yticks</tt><big>(</big><em>tick_set</em><big>)</big><a class="reference internal" href="_modules/plottool/custom_figure.html#set_yticks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.custom_figure.set_yticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.draw_func2">
+<span id="plottool-draw-func2-module"></span><h2>plottool.draw_func2 module<a class="headerlink" href="#module-plottool.draw_func2" title="Permalink to this headline">¶</a></h2>
+<p>Lots of functions for drawing and plotting visiony things</p>
+<dl class="function">
+<dt id="plottool.draw_func2.absolute_lbl">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">absolute_lbl</tt><big>(</big><em>x_</em>, <em>y_</em>, <em>txt</em>, <em>roffset=(-0.02</em>, <em>-0.02)</em>, <em>alpha=0.6</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#absolute_lbl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.absolute_lbl" title="Permalink to this definition">¶</a></dt>
+<dd><p>alternative to relative text</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.add_alpha">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">add_alpha</tt><big>(</big><em>colors</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#add_alpha"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.add_alpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.adjust_subplots">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">adjust_subplots</tt><big>(</big><em>left=0.02</em>, <em>bottom=0.02</em>, <em>right=0.98</em>, <em>top=0.9</em>, <em>wspace=0.1</em>, <em>hspace=0.15</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#adjust_subplots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.adjust_subplots" title="Permalink to this definition">¶</a></dt>
+<dd><p>left  = 0.125  # the left side of the subplots of the figure
+right = 0.9    # the right side of the subplots of the figure
+bottom = 0.1   # the bottom of the subplots of the figure
+top = 0.9      # the top of the subplots of the figure
+wspace = 0.2   # the amount of width reserved for blank space between subplots
+hspace = 0.2</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.adjust_subplots_safe">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">adjust_subplots_safe</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#adjust_subplots_safe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.adjust_subplots_safe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.adjust_subplots_xlabels">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">adjust_subplots_xlabels</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#adjust_subplots_xlabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.adjust_subplots_xlabels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.adjust_subplots_xylabels">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">adjust_subplots_xylabels</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#adjust_subplots_xylabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.adjust_subplots_xylabels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.ax_absolute_text">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">ax_absolute_text</tt><big>(</big><em>x_</em>, <em>y_</em>, <em>txt</em>, <em>ax=None</em>, <em>roffset=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#ax_absolute_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.ax_absolute_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base function for text</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.ax_relative_text">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">ax_relative_text</tt><big>(</big><em>x</em>, <em>y</em>, <em>txt</em>, <em>ax=None</em>, <em>offset=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#ax_relative_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.ax_relative_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.axes_bottom_button_bar">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">axes_bottom_button_bar</tt><big>(</big><em>ax</em>, <em>text_list=[]</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#axes_bottom_button_bar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.axes_bottom_button_bar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.color_orimag">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">color_orimag</tt><big>(</big><em>gori</em>, <em>gmag</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#color_orimag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.color_orimag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.colorbar">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">colorbar</tt><big>(</big><em>scalars</em>, <em>colors</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#colorbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.colorbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a color bar next to the axes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.dark_background">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">dark_background</tt><big>(</big><em>ax=None</em>, <em>doubleit=False</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#dark_background"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.dark_background" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.distinct_colors">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">distinct_colors</tt><big>(</big><em>N</em>, <em>brightness=0.878</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#distinct_colors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.distinct_colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_bbox">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_bbox</tt><big>(</big><em>bbox</em>, <em>lbl=None</em>, <em>bbox_color=(1</em>, <em>0</em>, <em>0)</em>, <em>lbl_bgcolor=(0</em>, <em>0</em>, <em>0)</em>, <em>lbl_txtcolor=(1</em>, <em>1</em>, <em>1)</em>, <em>draw_arrow=True</em>, <em>theta=0</em>, <em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_bbox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_bbox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_border">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_border</tt><big>(</big><em>ax</em>, <em>color=array([ 0.</em>, <em>1.</em>, <em>0.</em>, <em>1.])</em>, <em>lw=2</em>, <em>offset=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_border"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_border" title="Permalink to this definition">¶</a></dt>
+<dd><p>draws rectangle border around a subplot</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_boxedX">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_boxedX</tt><big>(</big><em>xywh=None</em>, <em>color=array([ 1.</em>, <em>0.</em>, <em>0.</em>, <em>1.])</em>, <em>lw=2</em>, <em>alpha=0.5</em>, <em>theta=0</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_boxedX"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_boxedX" title="Permalink to this definition">¶</a></dt>
+<dd><p>draws a big red x. redx</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_keypoint_gradient_orientations">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_keypoint_gradient_orientations</tt><big>(</big><em>rchip</em>, <em>kp</em>, <em>sift=None</em>, <em>mode='vec'</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_keypoint_gradient_orientations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_keypoint_gradient_orientations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_keypoint_patch">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_keypoint_patch</tt><big>(</big><em>rchip</em>, <em>kp</em>, <em>sift=None</em>, <em>warped=False</em>, <em>patch_dict={}</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_keypoint_patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_keypoint_patch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_kpts2">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_kpts2</tt><big>(</big><em>kpts</em>, <em>offset=(0</em>, <em>0)</em>, <em>scale_factor=1</em>, <em>ell=True</em>, <em>pts=False</em>, <em>rect=False</em>, <em>eig=False</em>, <em>ori=False</em>, <em>pts_size=2</em>, <em>ell_alpha=0.6</em>, <em>ell_linewidth=1.5</em>, <em>ell_color=None</em>, <em>pts_color=array([ 1.</em>, <em>0.49803922</em>, <em>0.</em>, <em>1.        ])</em>, <em>color_list=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_kpts2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_kpts2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_lines2">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_lines2</tt><big>(</big><em>kpts1</em>, <em>kpts2</em>, <em>fm=None</em>, <em>fs=None</em>, <em>kpts2_offset=(0</em>, <em>0)</em>, <em>color_list=None</em>, <em>scale_factor=1</em>, <em>lw=1.4</em>, <em>line_alpha=0.35</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_lines2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_lines2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_text">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_text</tt><big>(</big><em>text_str</em>, <em>rgb_textFG=(0</em>, <em>0</em>, <em>0)</em>, <em>rgb_textBG=(1</em>, <em>1</em>, <em>1)</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.draw_vector_field">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">draw_vector_field</tt><big>(</big><em>gx</em>, <em>gy</em>, <em>fnum=None</em>, <em>pnum=None</em>, <em>title=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#draw_vector_field"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.draw_vector_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.ensure_divider">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">ensure_divider</tt><big>(</big><em>ax</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#ensure_divider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.ensure_divider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns previously constructed divider or creates one</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.execstr_global">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">execstr_global</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#execstr_global"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.execstr_global" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.fig_relative_text">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">fig_relative_text</tt><big>(</big><em>x</em>, <em>y</em>, <em>txt</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#fig_relative_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.fig_relative_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.get_pnum_func">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">get_pnum_func</tt><big>(</big><em>nRows</em>, <em>nCols</em>, <em>base=0</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#get_pnum_func"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.get_pnum_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.imshow">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">imshow</tt><big>(</big><em>img</em>, <em>fnum=None</em>, <em>title=None</em>, <em>figtitle=None</em>, <em>pnum=None</em>, <em>interpolation='nearest'</em>, <em>cmap=None</em>, <em>heatmap=False</em>, <em>data_colorbar=False</em>, <em>darken=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#imshow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.imshow" title="Permalink to this definition">¶</a></dt>
+<dd><p>other interpolations = nearest, bicubic, bilinear</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.imshow_null">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">imshow_null</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#imshow_null"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.imshow_null" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.kwargs_fnum">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">kwargs_fnum</tt><big>(</big><em>kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#kwargs_fnum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.kwargs_fnum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.legend">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">legend</tt><big>(</big><em>loc='upper right'</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#legend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.legend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.lowerright_text">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">lowerright_text</tt><big>(</big><em>txt</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#lowerright_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.lowerright_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.make_bbox_positioners">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">make_bbox_positioners</tt><big>(</big><em>y=0.02</em>, <em>w=0.08</em>, <em>h=0.02</em>, <em>xpad=0.05</em>, <em>startx=0</em>, <em>stopx=1</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#make_bbox_positioners"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.make_bbox_positioners" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.next_fnum">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">next_fnum</tt><big>(</big><em>new_base=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#next_fnum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.next_fnum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.phantom_legend_label">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">phantom_legend_label</tt><big>(</big><em>label</em>, <em>color</em>, <em>loc='upper right'</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#phantom_legend_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.phantom_legend_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a legend label without displaying an actor</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot2">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot2</tt><big>(</big><em>x_data</em>, <em>y_data</em>, <em>marker='o'</em>, <em>title_pref=''</em>, <em>x_label='x'</em>, <em>y_label='y'</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot_bars">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot_bars</tt><big>(</big><em>y_data</em>, <em>nColorSplits=1</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot_bars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot_bars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot_fmatch">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot_fmatch</tt><big>(</big><em>xywh1</em>, <em>xywh2</em>, <em>kpts1</em>, <em>kpts2</em>, <em>fm</em>, <em>fs=None</em>, <em>lbl1=None</em>, <em>lbl2=None</em>, <em>fnum=None</em>, <em>pnum=None</em>, <em>rect=False</em>, <em>colorbar_=True</em>, <em>draw_border=False</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot_fmatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot_fmatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the matching features. This is draw because it is an overlay
+xywh1 - location of rchip1 in the axes
+xywh2 - location or rchip2 in the axes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot_hist">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot_hist</tt><big>(</big><em>data</em>, <em>bins=None</em>, <em>nbins=10</em>, <em>weights=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot_hist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot_hist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot_histpdf">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot_histpdf</tt><big>(</big><em>data</em>, <em>label=None</em>, <em>draw_support=False</em>, <em>nbins=10</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot_histpdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot_histpdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot_sift_signature">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot_sift_signature</tt><big>(</big><em>sift</em>, <em>title=''</em>, <em>fnum=None</em>, <em>pnum=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot_sift_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot_sift_signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.plot_stems">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">plot_stems</tt><big>(</big><em>x_data=None</em>, <em>y_data=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#plot_stems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.plot_stems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.remove_patches">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">remove_patches</tt><big>(</big><em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#remove_patches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.remove_patches" title="Permalink to this definition">¶</a></dt>
+<dd><p>deletes patches from axes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.scores_to_cmap">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">scores_to_cmap</tt><big>(</big><em>scores</em>, <em>colors=None</em>, <em>cmap_='hot'</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#scores_to_cmap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.scores_to_cmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.scores_to_color">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">scores_to_color</tt><big>(</big><em>score_list</em>, <em>cmap_='hot'</em>, <em>logscale=False</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#scores_to_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.scores_to_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.show_chipmatch2">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">show_chipmatch2</tt><big>(</big><em>rchip1</em>, <em>rchip2</em>, <em>kpts1</em>, <em>kpts2</em>, <em>fm=None</em>, <em>fs=None</em>, <em>title=None</em>, <em>vert=None</em>, <em>fnum=None</em>, <em>pnum=None</em>, <em>heatmap=False</em>, <em>draw_fmatch=True</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#show_chipmatch2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.show_chipmatch2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws two chips and the feature matches between them. feature matches
+kpts1 and kpts2 use the (x,y,a,c,d)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.show_histogram">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">show_histogram</tt><big>(</big><em>data</em>, <em>bins=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#show_histogram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.show_histogram" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.show_signature">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">show_signature</tt><big>(</big><em>sig</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#show_signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.show_signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.small_xticks">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">small_xticks</tt><big>(</big><em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#small_xticks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.small_xticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.small_yticks">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">small_yticks</tt><big>(</big><em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#small_yticks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.small_yticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.space_xticks">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">space_xticks</tt><big>(</big><em>nTicks=9</em>, <em>spacing=16</em>, <em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#space_xticks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.space_xticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.space_yticks">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">space_yticks</tt><big>(</big><em>nTicks=9</em>, <em>spacing=32</em>, <em>ax=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#space_yticks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.space_yticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.stack_image_list">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">stack_image_list</tt><big>(</big><em>img_list</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#stack_image_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.stack_image_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.stack_image_recurse">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">stack_image_recurse</tt><big>(</big><em>img_list1</em>, <em>img_list2=None</em>, <em>vert=True</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#stack_image_recurse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.stack_image_recurse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.stack_images">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">stack_images</tt><big>(</big><em>img1</em>, <em>img2</em>, <em>vert=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#stack_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.stack_images" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.upperleft_text">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">upperleft_text</tt><big>(</big><em>txt</em>, <em>alpha=0.6</em>, <em>color=None</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#upperleft_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.upperleft_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.upperright_text">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">upperright_text</tt><big>(</big><em>txt</em>, <em>offset=None</em>, <em>alpha=0.6</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#upperright_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.upperright_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.variation_trunctate">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">variation_trunctate</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#variation_trunctate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.variation_trunctate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.draw_func2.width_from">
+<tt class="descclassname">plottool.draw_func2.</tt><tt class="descname">width_from</tt><big>(</big><em>num</em>, <em>pad=0.05</em>, <em>start=0</em>, <em>stop=1</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_func2.html#width_from"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_func2.width_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.draw_sv">
+<span id="plottool-draw-sv-module"></span><h2>plottool.draw_sv module<a class="headerlink" href="#module-plottool.draw_sv" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.draw_sv.show_sv">
+<tt class="descclassname">plottool.draw_sv.</tt><tt class="descname">show_sv</tt><big>(</big><em>chip1</em>, <em>chip2</em>, <em>kpts1</em>, <em>kpts2</em>, <em>fm</em>, <em>homog_tup=None</em>, <em>aff_tup=None</em>, <em>mx=None</em>, <em>show_assign=True</em>, <em>show_lines=True</em>, <em>show_kpts=True</em>, <em>fnum=1</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/draw_sv.html#show_sv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.draw_sv.show_sv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes spatial verification</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plottool.fig_presenter">
+<span id="plottool-fig-presenter-module"></span><h2>plottool.fig_presenter module<a class="headerlink" href="#module-plottool.fig_presenter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.fig_presenter.all_figures_bring_to_front">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">all_figures_bring_to_front</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#all_figures_bring_to_front"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.all_figures_bring_to_front" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.all_figures_show">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">all_figures_show</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#all_figures_show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.all_figures_show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.all_figures_tight_layout">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">all_figures_tight_layout</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#all_figures_tight_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.all_figures_tight_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.all_figures_tile">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">all_figures_tile</tt><big>(</big><em>max_rows=None</em>, <em>row_first=True</em>, <em>no_tile=False</em>, <em>monitor_num=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#all_figures_tile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.all_figures_tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lays out all figures in a grid. if wh is a scalar, a golden ratio is used</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.bring_to_front">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">bring_to_front</tt><big>(</big><em>fig</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#bring_to_front"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.bring_to_front" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.close_all_figures">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">close_all_figures</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#close_all_figures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.close_all_figures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.close_figure">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">close_figure</tt><big>(</big><em>fig</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#close_figure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.close_figure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.draw">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.get_all_figures">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">get_all_figures</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#get_all_figures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.get_all_figures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.get_all_qt4_wins">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">get_all_qt4_wins</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#get_all_qt4_wins"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.get_all_qt4_wins" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.get_all_windows">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">get_all_windows</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#get_all_windows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.get_all_windows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all mpl figures and registered qt windows</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.get_geometry">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">get_geometry</tt><big>(</big><em>fnum</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#get_geometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.get_geometry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.get_main_win_base">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">get_main_win_base</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#get_main_win_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.get_main_win_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.iup">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">iup</tt><big>(</big><big>)</big><a class="headerlink" href="#plottool.fig_presenter.iup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.iupdate">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">iupdate</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#iupdate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.iupdate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.present">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">present</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#present"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.present" title="Permalink to this definition">¶</a></dt>
+<dd><p>execing present should cause IPython magic</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.register_qt4_win">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">register_qt4_win</tt><big>(</big><em>win</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#register_qt4_win"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.register_qt4_win" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.reset">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">reset</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.set_geometry">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">set_geometry</tt><big>(</big><em>fnum</em>, <em>x</em>, <em>y</em>, <em>w</em>, <em>h</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#set_geometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.set_geometry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.show">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">show</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.unregister_qt4_win">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">unregister_qt4_win</tt><big>(</big><em>win</em><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#unregister_qt4_win"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.unregister_qt4_win" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.fig_presenter.update">
+<tt class="descclassname">plottool.fig_presenter.</tt><tt class="descname">update</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/fig_presenter.html#update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.fig_presenter.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.interact_annotations">
+<span id="plottool-interact-annotations-module"></span><h2>plottool.interact_annotations module<a class="headerlink" href="#module-plottool.interact_annotations" title="Permalink to this headline">¶</a></h2>
+<p>TODO: Rename species list to label list</p>
+<p>guiback.py  &#8211; code/ibeis/ibeis/gui
+./resetdbs.sh
+./dev.py &#8211;cmd &#8211;gui &#8211;db testdb1 (&#8211;setdb) &lt;-set default</p>
+<p>TODO:
+1. create a function call to create a rectangle at a given set of points
+2.. Make 45 degree rotation - need help</p>
+<ol class="arabic simple" start="3">
+<li>Change bounding box and update continuously to the original image the new ANNOTATIONs</li>
+</ol>
+<p>2. Make new window and frames inside, double click to pull up normal window with editing
+start with just taking in 6 images and ANNOTATIONs</p>
+<ol class="arabic simple">
+<li>ANNOTATION ID number, then list of 4 touples</li>
+</ol>
+<p>Interactive tool to draw mask on an image or image-like array.</p>
+<p>Adapted from matplotlib/examples/event_handling/poly_editor.py
+Jan 9 2014: taken from: <a class="reference external" href="https://gist.github.com/tonysyu/3090704">https://gist.github.com/tonysyu/3090704</a></p>
+<dl class="class">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction">
+<em class="property">class </em><tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">ANNOTATIONInteraction</tt><big>(</big><em>img</em>, <em>img_ind=None</em>, <em>commit_callback=None</em>, <em>verts_list=None</em>, <em>bbox_list=None</em>, <em>theta_list=None</em>, <em>species_list=None</em>, <em>max_ds=10</em>, <em>line_width=4</em>, <em>line_color=(1</em>, <em>1</em>, <em>1)</em>, <em>face_color=(0</em>, <em>0</em>, <em>0)</em>, <em>fnum=None</em>, <em>default_species='____'</em>, <em>next_callback=None</em>, <em>prev_callback=None</em>, <em>do_mask=False</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>An interactive polygon editor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>verts_list</strong> (<em>list of lists of (float, float)</em>) &#8211; List of (x, y) coordinates used as vertices of the polygon.</li>
+<li><strong>max_ds</strong> (<em>float</em>) &#8211; Max pixel distance to count as a vertex hit.</li>
+<li><strong>Key-bindings</strong> &#8211; </li>
+<li><strong>&#8212;&#8212;&#8212;&#8212;</strong> &#8211; </li>
+<li><strong>&#8216;t&#8217;</strong> (<em>toggle vertex markers on and off.  When vertex markers are on,</em>) &#8211; you can move them, delete them</li>
+<li><strong>&#8216;d&#8217;</strong> (<em>delete the vertex under point</em>) &#8211; </li>
+<li><strong>&#8216;i&#8217;</strong> (<em>insert a vertex at point.  You must be within max_ds of the</em>) &#8211; line connecting two existing vertices</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.accept_new_annotations">
+<tt class="descname">accept_new_annotations</tt><big>(</big><em>event</em>, <em>do_close=True</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.accept_new_annotations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.accept_new_annotations" title="Permalink to this definition">¶</a></dt>
+<dd><p>write a callback to redraw viz for bbox_list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.add_action_buttons">
+<tt class="descname">add_action_buttons</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.add_action_buttons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.add_action_buttons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.bring_to_front">
+<tt class="descname">bring_to_front</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.bring_to_front"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.bring_to_front" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.button_press_callback">
+<tt class="descname">button_press_callback</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.button_press_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.button_press_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>whenever a mouse button is pressed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.button_release_callback">
+<tt class="descname">button_release_callback</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.button_release_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.button_release_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>whenever a mouse button is released</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.check_dims">
+<tt class="descname">check_dims</tt><big>(</big><em>coords</em>, <em>margin=0.5</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.check_dims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.check_dims" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.check_valid_coords">
+<tt class="descname">check_valid_coords</tt><big>(</big><em>coords_list</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.check_valid_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.check_valid_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.clip_vert_to_bounds">
+<tt class="descname">clip_vert_to_bounds</tt><big>(</big><em>coords</em>, <em>margin=0</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.clip_vert_to_bounds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.clip_vert_to_bounds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.connect_mpl_callbacks">
+<tt class="descname">connect_mpl_callbacks</tt><big>(</big><em>canvas</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.connect_mpl_callbacks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.connect_mpl_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>disconnects matplotlib callbacks specified in the
+self.mpl_callback_ids dict</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.delete_current_poly">
+<tt class="descname">delete_current_poly</tt><big>(</big><em>event=None</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.delete_current_poly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.delete_current_poly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.disconnect_mpl_callbacks">
+<tt class="descname">disconnect_mpl_callbacks</tt><big>(</big><em>canvas</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.disconnect_mpl_callbacks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.disconnect_mpl_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>disconnects all connected matplotlib callbacks</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.draw">
+<tt class="descname">draw</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.draw_artists">
+<tt class="descname">draw_artists</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.draw_artists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.draw_artists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.draw_callback">
+<tt class="descname">draw_callback</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.draw_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.draw_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.draw_new_poly">
+<tt class="descname">draw_new_poly</tt><big>(</big><em>event=None</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.draw_new_poly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.draw_new_poly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.enforce_dims">
+<tt class="descname">enforce_dims</tt><big>(</big><em>coords</em>, <em>margin=0.5</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.enforce_dims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.enforce_dims" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.get_ind_under_cursor">
+<tt class="descname">get_ind_under_cursor</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.get_ind_under_cursor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.get_ind_under_cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the index of the vertex under cursor if within max_ds tolerance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.get_mask">
+<tt class="descname">get_mask</tt><big>(</big><em>shape</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.get_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.get_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image mask given by mask creator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.get_most_recently_added_poly">
+<tt class="descname">get_most_recently_added_poly</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.get_most_recently_added_poly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.get_most_recently_added_poly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.handle_matplotlib_initialization">
+<tt class="descname">handle_matplotlib_initialization</tt><big>(</big><em>fnum=None</em>, <em>instantiate_window=True</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.handle_matplotlib_initialization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.handle_matplotlib_initialization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.handle_polygon_creation">
+<tt class="descname">handle_polygon_creation</tt><big>(</big><em>bbox_list</em>, <em>theta_list</em>, <em>species_list</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.handle_polygon_creation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.handle_polygon_creation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.key_press_callback">
+<tt class="descname">key_press_callback</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.key_press_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.key_press_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>whenever a key is pressed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.load_points">
+<tt class="descname">load_points</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.load_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.load_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.make_lines">
+<tt class="descname">make_lines</tt><big>(</big><em>poly</em>, <em>line_color</em>, <em>line_width</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.make_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.make_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>verts - list of (x, y) tuples</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.motion_notify_callback">
+<tt class="descname">motion_notify_callback</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.motion_notify_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.motion_notify_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>on mouse movement</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.mouse_enter">
+<tt class="descname">mouse_enter</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.mouse_enter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.mouse_enter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.mouse_leave">
+<tt class="descname">mouse_leave</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.mouse_leave"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.mouse_leave" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.move_rectangle">
+<tt class="descname">move_rectangle</tt><big>(</big><em>poly</em>, <em>dx</em>, <em>dy</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.move_rectangle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.move_rectangle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.new_polygon">
+<tt class="descname">new_polygon</tt><big>(</big><em>verts</em>, <em>theta</em>, <em>species</em>, <em>face_color=(0</em>, <em>0</em>, <em>0)</em>, <em>line_color=(1</em>, <em>1</em>, <em>1)</em>, <em>line_width=4</em>, <em>is_orig=False</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.new_polygon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.new_polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>verts - list of (x, y) tuples</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.next_annotation">
+<tt class="descname">next_annotation</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.next_annotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.next_annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.next_polynum">
+<tt class="descname">next_polynum</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.next_polynum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.next_polynum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.on_resize">
+<tt class="descname">on_resize</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.on_resize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.onpick">
+<tt class="descname">onpick</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.onpick"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.onpick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes selected polygon translucent</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.poly_changed">
+<tt class="descname">poly_changed</tt><big>(</big><em>poly</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.poly_changed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.poly_changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>this method is called whenever the polygon object is called</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.prev_annotation">
+<tt class="descname">prev_annotation</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.prev_annotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.prev_annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.resize_rectangle">
+<tt class="descname">resize_rectangle</tt><big>(</big><em>poly</em>, <em>x</em>, <em>y</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.resize_rectangle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.resize_rectangle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.rotate_rectangle">
+<tt class="descname">rotate_rectangle</tt><big>(</big><em>poly</em>, <em>dtheta</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.rotate_rectangle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.rotate_rectangle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.show">
+<tt class="descname">show</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.toggle_species_label">
+<tt class="descname">toggle_species_label</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.toggle_species_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.toggle_species_label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.update_UI">
+<tt class="descname">update_UI</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.update_UI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.update_UI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.update_callbacks">
+<tt class="descname">update_callbacks</tt><big>(</big><em>next_callback</em>, <em>prev_callback</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.update_callbacks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.update_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.update_colors">
+<tt class="descname">update_colors</tt><big>(</big><em>poly_ind</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.update_colors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.update_colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_annotations.ANNOTATIONInteraction.update_image_and_callbacks">
+<tt class="descname">update_image_and_callbacks</tt><big>(</big><em>img</em>, <em>bbox_list</em>, <em>theta_list</em>, <em>species_list</em>, <em>next_callback</em>, <em>prev_callback</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATIONInteraction.update_image_and_callbacks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATIONInteraction.update_image_and_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.ANNOTATION_creator">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">ANNOTATION_creator</tt><big>(</big><em>img</em>, <em>verts_list</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#ANNOTATION_creator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.ANNOTATION_creator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.apply_mask">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">apply_mask</tt><big>(</big><em>img</em>, <em>mask</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#apply_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.apply_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.basecoords_to_bbox">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">basecoords_to_bbox</tt><big>(</big><em>basecoords</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#basecoords_to_bbox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.basecoords_to_bbox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.bbox_to_mask">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">bbox_to_mask</tt><big>(</big><em>shape</em>, <em>bbox</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#bbox_to_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.bbox_to_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.bbox_to_verts">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">bbox_to_verts</tt><big>(</big><em>bbox</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#bbox_to_verts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.bbox_to_verts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.calc_display_coords">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">calc_display_coords</tt><big>(</big><em>oldcoords</em>, <em>theta</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#calc_display_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.calc_display_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.calc_handle_coords">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">calc_handle_coords</tt><big>(</big><em>poly</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#calc_handle_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.calc_handle_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.calc_tag_position">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">calc_tag_position</tt><big>(</big><em>poly</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#calc_tag_position"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.calc_tag_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.default_vertices">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">default_vertices</tt><big>(</big><em>img</em>, <em>polys=None</em>, <em>mouseX=None</em>, <em>mouseY=None</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#default_vertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.default_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default to rectangle that has a quarter-width/height border.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.is_within_distance">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">is_within_distance</tt><big>(</big><em>dist</em>, <em>p1</em>, <em>p2</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#is_within_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.is_within_distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.is_within_distance_from_line">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">is_within_distance_from_line</tt><big>(</big><em>dist</em>, <em>pt</em>, <em>line</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#is_within_distance_from_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.is_within_distance_from_line" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="http://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line">http://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.make_handle_line">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">make_handle_line</tt><big>(</big><em>poly</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#make_handle_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.make_handle_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.points_center">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">points_center</tt><big>(</big><em>pts</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#points_center"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.points_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.polygon_center">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">polygon_center</tt><big>(</big><em>poly</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#polygon_center"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.polygon_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.polygon_dims">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">polygon_dims</tt><big>(</big><em>poly</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#polygon_dims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.polygon_dims" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.rotate_points_around">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">rotate_points_around</tt><big>(</big><em>points</em>, <em>theta</em>, <em>ax</em>, <em>ay</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#rotate_points_around"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.rotate_points_around" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.set_display_coords">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">set_display_coords</tt><big>(</big><em>poly</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#set_display_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.set_display_coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.vertices_under_cursor">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">vertices_under_cursor</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#vertices_under_cursor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.vertices_under_cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create 5 ind on one point</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.verts_to_bbox">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">verts_to_bbox</tt><big>(</big><em>verts</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#verts_to_bbox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.verts_to_bbox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_annotations.verts_to_mask">
+<tt class="descclassname">plottool.interact_annotations.</tt><tt class="descname">verts_to_mask</tt><big>(</big><em>shape</em>, <em>verts</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_annotations.html#verts_to_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_annotations.verts_to_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.interact_helpers">
+<span id="plottool-interact-helpers-module"></span><h2>plottool.interact_helpers module<a class="headerlink" href="#module-plottool.interact_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.interact_helpers.begin_interaction">
+<tt class="descclassname">plottool.interact_helpers.</tt><tt class="descname">begin_interaction</tt><big>(</big><em>type_</em>, <em>fnum</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_helpers.html#begin_interaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_helpers.begin_interaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_helpers.clicked_inside_axis">
+<tt class="descclassname">plottool.interact_helpers.</tt><tt class="descname">clicked_inside_axis</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_helpers.html#clicked_inside_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_helpers.clicked_inside_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_helpers.clicked_outside_axis">
+<tt class="descclassname">plottool.interact_helpers.</tt><tt class="descname">clicked_outside_axis</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_helpers.html#clicked_outside_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_helpers.clicked_outside_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_helpers.connect_callback">
+<tt class="descclassname">plottool.interact_helpers.</tt><tt class="descname">connect_callback</tt><big>(</big><em>fig</em>, <em>callback_type</em>, <em>callback_fn</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_helpers.html#connect_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_helpers.connect_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_helpers.detect_keypress">
+<tt class="descclassname">plottool.interact_helpers.</tt><tt class="descname">detect_keypress</tt><big>(</big><em>fig</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_helpers.html#detect_keypress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_helpers.detect_keypress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_helpers.disconnect_callback">
+<tt class="descclassname">plottool.interact_helpers.</tt><tt class="descname">disconnect_callback</tt><big>(</big><em>fig</em>, <em>callback_type</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_helpers.html#disconnect_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_helpers.disconnect_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.interact_helpers.register_interaction">
+<tt class="descclassname">plottool.interact_helpers.</tt><tt class="descname">register_interaction</tt><big>(</big><em>interaction</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_helpers.html#register_interaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_helpers.register_interaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.interact_keypoints">
+<span id="plottool-interact-keypoints-module"></span><h2>plottool.interact_keypoints module<a class="headerlink" href="#module-plottool.interact_keypoints" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.interact_keypoints.ishow_keypoints">
+<tt class="descclassname">plottool.interact_keypoints.</tt><tt class="descname">ishow_keypoints</tt><big>(</big><em>chip</em>, <em>kpts</em>, <em>desc</em>, <em>fnum=0</em>, <em>figtitle=None</em>, <em>nodraw=False</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_keypoints.html#ishow_keypoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_keypoints.ishow_keypoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.interact_multi_image">
+<span id="plottool-interact-multi-image-module"></span><h2>plottool.interact_multi_image module<a class="headerlink" href="#module-plottool.interact_multi_image" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plottool.interact_multi_image.MultiImageInteraction">
+<em class="property">class </em><tt class="descclassname">plottool.interact_multi_image.</tt><tt class="descname">MultiImageInteraction</tt><big>(</big><em>gpath_list</em>, <em>nPerPage=4</em>, <em>bboxes_list=None</em>, <em>thetas_list=None</em>, <em>verts_list=None</em>, <em>gid_list=None</em>, <em>nImgs=None</em>, <em>fnum=None</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.append_button">
+<tt class="descname">append_button</tt><big>(</big><em>text</em>, <em>divider=None</em>, <em>rect=None</em>, <em>callback=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.append_button"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.append_button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a button to the current page</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.clean_scope">
+<tt class="descname">clean_scope</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.clean_scope"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.clean_scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes any widgets saved in the interaction scope</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.display_buttons">
+<tt class="descname">display_buttons</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.display_buttons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.display_buttons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.draw">
+<tt class="descname">draw</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.key_press_callback">
+<tt class="descname">key_press_callback</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.key_press_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.key_press_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.make_hud">
+<tt class="descname">make_hud</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.make_hud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.make_hud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates heads up display</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.next_page">
+<tt class="descname">next_page</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.next_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.next_page" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.on_figure_clicked">
+<tt class="descname">on_figure_clicked</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.on_figure_clicked"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.on_figure_clicked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.plot_image">
+<tt class="descname">plot_image</tt><big>(</big><em>index</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.plot_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.plot_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.prepare_page">
+<tt class="descname">prepare_page</tt><big>(</big><em>pagenum</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.prepare_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.prepare_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets indexes for the pagenum ready to be displayed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.prev_page">
+<tt class="descname">prev_page</tt><big>(</big><em>event</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.prev_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.prev_page" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.show_page">
+<tt class="descname">show_page</tt><big>(</big><em>pagenum=None</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.show_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.show_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a page of matches</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plottool.interact_multi_image.MultiImageInteraction.update_images">
+<tt class="descname">update_images</tt><big>(</big><em>img_ind</em>, <em>updated_bbox_list</em>, <em>updated_theta_list</em><big>)</big><a class="reference internal" href="_modules/plottool/interact_multi_image.html#MultiImageInteraction.update_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.interact_multi_image.MultiImageInteraction.update_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert code for viz_image2 redrawing here</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plottool.mpl_keypoint">
+<span id="plottool-mpl-keypoint-module"></span><h2>plottool.mpl_keypoint module<a class="headerlink" href="#module-plottool.mpl_keypoint" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.mpl_keypoint.draw_keypoints">
+<tt class="descclassname">plottool.mpl_keypoint.</tt><tt class="descname">draw_keypoints</tt><big>(</big><em>ax</em>, <em>kpts</em>, <em>scale_factor=1.0</em>, <em>offset=(0.0</em>, <em>0.0)</em>, <em>rotation=0.0</em>, <em>ell=True</em>, <em>pts=False</em>, <em>rect=False</em>, <em>eig=False</em>, <em>ori=False</em>, <em>sifts=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_keypoint.html#draw_keypoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_keypoint.draw_keypoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>draws keypoints extracted by pyhesaff onto a matplotlib axis</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.mpl_keypoint.eigenvector_actors">
+<tt class="descclassname">plottool.mpl_keypoint.</tt><tt class="descname">eigenvector_actors</tt><big>(</big><em>invV_aff2Ds</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_keypoint.html#eigenvector_actors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_keypoint.eigenvector_actors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.mpl_keypoint.ellipse_actors">
+<tt class="descclassname">plottool.mpl_keypoint.</tt><tt class="descname">ellipse_actors</tt><big>(</big><em>invV_aff2Ds</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_keypoint.html#ellipse_actors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_keypoint.ellipse_actors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.mpl_keypoint.get_invV_aff2Ds">
+<tt class="descclassname">plottool.mpl_keypoint.</tt><tt class="descname">get_invV_aff2Ds</tt><big>(</big><em>kpts</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_keypoint.html#get_invV_aff2Ds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_keypoint.get_invV_aff2Ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns matplotlib keypoint transformations (circle -&gt; ellipse)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.mpl_keypoint.orientation_actors">
+<tt class="descclassname">plottool.mpl_keypoint.</tt><tt class="descname">orientation_actors</tt><big>(</big><em>kpts</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_keypoint.html#orientation_actors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_keypoint.orientation_actors" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates orientation actors w.r.t. the gravity vector</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.mpl_keypoint.pass_props">
+<tt class="descclassname">plottool.mpl_keypoint.</tt><tt class="descname">pass_props</tt><big>(</big><em>dict1</em>, <em>dict2</em>, <em>*args</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_keypoint.html#pass_props"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_keypoint.pass_props" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.mpl_keypoint.rectangle_actors">
+<tt class="descclassname">plottool.mpl_keypoint.</tt><tt class="descname">rectangle_actors</tt><big>(</big><em>RinvV_aff2Ds</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_keypoint.html#rectangle_actors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_keypoint.rectangle_actors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.mpl_sift">
+<span id="plottool-mpl-sift-module"></span><h2>plottool.mpl_sift module<a class="headerlink" href="#module-plottool.mpl_sift" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.mpl_sift.draw_sifts">
+<tt class="descclassname">plottool.mpl_sift.</tt><tt class="descname">draw_sifts</tt><big>(</big><em>ax</em>, <em>sifts</em>, <em>invVR_aff2Ds=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_sift.html#draw_sifts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_sift.draw_sifts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.mpl_sift.get_sift_collection">
+<tt class="descclassname">plottool.mpl_sift.</tt><tt class="descname">get_sift_collection</tt><big>(</big><em>sift</em>, <em>aff=None</em>, <em>bin_color=array([ 0.</em>, <em>0.</em>, <em>0.</em>, <em>1.])</em>, <em>arm1_color=array([ 1.</em>, <em>0.</em>, <em>0.</em>, <em>1.])</em>, <em>arm2_color=array([ 0.</em>, <em>0.</em>, <em>0.</em>, <em>1.])</em><big>)</big><a class="reference internal" href="_modules/plottool/mpl_sift.html#get_sift_collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.mpl_sift.get_sift_collection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.other">
+<span id="plottool-other-module"></span><h2>plottool.other module<a class="headerlink" href="#module-plottool.other" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.other.color_orimag">
+<tt class="descclassname">plottool.other.</tt><tt class="descname">color_orimag</tt><big>(</big><em>gori</em>, <em>gmag</em><big>)</big><a class="reference internal" href="_modules/plottool/other.html#color_orimag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.other.color_orimag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.other.draw_hist_subbin_maxima">
+<tt class="descclassname">plottool.other.</tt><tt class="descname">draw_hist_subbin_maxima</tt><big>(</big><em>hist</em>, <em>centers=None</em><big>)</big><a class="reference internal" href="_modules/plottool/other.html#draw_hist_subbin_maxima"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.other.draw_hist_subbin_maxima" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.plot_helpers">
+<span id="plottool-plot-helpers-module"></span><h2>plottool.plot_helpers module<a class="headerlink" href="#module-plottool.plot_helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.plot_helpers.draw">
+<tt class="descclassname">plottool.plot_helpers.</tt><tt class="descname">draw</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/plot_helpers.html#draw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plot_helpers.draw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plot_helpers.dump_figure">
+<tt class="descclassname">plottool.plot_helpers.</tt><tt class="descname">dump_figure</tt><big>(</big><em>dumpdir</em>, <em>subdir=None</em>, <em>quality=False</em>, <em>overwrite=False</em>, <em>verbose=2</em><big>)</big><a class="reference internal" href="_modules/plottool/plot_helpers.html#dump_figure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plot_helpers.dump_figure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dumps figure to disk based on the figurename</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.plot_helpers.get_bbox_centers">
+<tt class="descclassname">plottool.plot_helpers.</tt><tt class="descname">get_bbox_centers</tt><big>(</big><em>bbox_list</em><big>)</big><a class="reference internal" href="_modules/plottool/plot_helpers.html#get_bbox_centers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plot_helpers.get_bbox_centers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plot_helpers.get_plotdat">
+<tt class="descclassname">plottool.plot_helpers.</tt><tt class="descname">get_plotdat</tt><big>(</big><em>ax</em>, <em>key</em>, <em>default=None</em><big>)</big><a class="reference internal" href="_modules/plottool/plot_helpers.html#get_plotdat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plot_helpers.get_plotdat" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns internal property from a matplotlib axis</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.plot_helpers.get_square_row_cols">
+<tt class="descclassname">plottool.plot_helpers.</tt><tt class="descname">get_square_row_cols</tt><big>(</big><em>nSubplots</em>, <em>max_cols=None</em><big>)</big><a class="reference internal" href="_modules/plottool/plot_helpers.html#get_square_row_cols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plot_helpers.get_square_row_cols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plot_helpers.kp_info">
+<tt class="descclassname">plottool.plot_helpers.</tt><tt class="descname">kp_info</tt><big>(</big><em>kp</em><big>)</big><a class="reference internal" href="_modules/plottool/plot_helpers.html#kp_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plot_helpers.kp_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plot_helpers.set_plotdat">
+<tt class="descclassname">plottool.plot_helpers.</tt><tt class="descname">set_plotdat</tt><big>(</big><em>ax</em>, <em>key</em>, <em>val</em><big>)</big><a class="reference internal" href="_modules/plottool/plot_helpers.html#set_plotdat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plot_helpers.set_plotdat" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets internal property to a matplotlib axis</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plottool.plots">
+<span id="plottool-plots-module"></span><h2>plottool.plots module<a class="headerlink" href="#module-plottool.plots" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.plots.draw_hist_subbin_maxima">
+<tt class="descclassname">plottool.plots.</tt><tt class="descname">draw_hist_subbin_maxima</tt><big>(</big><em>hist</em>, <em>centers=None</em><big>)</big><a class="reference internal" href="_modules/plottool/plots.html#draw_hist_subbin_maxima"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plots.draw_hist_subbin_maxima" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plots.draw_scores_cdf">
+<tt class="descclassname">plottool.plots.</tt><tt class="descname">draw_scores_cdf</tt><big>(</big><em>scores_list</em>, <em>scores_lbls=None</em>, <em>score_markers=None</em>, <em>score_colors=None</em>, <em>fnum=None</em><big>)</big><a class="reference internal" href="_modules/plottool/plots.html#draw_scores_cdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plots.draw_scores_cdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input: a list of scores (either chip or descriptor)</p>
+<p>Concatenates and sorts the scores
+Plots them in a CDF with different types of scores labeled</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.plots.estimate_pdf">
+<tt class="descclassname">plottool.plots.</tt><tt class="descname">estimate_pdf</tt><big>(</big><em>data</em>, <em>bw_factor</em><big>)</big><a class="reference internal" href="_modules/plottool/plots.html#estimate_pdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plots.estimate_pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plots.get_good_logyscale_kwargs">
+<tt class="descclassname">plottool.plots.</tt><tt class="descname">get_good_logyscale_kwargs</tt><big>(</big><em>y_data</em>, <em>adaptive_knee_scaling=False</em><big>)</big><a class="reference internal" href="_modules/plottool/plots.html#get_good_logyscale_kwargs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plots.get_good_logyscale_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plots.plot_pdf">
+<tt class="descclassname">plottool.plots.</tt><tt class="descname">plot_pdf</tt><big>(</big><em>data</em>, <em>draw_support=True</em>, <em>scale_to=None</em>, <em>label=None</em>, <em>color=0</em>, <em>nYTicks=3</em><big>)</big><a class="reference internal" href="_modules/plottool/plots.html#plot_pdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plots.plot_pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.plots.set_logyscale_from_data">
+<tt class="descclassname">plottool.plots.</tt><tt class="descname">set_logyscale_from_data</tt><big>(</big><em>y_data</em><big>)</big><a class="reference internal" href="_modules/plottool/plots.html#set_logyscale_from_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.plots.set_logyscale_from_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.screeninfo">
+<span id="plottool-screeninfo-module"></span><h2>plottool.screeninfo module<a class="headerlink" href="#module-plottool.screeninfo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.screeninfo.ensure_app_is_running">
+<tt class="descclassname">plottool.screeninfo.</tt><tt class="descname">ensure_app_is_running</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/screeninfo.html#ensure_app_is_running"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.screeninfo.ensure_app_is_running" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.screeninfo.get_avail_geom">
+<tt class="descclassname">plottool.screeninfo.</tt><tt class="descname">get_avail_geom</tt><big>(</big><em>monitor_num=None</em>, <em>percent_w=1.0</em>, <em>percent_h=1.0</em><big>)</big><a class="reference internal" href="_modules/plottool/screeninfo.html#get_avail_geom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.screeninfo.get_avail_geom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.screeninfo.get_monitor_geom">
+<tt class="descclassname">plottool.screeninfo.</tt><tt class="descname">get_monitor_geom</tt><big>(</big><em>monitor_num=0</em><big>)</big><a class="reference internal" href="_modules/plottool/screeninfo.html#get_monitor_geom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.screeninfo.get_monitor_geom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.screeninfo.get_monitor_geometries">
+<tt class="descclassname">plottool.screeninfo.</tt><tt class="descname">get_monitor_geometries</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/screeninfo.html#get_monitor_geometries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.screeninfo.get_monitor_geometries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.screeninfo.get_stdpxls">
+<tt class="descclassname">plottool.screeninfo.</tt><tt class="descname">get_stdpxls</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/screeninfo.html#get_stdpxls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.screeninfo.get_stdpxls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.screeninfo.get_valid_fig_positions">
+<tt class="descclassname">plottool.screeninfo.</tt><tt class="descname">get_valid_fig_positions</tt><big>(</big><em>num_wins</em>, <em>max_rows=None</em>, <em>row_first=True</em>, <em>monitor_num=None</em>, <em>adaptive=False</em><big>)</big><a class="reference internal" href="_modules/plottool/screeninfo.html#get_valid_fig_positions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.screeninfo.get_valid_fig_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes which figure positions are valid given args</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.screeninfo.get_xywh_pads">
+<tt class="descclassname">plottool.screeninfo.</tt><tt class="descname">get_xywh_pads</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/screeninfo.html#get_xywh_pads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.screeninfo.get_xywh_pads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.test_colorsys">
+<span id="plottool-test-colorsys-module"></span><h2>plottool.test_colorsys module<a class="headerlink" href="#module-plottool.test_colorsys" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.test_colorsys.TEST_COLORSYS">
+<tt class="descclassname">plottool.test_colorsys.</tt><tt class="descname">TEST_COLORSYS</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool/test_colorsys.html#TEST_COLORSYS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.test_colorsys.TEST_COLORSYS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.viz_featrow">
+<span id="plottool-viz-featrow-module"></span><h2>plottool.viz_featrow module<a class="headerlink" href="#module-plottool.viz_featrow" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.viz_featrow.draw_feat_row">
+<tt class="descclassname">plottool.viz_featrow.</tt><tt class="descname">draw_feat_row</tt><big>(</big><em>chip</em>, <em>fx</em>, <em>kp</em>, <em>sift</em>, <em>fnum</em>, <em>nRows</em>, <em>nCols</em>, <em>px</em>, <em>prevsift=None</em>, <em>aid=None</em>, <em>info=''</em>, <em>type_=None</em><big>)</big><a class="reference internal" href="_modules/plottool/viz_featrow.html#draw_feat_row"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.viz_featrow.draw_feat_row" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool.viz_image2">
+<span id="plottool-viz-image2-module"></span><h2>plottool.viz_image2 module<a class="headerlink" href="#module-plottool.viz_image2" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.viz_image2.draw_chip_overlay">
+<tt class="descclassname">plottool.viz_image2.</tt><tt class="descname">draw_chip_overlay</tt><big>(</big><em>ax</em>, <em>bbox</em>, <em>theta</em>, <em>text</em>, <em>is_sel</em><big>)</big><a class="reference internal" href="_modules/plottool/viz_image2.html#draw_chip_overlay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.viz_image2.draw_chip_overlay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw an annotation around a chip in the image</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plottool.viz_image2.draw_image_overlay">
+<tt class="descclassname">plottool.viz_image2.</tt><tt class="descname">draw_image_overlay</tt><big>(</big><em>ax</em>, <em>bbox_list=[]</em>, <em>theta_list=None</em>, <em>text_list=None</em>, <em>sel_list=None</em>, <em>draw_lbls=True</em><big>)</big><a class="reference internal" href="_modules/plottool/viz_image2.html#draw_image_overlay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.viz_image2.draw_image_overlay" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.viz_image2.show_image">
+<tt class="descclassname">plottool.viz_image2.</tt><tt class="descname">show_image</tt><big>(</big><em>img</em>, <em>bbox_list=[]</em>, <em>title=''</em>, <em>theta_list=None</em>, <em>text_list=None</em>, <em>sel_list=None</em>, <em>draw_lbls=True</em>, <em>fnum=None</em>, <em>annote=True</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/viz_image2.html#show_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.viz_image2.show_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Driver function to show images</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plottool.viz_keypoints">
+<span id="plottool-viz-keypoints-module"></span><h2>plottool.viz_keypoints module<a class="headerlink" href="#module-plottool.viz_keypoints" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.viz_keypoints.show_keypoints">
+<tt class="descclassname">plottool.viz_keypoints.</tt><tt class="descname">show_keypoints</tt><big>(</big><em>chip</em>, <em>kpts</em>, <em>fnum=0</em>, <em>pnum=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/plottool/viz_keypoints.html#show_keypoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.viz_keypoints.show_keypoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plottool">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-plottool" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="plottool.reload_subs">
+<tt class="descclassname">plottool.</tt><tt class="descname">reload_subs</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/plottool.html#reload_subs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#plottool.reload_subs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plottool.rrrr">
+<tt class="descclassname">plottool.</tt><tt class="descname">rrrr</tt><big>(</big><big>)</big><a class="headerlink" href="#plottool.rrrr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">plottool package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-plottool.abstract_interaction">plottool.abstract_interaction module</a></li>
+<li><a class="reference internal" href="#module-plottool.color_funcs">plottool.color_funcs module</a></li>
+<li><a class="reference internal" href="#module-plottool.custom_constants">plottool.custom_constants module</a></li>
+<li><a class="reference internal" href="#module-plottool.custom_figure">plottool.custom_figure module</a></li>
+<li><a class="reference internal" href="#module-plottool.draw_func2">plottool.draw_func2 module</a></li>
+<li><a class="reference internal" href="#module-plottool.draw_sv">plottool.draw_sv module</a></li>
+<li><a class="reference internal" href="#module-plottool.fig_presenter">plottool.fig_presenter module</a></li>
+<li><a class="reference internal" href="#module-plottool.interact_annotations">plottool.interact_annotations module</a></li>
+<li><a class="reference internal" href="#module-plottool.interact_helpers">plottool.interact_helpers module</a></li>
+<li><a class="reference internal" href="#module-plottool.interact_keypoints">plottool.interact_keypoints module</a></li>
+<li><a class="reference internal" href="#module-plottool.interact_multi_image">plottool.interact_multi_image module</a></li>
+<li><a class="reference internal" href="#module-plottool.mpl_keypoint">plottool.mpl_keypoint module</a></li>
+<li><a class="reference internal" href="#module-plottool.mpl_sift">plottool.mpl_sift module</a></li>
+<li><a class="reference internal" href="#module-plottool.other">plottool.other module</a></li>
+<li><a class="reference internal" href="#module-plottool.plot_helpers">plottool.plot_helpers module</a></li>
+<li><a class="reference internal" href="#module-plottool.plots">plottool.plots module</a></li>
+<li><a class="reference internal" href="#module-plottool.screeninfo">plottool.screeninfo module</a></li>
+<li><a class="reference internal" href="#module-plottool.test_colorsys">plottool.test_colorsys module</a></li>
+<li><a class="reference internal" href="#module-plottool.viz_featrow">plottool.viz_featrow module</a></li>
+<li><a class="reference internal" href="#module-plottool.viz_image2">plottool.viz_image2 module</a></li>
+<li><a class="reference internal" href="#module-plottool.viz_keypoints">plottool.viz_keypoints module</a></li>
+<li><a class="reference internal" href="#module-plottool">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to plottool&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="plottool.tests.html"
+                        title="next chapter">plottool.tests package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/plottool.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="plottool.tests.html" title="plottool.tests package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to plottool’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">plottool 1.0.0.dev1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jon Crall.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

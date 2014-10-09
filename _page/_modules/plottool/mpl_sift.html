@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>plottool.mpl_sift &mdash; plottool 1.0.0.dev1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0.dev1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="plottool 1.0.0.dev1 documentation" href="../../index.html" />
+    <link rel="up" title="plottool" href="../plottool.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">plottool 1.0.0.dev1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../plottool.html" accesskey="U">plottool</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for plottool.mpl_sift</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="c"># Standard</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span> <span class="k">as</span> <span class="n">iprod</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="nb">zip</span><span class="p">,</span> <span class="nb">range</span>
+<span class="c"># Science</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="c"># Matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
+<span class="n">np</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  <span class="c"># tauday.com</span>
+
+
+<span class="n">BLACK</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="n">RED</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_cirlce_rad2xy</span><span class="p">(</span><span class="n">radians</span><span class="p">,</span> <span class="n">mag</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">mag</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">mag</span>
+
+
+<span class="k">def</span> <span class="nf">_set_colltup_list_transform</span><span class="p">(</span><span class="n">colltup_list</span><span class="p">,</span> <span class="n">trans</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">coll_tup</span> <span class="ow">in</span> <span class="n">colltup_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">coll</span> <span class="ow">in</span> <span class="n">coll_tup</span><span class="p">:</span>
+            <span class="n">coll</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_draw_colltup_list</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">colltup_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">coll_tup</span> <span class="ow">in</span> <span class="n">colltup_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">coll</span> <span class="ow">in</span> <span class="n">coll_tup</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
+
+
+<span class="c"># Create a patch collection with attributes</span>
+<span class="k">def</span> <span class="nf">_circl_collection</span><span class="p">(</span><span class="n">patch_list</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+    <span class="n">coll</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">PatchCollection</span><span class="p">(</span><span class="n">patch_list</span><span class="p">)</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s">&#39;none&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">coll</span>
+
+
+<span class="k">def</span> <span class="nf">_arm_collection</span><span class="p">(</span><span class="n">patch_list</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">lw</span><span class="p">):</span>
+    <span class="n">coll</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">PatchCollection</span><span class="p">(</span><span class="n">patch_list</span><span class="p">)</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="n">lw</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">coll</span>
+
+
+<div class="viewcode-block" id="get_sift_collection"><a class="viewcode-back" href="../../plottool.html#plottool.mpl_sift.get_sift_collection">[docs]</a><span class="k">def</span> <span class="nf">get_sift_collection</span><span class="p">(</span><span class="n">sift</span><span class="p">,</span>
+                        <span class="n">aff</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">bin_color</span><span class="o">=</span><span class="n">BLACK</span><span class="p">,</span>
+                        <span class="n">arm1_color</span><span class="o">=</span><span class="n">RED</span><span class="p">,</span>
+                        <span class="n">arm2_color</span><span class="o">=</span><span class="n">BLACK</span><span class="p">):</span>
+    <span class="c"># global offset scale adjustments</span>
+    <span class="k">if</span> <span class="n">aff</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">aff</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Affine2D</span><span class="p">()</span>
+    <span class="n">_kwarm</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">head_width</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">aff</span><span class="p">)</span>
+    <span class="n">_kwcirc</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">transform</span><span class="o">=</span><span class="n">aff</span><span class="p">)</span>
+    <span class="n">arm_patches1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">arm_patches2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">DSCALE</span>   <span class="o">=</span>  <span class="mf">0.25</span>  <span class="c"># Descriptor scale factor</span>
+    <span class="n">ARMSCALE</span> <span class="o">=</span>  <span class="mf">1.5</span>   <span class="c"># Arm length scale factor</span>
+    <span class="n">XYSCALE</span>  <span class="o">=</span>  <span class="mf">0.5</span>   <span class="c"># Position scale factor</span>
+    <span class="n">XYOFFST</span>  <span class="o">=</span> <span class="o">-</span><span class="mf">0.75</span>  <span class="c"># Position offset</span>
+    <span class="n">NORI</span><span class="p">,</span> <span class="n">NX</span><span class="p">,</span> <span class="n">NY</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span>  <span class="c"># SIFT BIN CONSTANTS</span>
+    <span class="n">NBINS</span> <span class="o">=</span> <span class="n">NX</span> <span class="o">*</span> <span class="n">NY</span>
+    <span class="n">discrete_ori</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NORI</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tau</span> <span class="o">/</span> <span class="n">NORI</span><span class="p">))</span>
+    <span class="c"># Arm magnitude and orientations</span>
+    <span class="n">arm_mag</span> <span class="o">=</span> <span class="n">sift</span> <span class="o">/</span> <span class="mf">255.0</span>
+    <span class="n">arm_ori</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">discrete_ori</span><span class="p">,</span> <span class="p">(</span><span class="n">NBINS</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="c"># Arm orientation in dxdy format</span>
+    <span class="n">arm_dxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">_cirlce_rad2xy</span><span class="p">(</span><span class="n">arm_ori</span><span class="p">,</span> <span class="n">arm_mag</span><span class="p">))))</span>
+    <span class="c"># Arm locations and dxdy index</span>
+    <span class="n">yxt_gen</span> <span class="o">=</span> <span class="n">iprod</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">NY</span><span class="p">),</span>
+                    <span class="nb">range</span><span class="p">(</span><span class="n">NX</span><span class="p">),</span>
+                    <span class="nb">range</span><span class="p">(</span><span class="n">NORI</span><span class="p">))</span>
+    <span class="c"># Circle x,y locations</span>
+    <span class="n">yx_gen</span>  <span class="o">=</span> <span class="n">iprod</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">NY</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">NX</span><span class="p">))</span>
+    <span class="c"># Draw 8 directional arms in each of the 4x4 grid cells</span>
+    <span class="n">arm_args_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">yxt_gen</span><span class="p">:</span>
+        <span class="c">#print(&#39;y=%r, x=%r, t=%r&#39; % (y, x, t))</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">NX</span> <span class="o">*</span> <span class="n">NORI</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">NORI</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span> <span class="o">=</span> <span class="n">arm_dxy</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">arm_x</span>  <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">XYSCALE</span><span class="p">)</span> <span class="o">+</span> <span class="n">XYOFFST</span>  <span class="c"># MULTIPLY BY -1 to invert X axis</span>
+        <span class="n">arm_y</span>  <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">XYSCALE</span><span class="p">)</span> <span class="o">+</span> <span class="n">XYOFFST</span>
+        <span class="n">arm_dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">dy</span> <span class="o">*</span> <span class="n">DSCALE</span><span class="p">)</span> <span class="o">*</span> <span class="n">ARMSCALE</span>
+        <span class="n">arm_dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">DSCALE</span><span class="p">)</span> <span class="o">*</span> <span class="n">ARMSCALE</span>
+        <span class="n">_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">arm_x</span><span class="p">,</span> <span class="n">arm_y</span><span class="p">,</span> <span class="n">arm_dx</span><span class="p">,</span> <span class="n">arm_dy</span><span class="p">]</span>
+        <span class="n">arm_args_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_args</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_args</span> <span class="ow">in</span> <span class="n">arm_args_list</span><span class="p">:</span>
+        <span class="n">arm_patches1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrow</span><span class="p">(</span><span class="o">*</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">_kwarm</span><span class="p">))</span>
+        <span class="n">arm_patches2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">FancyArrow</span><span class="p">(</span><span class="o">*</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">_kwarm</span><span class="p">))</span>
+    <span class="c"># Draw circles around each of the 4x4 grid cells</span>
+    <span class="n">circle_patches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">yx_gen</span><span class="p">:</span>
+        <span class="n">circ_xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">XYSCALE</span> <span class="o">+</span> <span class="n">XYOFFST</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">XYSCALE</span> <span class="o">+</span> <span class="n">XYOFFST</span><span class="p">)</span>
+        <span class="n">circ_radius</span> <span class="o">=</span> <span class="n">DSCALE</span>
+        <span class="n">circle_patches</span> <span class="o">+=</span> <span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">circ_xy</span><span class="p">,</span> <span class="n">circ_radius</span><span class="p">,</span> <span class="o">**</span><span class="n">_kwcirc</span><span class="p">)]</span>
+
+    <span class="n">circ_coll</span> <span class="o">=</span> <span class="n">_circl_collection</span><span class="p">(</span><span class="n">circle_patches</span><span class="p">,</span>  <span class="n">bin_color</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">arm1_coll</span> <span class="o">=</span> <span class="n">_arm_collection</span><span class="p">(</span><span class="n">arm_patches1</span><span class="p">,</span> <span class="n">arm1_color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">arm2_coll</span> <span class="o">=</span> <span class="n">_arm_collection</span><span class="p">(</span><span class="n">arm_patches2</span><span class="p">,</span> <span class="n">arm2_color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">coll_tup</span> <span class="o">=</span> <span class="p">(</span><span class="n">circ_coll</span><span class="p">,</span> <span class="n">arm2_coll</span><span class="p">,</span> <span class="n">arm1_coll</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">coll_tup</span>
+
+</div>
+<div class="viewcode-block" id="draw_sifts"><a class="viewcode-back" href="../../plottool.html#plottool.mpl_sift.draw_sifts">[docs]</a><span class="k">def</span> <span class="nf">draw_sifts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">sifts</span><span class="p">,</span> <span class="n">invVR_aff2Ds</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">invVR_aff2Ds</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">invVR_aff2Ds</span> <span class="o">=</span> <span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Affine2D</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sifts</span><span class="p">))]</span>
+    <span class="n">colltup_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_sift_collection</span><span class="p">(</span><span class="n">sift</span><span class="p">,</span> <span class="n">aff</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">sift</span><span class="p">,</span> <span class="n">aff</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sifts</span><span class="p">,</span> <span class="n">invVR_aff2Ds</span><span class="p">)]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+    <span class="n">_set_colltup_list_transform</span><span class="p">(</span><span class="n">colltup_list</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">)</span>
+    <span class="n">_draw_colltup_list</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">colltup_list</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">plottool 1.0.0.dev1 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../plottool.html" >plottool</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jon Crall.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

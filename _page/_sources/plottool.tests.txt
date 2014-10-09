@@ -1,0 +1,46 @@
+plottool.tests package
+======================
+
+Submodules
+----------
+
+plottool.tests.test_helpers module
+----------------------------------
+
+.. automodule:: plottool.tests.test_helpers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+plottool.tests.test_interact_multi_image module
+-----------------------------------------------
+
+.. automodule:: plottool.tests.test_interact_multi_image
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+plottool.tests.test_viz_image2 module
+-------------------------------------
+
+.. automodule:: plottool.tests.test_viz_image2
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+plottool.tests.test_viz_images module
+-------------------------------------
+
+.. automodule:: plottool.tests.test_viz_images
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: plottool.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:
