@@ -11,6 +11,14 @@ Subpackages
 Submodules
 ----------
 
+plottool.__MPL_INIT__ module
+----------------------------
+
+.. automodule:: plottool.__MPL_INIT__
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 plottool.abstract_interaction module
 ------------------------------------
 
