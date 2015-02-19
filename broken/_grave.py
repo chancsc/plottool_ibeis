@@ -22,7 +22,7 @@ def test_integral_label_colormap():
         for diffx in np.where(diff > 1)[0]:
             missing_vals.extend([(unique_scalars[diffx] + x + 1) for x in range(diff[diffx] - 1)])
 
-        # Find the indicies of those holes
+        # Find the indices of those holes
         missing_ixs = np.array(missing_vals) - min_
         assert all([val not in unique_scalars for val in missing_vals])
 
@@ -74,7 +74,7 @@ def test_integral_label_colormap():
     sm.set_clim(-.5, range_ + 0.5)
     colorbar = plt.colorbar(sm)
 
-    missing_ixs = utool.find_nonconsec_indicies(unique_scalars, bounds)
+    missing_ixs = utool.find_nonconsec_indices(unique_scalars, bounds)
     sel_bounds = np.array([x for ix, x in enumerate(bounds) if ix not in missing_ixs])
 
     ticks = sel_bounds + .5
