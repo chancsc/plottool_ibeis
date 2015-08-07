@@ -5,6 +5,7 @@ from utool import util_setup
 
 INSTALL_REQUIRES = [
     'matplotlib >= 1.3.1',
+    'numpy >= 1.9.0',
 ]
 
 
