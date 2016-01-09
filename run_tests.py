@@ -25,7 +25,7 @@ def run_tests():
         dpath_list, exclude_doctests_fnames, exclude_dirs)
 
     for modname in doctest_modname_list:
-        exec('import ' + modname, globals(), locals())
+        exec('import ' + modname, globals())
     module_list = [sys.modules[name] for name in doctest_modname_list]
     nPass, nTotal, failed_cmd_list = ut.doctest_module_list(module_list)
     if nPass != nTotal:
