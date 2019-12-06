@@ -1,4 +1,4 @@
-plottool
-========
+plottool_ibeis
+==============
 
-Helpers for matplotlib computer vision plots (this module is hacky and not well coded)
+Helpers for matplotlib computer vision plots for the IBEIS / WildMe project

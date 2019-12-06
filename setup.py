@@ -153,7 +153,7 @@ if __name__ == '__main__':
     setup(
         name=NAME,
         version=VERSION,
-        packages=find_packages('plottool_ibeis'),
+        packages=find_packages(),
         description='Plottool - tools matplotlib computer vision plots',
         long_description=parse_description(),
         long_description_content_type='text/x-rst',
