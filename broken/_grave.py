@@ -12,7 +12,7 @@ def test_integral_label_colormap():
         http://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar
 
     Example:
-        >>> from plottool.draw_func2 import *  # NOQA
+        >>> from plottool_ibeis.draw_func2 import *  # NOQA
     """
 
     def label_domain(unique_scalars):
@@ -30,7 +30,7 @@ def test_integral_label_colormap():
         domain -= min_
         return domain
 
-    from plottool import df2
+    from plottool_ibeis import df2
     import matplotlib.pyplot as plt
     import numpy as np
     import matplotlib as mpl
