@@ -8,7 +8,7 @@ import numpy as np
 from plottool_ibeis.tests.test_helpers import dummy_bbox, imread_many
 
 
-def test_viz_image(imgpaths):
+def run_test_viz_image(imgpaths):
     nImgs = len(imgpaths)
     assert len(imgpaths) < 20, '%d > 20 out of scope of this test' % nImgs
     tau = np.pi * 2
@@ -42,5 +42,5 @@ if __name__ == '__main__':
     TEST_IMAGES_URL = 'https://cthulhu.dyn.wildme.io/public/data/testdata.zip'
     test_image_dir = utool.grab_zipped_url(TEST_IMAGES_URL, appname='utool')
     imgpaths       = utool.list_images(test_image_dir, fullpath=True)   # test image paths
-    test_viz_image(imgpaths)
+    run_test_viz_image(imgpaths)
     exec(df2.present())
