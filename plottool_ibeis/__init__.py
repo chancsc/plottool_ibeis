@@ -4,7 +4,7 @@ Wrappers around matplotlib
 """
 from __future__ import absolute_import, division, print_function
 
-__version__ = '2.1.2'
+__version__ = '2.2.0'
 
 import utool as ut
 ut.noinject(__name__, '[plottool_ibeis.__init__]')

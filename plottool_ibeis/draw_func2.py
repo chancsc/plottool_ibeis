@@ -1634,7 +1634,8 @@ def adjust_subplots(left=None, right=None, bottom=None, top=None, wspace=None,
         fig = gcf()
     subplotpars = fig.subplotpars
     adjust_dict = subplotpars.__dict__.copy()
-    del adjust_dict['validate']
+    adjust_dict.pop('validate', None)
+    adjust_dict.pop('_validate', None)
     adjust_dict.update(kwargs)
     if use_argv:
         # hack to take args from commandline

@@ -139,7 +139,11 @@ def show_nx(graph, with_labels=True, fnum=None, pnum=None, layout='agraph',
     if kwargs.get('modify_ax', True):
         ax.grid(False)
         pt.plt.axis('equal')
-        ax.axesPatch.set_facecolor('white')
+        if hasattr(ax, 'axesPatch'):
+            ax.axesPatch.set_facecolor('white')
+        else:
+            ax.patch.set_facecolor('white')
+
         ax.autoscale()
         ax.autoscale_view(True, True, True)
     #axes.facecolor
