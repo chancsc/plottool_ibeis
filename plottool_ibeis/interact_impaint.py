@@ -11,7 +11,6 @@ References:
 """
 from __future__ import absolute_import, division, print_function, unicode_literals
 import utool as ut
-import matplotlib.pyplot as plt
 import numpy as np
 try:
     import vtool_ibeis as vt
@@ -62,11 +61,11 @@ class PaintInteraction(PAINTER_BASE):
         self._imshow_running = True
 
     def update_title(self):
-        import plottool_ibeis as pt
+        import matplotlib.pyplot as plt
         key = list(self.valid_colors1.keys())[self.color1_idx]
-        pt.plt.title('Click on the image to draw. exit to finish.\n'
-                     'Right click erases, scroll wheel resizes.'
-                     't changes current_color=%r' % (key,))
+        plt.title('Click on the image to draw. exit to finish.\n'
+                  'Right click erases, scroll wheel resizes.'
+                  't changes current_color=%r' % (key,))
 
     def static_plot(self, fnum=None, pnum=(1, 1, 1)):
         import plottool_ibeis as pt
@@ -204,6 +203,7 @@ def draw_demo():
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     fpath = ut.grab_test_imgpath('zebra.png')
     img = vt.imread(fpath)
     mask = impaint_mask2(img)

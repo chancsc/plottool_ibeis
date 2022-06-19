@@ -4,7 +4,6 @@ from os.path import exists, splitext, join, split
 import six
 import utool as ut
 import matplotlib as mpl
-import matplotlib.pyplot as plt
 import warnings
 import functools
 from plottool_ibeis import custom_constants
@@ -44,18 +43,22 @@ def customize_figure(fig, docla):
 
 
 def gcf():
+    import matplotlib.pyplot as plt
     return plt.gcf()
 
 
 def gca():
+    import matplotlib.pyplot as plt
     return plt.gca()
 
 
 def cla():
+    import matplotlib.pyplot as plt
     return plt.cla()
 
 
 def clf():
+    import matplotlib.pyplot as plt
     return plt.clf()
 
 
@@ -63,6 +66,7 @@ def get_fig(fnum=None):
     """
     DEPRICATE use ensure_fig
     """
+    import matplotlib.pyplot as plt
     fig_kwargs = dict(figsize=custom_constants.FIGSIZE, dpi=custom_constants.DPI)
     if fnum is None:
         try:
@@ -81,15 +85,16 @@ def get_fig(fnum=None):
 
 
 def ensure_fig(fnum=None):
+    import matplotlib.pyplot as plt
     if fnum is None:
         try:
             fig = gcf()
-        except Exception as ex:
+        except Exception:
             fig = plt.figure()
     else:
         try:
             fig = plt.figure(fnum)
-        except Exception as ex:
+        except Exception:
             fig = gcf()
     return fig
 
@@ -170,6 +175,7 @@ def figure(fnum=None, pnum=(1, 1, 1), docla=False, title=None, figtitle=None,
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     #mpl.pyplot.xkcd()
     fig = ensure_fig(fnum)
     axes_list = fig.get_axes()
@@ -208,6 +214,7 @@ def figure(fnum=None, pnum=(1, 1, 1), docla=False, title=None, figtitle=None,
 
 def prepare_figure_for_save(fnum, dpi=None, figsize=None, fig=None):
     """ so bad """
+    import matplotlib.pyplot as plt
     if fig is not None:
         # HACK; doesnt set DPI this might cause issues
         if dpi is not None:
@@ -348,6 +355,7 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
         http://robotics.usc.edu/~ampereir/wordpress/?p=626
         http://stackoverflow.com/questions/1271023/resize-a-figure-automatically-in-matplotlib
     """
+    import matplotlib.pyplot as plt
     if dpi is None:
         dpi = custom_constants.DPI
 
@@ -592,12 +600,9 @@ def set_figtitle(figtitle, subtitle='', forcefignum=True, incanvas=True,
 
 
 if __name__ == '__main__':
-    r"""
+    """
     CommandLine:
         python -m plottool_ibeis.custom_figure
-        python -m plottool_ibeis.custom_figure --allexamples
     """
-    import multiprocessing
-    multiprocessing.freeze_support()  # for win32
-    import utool as ut  # NOQA
-    ut.doctest_funcs()
+    import xdoctest
+    xdoctest.doctest_module(__file__)

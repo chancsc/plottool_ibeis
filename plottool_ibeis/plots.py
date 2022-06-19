@@ -5,9 +5,9 @@ from six.moves import zip, range, zip_longest
 from plottool_ibeis import draw_func2 as df2
 import six
 from six.moves import reduce
+import ubelt as ub
 import scipy.stats
 import matplotlib as mpl
-import matplotlib.pyplot as plt
 import utool as ut  # NOQA
 import numpy as np
 print, rrr, profile = ut.inject2(__name__)
@@ -83,6 +83,7 @@ def multi_plot(xdata=None, ydata_list=[], **kwargs):
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     import plottool_ibeis as pt
 
     if isinstance(ydata_list, dict):
@@ -208,7 +209,7 @@ def multi_plot(xdata=None, ydata_list=[], **kwargs):
         fig = pt.figure(fnum=fnum, pnum=pnum, docla=False)
         ax = pt.gca()
     else:
-        pt.plt.sca(ax)
+        plt.sca(ax)
         fig = ax.figure
 
     # +---------------
@@ -755,7 +756,8 @@ def draw_hist_subbin_maxima(hist, centers=None, bin_colors=None,
         >>> import plottool_ibeis as pt
         >>> hist = np.array([    6.73, 8.69, 0.00, 0.00, 34.62, 29.16, 0.00, 0.00, 6.73, 8.69])
         >>> centers = np.array([-0.39, 0.39, 1.18, 1.96,  2.75,  3.53, 4.32, 5.11, 5.89, 6.68])
-        >>> bin_colors = pt.df2.plt.get_cmap('hsv')(centers / vt.TAU)
+        >>> from matplotlib import pyplot as plt
+        >>> bin_colors = plt.get_cmap('hsv')(centers / vt.TAU)
         >>> use_darkbackground = True
         >>> maxima_thresh = .8
         >>> result = draw_hist_subbin_maxima(hist, centers, bin_colors,
@@ -765,6 +767,7 @@ def draw_hist_subbin_maxima(hist, centers=None, bin_colors=None,
         >>> pt.show_if_requested()
     """
     # Find maxima
+    import matplotlib.pyplot as plt
     import vtool_ibeis as vt
     maxima_x, maxima_y, argmaxima = vt.hist_argmaxima(hist, centers, maxima_thresh)
     argmaxima = np.array(ut.ensure_iterable(argmaxima))
@@ -848,7 +851,8 @@ def draw_subextrema(ydata, xdata=None, op='max', bin_colors=None,
         >>> import plottool_ibeis as pt
         >>> ydata = np.array([    6.73, 8.69, 0.00, 0.00, 34.62, 29.16, 0.01, 0.00, 6.73, 8.69])
         >>> xdata = np.array([-0.39, 0.39, 1.18, 1.96,  2.75,  3.53, 4.32, 5.11, 5.89, 6.68])
-        >>> bin_colors = pt.df2.plt.get_cmap('hsv')(xdata / vt.TAU)
+        >>> from matplotlib import pyplot as plt
+        >>> bin_colors = plt.get_cmap('hsv')(xdata / vt.TAU)
         >>> use_darkbackground = True
         >>> thresh_factor = .01
         >>> op = 'max'
@@ -859,6 +863,7 @@ def draw_subextrema(ydata, xdata=None, op='max', bin_colors=None,
         >>> pt.show_if_requested()
     """
     # Find maxima
+    import matplotlib.pyplot as plt
     import vtool_ibeis as vt
     # Hack into the source code
     locals_ = ut.exec_func_src2(vt.argsubextrema2)
@@ -1022,9 +1027,8 @@ def zoom_effect01(ax1, ax2, xmin, xmax, **kwargs):
 # Interface to LineCollection:
 
 
-def colorline(x, y, z=None, cmap=plt.get_cmap('hsv'),
-              norm=plt.Normalize(0.0, 1.0),
-              linewidth=1, alpha=1.0):
+def colorline(x, y, z=None, cmap=ub.NoParam, norm=ub.NoParam, linewidth=1,
+              alpha=1.0):
     """
     Plot a colored line with coordinates x and y
     Optionally specify colors in the array z
@@ -1044,7 +1048,8 @@ def colorline(x, y, z=None, cmap=plt.get_cmap('hsv'),
         >>> x = np.array([1, 3, 3, 2, 5]) / 5.0
         >>> y = np.array([1, 2, 1, 3, 5]) / 5.0
         >>> z = None
-        >>> cmap = df2.plt.get_cmap('hsv')
+        >>> from matplotlib import pyplot as plt
+        >>> cmap = plt.get_cmap('hsv')
         >>> norm = plt.Normalize(0.0, 1.0)
         >>> linewidth = 1
         >>> alpha = 1.0
@@ -1056,6 +1061,11 @@ def colorline(x, y, z=None, cmap=plt.get_cmap('hsv'),
         >>> pt.dark_background()
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
+    if norm is ub.NoParam:
+        norm = plt.Normalize(0.0, 1.0)
+    if cmap is ub.NoParam:
+        cmap = plt.get_cmap('hsv')
     from matplotlib.collections import LineCollection
 
     def make_segments(x, y):
@@ -1159,6 +1169,7 @@ def plot_score_histograms(scores_list,
         >>> print(result)
     """
     import plottool_ibeis as pt
+    import matplotlib.pyplot as plt
     if isinstance(scores_list, np.ndarray):
         if len(scores_list.shape) == 1:
             scores_list = [scores_list]
@@ -1429,6 +1440,7 @@ def plot_probabilities(prob_list,
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    from matplotlib import pyplot as plt
     assert len(prob_list) > 0
     if xdata is None:
         xdata = np.arange(len(prob_list[0]))
@@ -1452,14 +1464,14 @@ def plot_probabilities(prob_list,
                title=figtitle, use_legend=False)
 
     if prob_thresh is not None:
-        df2.plt.plot(xdata, [prob_thresh] * len(xdata), 'g-', label='prob thresh')
+        plt.plot(xdata, [prob_thresh] * len(xdata), 'g-', label='prob thresh')
 
     if score_thresh is not None:
         ydata_min = min([_ydata.min() for _ydata in prob_list])
         ydata_max = max([_ydata.max() for _ydata in prob_list])
         ydomain = np.linspace(ydata_min, ydata_max, 10)
-        df2.plt.plot([score_thresh] * len(ydomain), ydomain, 'g-',
-                     label='score thresh=%.2f' % (score_thresh,))
+        plt.plot([score_thresh] * len(ydomain), ydomain, 'g-',
+                 label='score thresh=%.2f' % (score_thresh,))
     ax = df2.gca()
     if kwargs.get('remove_yticks', False):
         ax.set_yticks([])
@@ -1688,6 +1700,7 @@ def get_good_logyscale_kwargs(y_data, adaptive_knee_scaling=False):
 
 def plot_pdf(data, draw_support=True, scale_to=None, label=None, color=0,
              nYTicks=3):
+    import matplotlib.pyplot as plt
     fig = df2.gcf()
     ax = df2.gca()
     data = np.array(data)
@@ -1902,6 +1915,7 @@ def plot_search_surface(known_nd_data, known_target_points, nd_labels,
         >>> ax = plot_search_surface(known_nd_data, known_target_points, nd_labels, target_label, fnum)
     """
     import plottool_ibeis as pt
+    import matplotlib.pyplot as plt
     from mpl_toolkits.mplot3d import Axes3D  # NOQA
     fnum = pt.ensure_fnum(fnum)
     print('fnum = %r' % (fnum,))
@@ -1974,8 +1988,8 @@ def plot_search_surface(known_nd_data, known_target_points, nd_labels,
             titlekw=titlekw,
             rstride=1, cstride=1,
             pnum=pnum,
-            #cmap=pt.plt.get_cmap('jet'),
-            cmap=pt.plt.get_cmap('coolwarm'),
+            #cmap=plt.get_cmap('jet'),
+            cmap=plt.get_cmap('coolwarm'),
             #wire=True,
             #mode='wire',
             title=title,
@@ -2043,6 +2057,7 @@ def draw_timedelta_pie(timedeltas, bins=None, fnum=None, pnum=(1, 1, 1), label='
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     import datetime
     xdata = timedeltas[~np.isnan(timedeltas)]
     numnan = len(timedeltas) - len(xdata)
@@ -2063,7 +2078,7 @@ def draw_timedelta_pie(timedeltas, bins=None, fnum=None, pnum=(1, 1, 1), label='
     freq = np.histogram(xdata, bins)[0]
     timedelta_strs = [ut.get_timedelta_str(datetime.timedelta(seconds=b), exclude_zeros=True)
                       for b in bins]
-    bin_labels = [l + ' - ' + h for l, h in ut.iter_window(timedelta_strs)]
+    bin_labels = [lo + ' - ' + hi for lo, hi in ut.iter_window(timedelta_strs)]
     bin_labels[-1] = '> 1 year'
     bin_labels[0] = '< 1 minute'
 
@@ -2093,7 +2108,7 @@ def draw_timedelta_pie(timedeltas, bins=None, fnum=None, pnum=(1, 1, 1), label='
     masked_colors = ut.compress(colors, mask)
     explode = [0] * len(masked_freq)
     masked_percent = (masked_freq * 100 / size)
-    pt.plt.pie(masked_percent, explode=explode, autopct='%1.1f%%',
+    plt.pie(masked_percent, explode=explode, autopct='%1.1f%%',
                labels=masked_lbls, colors=masked_colors)
     #ax = pt.gca()
     pt.set_xlabel(label + '\nsize=%d' % (size,))
@@ -2123,6 +2138,7 @@ def word_histogram2(text_list, weight_list=None, **kwargs):
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     import plottool_ibeis as pt
     text_hist = ut.dict_hist(text_list, weight_list=weight_list)
     text_vals = list(text_hist.values())

@@ -18,7 +18,16 @@ __MPL_INIT__.init_matplotlib()
 
 import matplotlib as mpl
 #mpl.use('Qt4Agg')
-import matplotlib.pyplot as plt
+
+def __getattr__(key):
+    # Lazy loading
+    if key == 'plt':
+        import matplotlib.pyplot as plt
+        return plt
+    else:
+        raise AttributeError(key)
+
+# import matplotlib.pyplot as plt
 
 from plottool_ibeis import plot_helpers as ph
 from plottool_ibeis import plot_helpers

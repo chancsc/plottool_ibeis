@@ -40,8 +40,9 @@ def impaint_mask(img, label_colors=None, init_mask=None, init_label=None):
 
     # mouse callback function
     def draw_shape(x, y):
+        import ubelt as ub
         keys =  ['mode', 'ix', 'iy', 'color', 'radius']
-        mode, ix, iy, color, radius = ut.dict_take(globals_, keys)
+        mode, ix, iy, color, radius = ub.take(globals_, keys)
         if mode == 'rect':
             cv2.rectangle(mask, (ix, iy), (x, y), color, -1)
         elif mode == 'circ':
@@ -130,6 +131,7 @@ def impaint_mask(img, label_colors=None, init_mask=None, init_label=None):
 def cached_impaint(bgr_img, cached_mask_fpath=None, label_colors=None,
                    init_mask=None, aug=False, refine=False):
     import vtool_ibeis as vt
+    import utool as ut
     if cached_mask_fpath is None:
         cached_mask_fpath = 'image_' + ut.hashstr_arr(bgr_img) + '.png'
     if aug:
@@ -152,19 +154,15 @@ def cached_impaint(bgr_img, cached_mask_fpath=None, label_colors=None,
 def demo():
     r"""
     CommandLine:
-        python -m plottool_ibeis.interact_impaint --test-demo
+        xdoctest -m plottool_ibeis._cv2_impaint demo
 
     References:
         http://docs.opencv.org/trunk/doc/py_tutorials/py_gui/py_mouse_handling/py_mouse_handling.html
 
     Example:
         >>> # DISABLE_DOCTEST
-        >>> from plottool_ibeis.interact_impaint import *  # NOQA
-        >>> # build test data
-        >>> # execute function
-        >>> result = demo()
-        >>> # verify results
-        >>> print(result)
+        >>> from plottool_ibeis._cv2_impaint import *  # NOQA
+        >>> demo()
     """
     import cv2
     import numpy as np
@@ -208,3 +206,11 @@ def demo():
             break
 
     cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    """
+    CommandLine:
+        python ~/code/plottool_ibeis/plottool_ibeis/_cv2_impaint.py
+    """
+    demo()

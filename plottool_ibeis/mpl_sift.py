@@ -263,8 +263,14 @@ def draw_sifts(ax, sifts, invVR_aff2Ds=None, **kwargs):
     if invVR_aff2Ds is None:
         invVR_aff2Ds = [mpl.transforms.Affine2D() for _ in range(len(sifts))]
     if isinstance(invVR_aff2Ds, (list, np.ndarray)):
-        invVR_aff2Ds = [mpl.transforms.Affine2D(matrix=aff_)
-                        for aff_ in invVR_aff2Ds]
+        ensured = []
+        for aff_ in invVR_aff2Ds:
+            if isinstance(aff_, mpl.transforms.Affine2D):
+                ensured.append(aff_)
+            else:
+                ensured.append(mpl.transforms.Affine2D(matrix=aff_))
+        invVR_aff2Ds = ensured
+
     colltup_list = [get_sift_collection(sift, aff, **kwargs)
                     for sift, aff in zip(sifts, invVR_aff2Ds)]
     ax.invert_xaxis()

@@ -9,7 +9,6 @@ from plottool_ibeis import interact_helpers as ih
 from plottool_ibeis import abstract_interaction
 
 from matplotlib.widgets import Button  # NOQA
-import matplotlib.pyplot as plt  # NOQA
 import matplotlib as mpl  # NOQA
 import six
 try:
@@ -93,6 +92,7 @@ class MultiImageInteraction(BASE_CLASS):
         #self.start()
 
     def dump_to_disk(self, dpath, num=None, prefix='temp_img'):
+        import matplotlib.pyplot as plt  # NOQA
         import numpy as np
         import plottool_ibeis as pt
         dpath = ut.ensurepath(dpath)
@@ -112,7 +112,7 @@ class MultiImageInteraction(BASE_CLASS):
             extent = axes_extents[0]
             fpath = ut.unixjoin(dpath, fmtstr % (index))
             fig.savefig(fpath, bbox_inches=extent)
-        pt.plt.close(fig)
+        plt.close(fig)
 
     def make_hud(self):
         """ Creates heads up display """
@@ -308,7 +308,8 @@ class MultiImageInteraction(BASE_CLASS):
     #    if divider is not None:
     #        new_ax = divider.append_axes('bottom', size='9%', pad=.05)
     #    if rect is not None:
-    #        new_ax = df2.plt.axes(rect)
+    #        from matplotlib import pyplot as plt
+    #        new_ax = plt.axes(rect)
     #    new_but = mpl.widgets.Button(new_ax, text)
     #    if callback is not None:
     #        new_but.on_clicked(callback)

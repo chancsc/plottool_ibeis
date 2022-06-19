@@ -464,6 +464,7 @@ def distinct_colors(N, brightness=.878, randomize=True, hue_range=(0.0, 1.0), cm
     """
     # TODO: Add sin wave modulation to the sat and value
     #import plottool_ibeis as pt
+    import matplotlib.pyplot as plt
     if True:
         import plottool_ibeis as pt
         # HACK for white figures
@@ -474,7 +475,7 @@ def distinct_colors(N, brightness=.878, randomize=True, hue_range=(0.0, 1.0), cm
     use_jet = False
     if use_jet:
         import plottool_ibeis as pt
-        cmap = pt.plt.cm.jet
+        cmap = plt.cm.jet
         RGB_tuples = list(map(tuple, cmap(np.linspace(0, 1, N))))
     elif cmap_seed is not None:
         # Randomized map based on a seed
@@ -499,7 +500,7 @@ def distinct_colors(N, brightness=.878, randomize=True, hue_range=(0.0, 1.0), cm
         rng = np.random.RandomState(seed + 48930)
         cmap_str = rng.choice(choices, 1)[0]
         #print('cmap_str = %r' % (cmap_str,))
-        cmap = pt.plt.cm.get_cmap(cmap_str)
+        cmap = plt.cm.get_cmap(cmap_str)
         #ut.hashstr27(cmap_seed)
         #cmap_seed = 0
         #pass
