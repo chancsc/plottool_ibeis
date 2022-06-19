@@ -15,7 +15,7 @@ def impaint_mask(img, label_colors=None, init_mask=None, init_label=None):
         >>> from plottool_ibeis.interact_impaint import *  # NOQA
         >>> import utool as ut
         >>> import vtool_ibeis as vt
-        >>> img_fpath = ut.grab_test_imgpath('lena.png')
+        >>> img_fpath = ut.grab_test_imgpath('astro.png')
         >>> img = vt.imread(img_fpath)
         >>> label_colors = [255, 200, 100, 0]
         >>> result = impaint_mask(img, label_colors)

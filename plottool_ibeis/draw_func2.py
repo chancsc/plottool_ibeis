@@ -293,15 +293,15 @@ def overlay_icon(icon, coords=(0, 0), coord_type='axes', bbox_alignment=(0, 0),
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon zebra.png
-        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon lena.png
-        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon lena.png --artist
+        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon astro.png
+        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon astro.png --artist
 
     Example:
         >>> # DISABLE_DOCTEST
         >>> from plottool_ibeis.draw_func2 import *  # NOQA
         >>> import plottool_ibeis as pt
         >>> pt.plot2(np.arange(100), np.arange(100))
-        >>> icon = ut.get_argval('--icon', type_=str, default='lena.png')
+        >>> icon = ut.get_argval('--icon', type_=str, default='astro.png')
         >>> coords = (0, 0)
         >>> coord_type = 'axes'
         >>> bbox_alignment = (0, 0)
@@ -3334,7 +3334,7 @@ def draw_keypoint_patch(rchip, kp, sift=None, warped=False, patch_dict={}, **kwa
         >>> # DISABLE_DOCTEST
         >>> from plottool_ibeis.draw_func2 import *  # NOQA
         >>> import vtool_ibeis as vt
-        >>> rchip = vt.imread(ut.grab_test_imgpath('lena.png'))
+        >>> rchip = vt.imread(ut.grab_test_imgpath('astro.png'))
         >>> kp = [100, 100, 20, 0, 20, 0]
         >>> sift = None
         >>> warped = True
