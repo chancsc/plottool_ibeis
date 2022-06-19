@@ -1,7 +1,7 @@
 plottool_ibeis
 ==============
 
-|Pypi| |Downloads| |Codecov| |Travis| |Appveyor| 
+|Pypi| |Downloads| |Codecov| |GithubActions| 
 
 Helpers for matplotlib computer vision plots for the IBEIS / WildMe project
 
@@ -39,3 +39,6 @@ Repos relevant to the ibeis project:
    :target: https://pypistats.org/packages/plottool_ibeis
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/plottool_ibeis/badge/?version=latest
     :target: http://plottool_ibeis.readthedocs.io/en/latest/
+.. |GithubActions| image:: https://github.com/Erotemic/plottool_ibeis/actions/workflows/tests.yml/badge.svg?branch=main
+    :target: https://github.com/Erotemic/plottool_ibeis/actions?query=branch%3Amain
+   
