@@ -225,6 +225,15 @@ if __name__ == "__main__":
         "all": parse_requirements("requirements.txt"),
         "tests": parse_requirements("requirements/tests.txt"),
         "optional": parse_requirements("requirements/optional.txt"),
+        "headless": parse_requirements("requirements/headless.txt"),
+        "graphics": parse_requirements("requirements/graphics.txt"),
+        # Strict versions
+        "headless-strict": parse_requirements(
+            "requirements/headless.txt", versions="strict"
+        ),
+        "graphics-strict": parse_requirements(
+            "requirements/graphics.txt", versions="strict"
+        ),
         "all-strict": parse_requirements("requirements.txt", versions="strict"),
         "runtime-strict": parse_requirements(
             "requirements/runtime.txt", versions="strict"

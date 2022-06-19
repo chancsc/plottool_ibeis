@@ -6,7 +6,7 @@ ignore_missing_imports = true
 
 [tool.xcookie]
 # TODO: allow xcookie config to be specified in __init__.py
-tags = [ "erotemic", "purepy", "github",]
+tags = [ "erotemic", "purepy", "github", "cv2"]
 mod_name = "plottool_ibeis"
 repo_name = "plottool_ibeis"
 version = "2.2.0"
