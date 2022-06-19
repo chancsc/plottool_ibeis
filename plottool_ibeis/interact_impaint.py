@@ -11,7 +11,6 @@ References:
 """
 from __future__ import absolute_import, division, print_function, unicode_literals
 import utool as ut
-import matplotlib.pyplot as plt
 import numpy as np
 try:
     import vtool_ibeis as vt
@@ -62,11 +61,11 @@ class PaintInteraction(PAINTER_BASE):
         self._imshow_running = True
 
     def update_title(self):
-        import plottool_ibeis as pt
-        key = (self.valid_colors1.keys())[self.color1_idx]
-        pt.plt.title('Click on the image to draw. exit to finish.\n'
-                     'Right click erases, scroll wheel resizes.'
-                     't changes current_color=%r' % (key,))
+        import matplotlib.pyplot as plt
+        key = list(self.valid_colors1.keys())[self.color1_idx]
+        plt.title('Click on the image to draw. exit to finish.\n'
+                  'Right click erases, scroll wheel resizes.'
+                  't changes current_color=%r' % (key,))
 
     def static_plot(self, fnum=None, pnum=(1, 1, 1)):
         import plottool_ibeis as pt
@@ -173,52 +172,20 @@ def impaint_mask2(img, init_mask=None):
     """
         python -m plottool_ibeis.interact_impaint --exec-draw_demo --show
     """
-    if False:
-        QT = False  # NOQA
-        #if QT:
-        #    from guitool_ibeis import mpl_embed
-        #    import guitool_ibeis
-        #    guitool_ibeis.ensure_qapp()  # must be ensured before any embeding
-        #    wgt = mpl_embed.QtAbstractMplInteraction()
-        #    fig = wgt.fig
-        #    ax = wgt.axes
-        #else:
-        #    fig = plt.figure(1)
-        #    ax = plt.subplot(111)
-        #if init_mask is None:
-        #    mask = np.zeros(img.shape, np.uint8) + 255
-        #else:
-        #    mask = init_mask
-        #ax.imshow(img, interpolation='nearest', alpha=1)
-        #ax.imshow(mask, interpolation='nearest', alpha=0.6)
-        #ax.grid(False)
-        #ax.set_xticks([])
-        #ax.set_yticks([])
+    pntr = PaintInteraction(img, init_mask=init_mask)
+    #pntr.show_page()
+    # print('Starting interaction')
+    pntr.start()
+    pntr.show()
 
-        #pstartntr = _OldPainter(fig, ax, mask)
-        #ax.set_title('Click on the image to draw. exit to finish')
-        #print('Starting interaction')
-        #if not QT:
-        #    plt.show(block=True)
-        #else:
-        #    guitool_ibeis.qtapp_loop(wgt, frequency=100, init_signals=True)
-        #    wgt.show()
-        ##input('hack to block... press enter when done')
-    else:
-        pntr = PaintInteraction(img, init_mask=init_mask)
-        #pntr.show_page()
-        # print('Starting interaction')
-        pntr.start()
-        pntr.show()
-
-        # Hacky code to block until the interaction is actually done
-        # pntr.show()
-        import time
-        from guitool_ibeis.__PYQT__ import QtGui
-        while pntr.is_running:
-            QtWidgets.qApp.processEvents()
-            time.sleep(0.05)
-        #plt.show()
+    # Hacky code to block until the interaction is actually done
+    # pntr.show()
+    import time
+    from guitool_ibeis.__PYQT__ import QtWidgets
+    while pntr.is_running:
+        QtWidgets.qApp.processEvents()
+        time.sleep(0.05)
+    #plt.show()
     print('Finished interaction')
     return pntr.mask
 
@@ -236,6 +203,7 @@ def draw_demo():
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     fpath = ut.grab_test_imgpath('zebra.png')
     img = vt.imread(fpath)
     mask = impaint_mask2(img)

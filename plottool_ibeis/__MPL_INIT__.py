@@ -39,6 +39,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import sys
 import os
 import utool as ut
+import ubelt as ub
 from six.moves import builtins
 ut.noinject(__name__, '[plottool_ibeis.__MPL_INIT__]')
 
@@ -53,7 +54,7 @@ __IS_INITIALIZED__ = False
 __WHO_INITIALIZED__ = None
 
 
-VERBOSE_MPLINIT = ut.get_argflag(('--verb-mpl', '--verbose'))
+VERBOSE_MPLINIT = ub.argflag(('--verb-mpl', '--verbose'))
 TARGET_BACKEND = ut.get_argval(('--mpl-backend', '--mplbe'), type_=str, default=os.environ.get('MPL_BACKEND', None))
 FALLBACK_BACKEND = ut.get_argval(('--mpl-fallback-backend', '--mplfbbe'), type_=str, default='agg')
 
@@ -115,7 +116,7 @@ def _init_mpl_rcparams():
     import matplotlib as mpl
     from matplotlib import style
     #http://matplotlib.org/users/style_sheets.html
-    nogg = ut.get_argflag('--nogg')
+    nogg = ub.argflag('--nogg')
     if not nogg:
         style.use('ggplot')
     #style.use(['ggplot'])
@@ -125,14 +126,14 @@ def _init_mpl_rcparams():
     #import utool
     #utool.embed()
     #style.use(['ggplot', 'dark_background'])
-    if ut.get_argflag('--notoolbar'):
+    if ub.argflag('--notoolbar'):
         toolbar = 'None'
     else:
         toolbar = 'toolbar2'
     mpl.rcParams['toolbar'] = toolbar
     #mpl.rc('text', usetex=False)
 
-    if ut.get_argflag('--usetex'):
+    if ub.argflag('--usetex'):
         #mpl.rc('text', usetex=True)
         mpl.rcParams['text.usetex'] = True
         #matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]
@@ -209,12 +210,18 @@ def _init_mpl_rcparams():
 
 def _mpl_set_backend(target_backend):
     import matplotlib as mpl
-    if ut.get_argflag('--leave-mpl-backend-alone'):
+    import ubelt as ub
+    if ub.argflag('--leave-mpl-backend-alone'):
         print('[pt] LEAVE THE BACKEND ALONE !!! was specified')
         print('[pt] not changing mpl backend')
     else:
         #mpl.use(target_backend, warn=True, force=True)
-        mpl.use(target_backend, warn=True, force=False)
+        if ub.DARWIN or ub.WIN32:
+            mpl.use(target_backend, force=False)
+        else:
+            kw = {'warn': True, 'force': False}
+            kw = ub.compatible(kw, mpl.use)
+            mpl.use(target_backend, **kw)
         #mpl.use(target_backend, warn=False, force=False)
         current_backend = mpl.get_backend()
     if not ut.QUIET and ut.VERBOSE:

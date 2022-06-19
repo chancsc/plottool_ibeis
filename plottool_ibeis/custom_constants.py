@@ -1,6 +1,7 @@
 from __future__ import absolute_import, division, print_function
 from six.moves import map
 import numpy as np
+import ubelt as ub
 import matplotlib as mpl
 import utool as ut
 #(print, print_, printDBG, rrr, profile) = utool.inject(__name__, '[custom_constants]', DEBUG=False)
@@ -28,41 +29,53 @@ def FontProp(*args, **kwargs):
         stretch=u'normal',
         size=u'medium'
     """
+    from matplotlib import pyplot as plt  # NOQA
+    # plt is needed for font_manager to exist
     kwargs['family'] = 'monospace'
     font_prop = mpl.font_manager.FontProperties(*args, **kwargs)
     return font_prop
 
-FONTS = ut.DynStruct()
-FONTS.smallest  = FontProp(weight='light', size=SMALLEST)
-FONTS.small     = FontProp(weight='light', size=SMALL)
-FONTS.smaller   = FontProp(weight='light', size=SMALLER)
-FONTS.med       = FontProp(weight='light', size=MED)
-FONTS.large     = FontProp(weight='light', size=LARGE)
-FONTS.medbold   = FontProp(weight='bold', size=MED)
-FONTS.largebold = FontProp(weight='bold', size=LARGE)
 
-# SPECIFIC FONTS
+def __getattr__(self, key):
+    if key == 'FONTS':
+        return _build_fonts()
+    else:
+        raise AttributeError(key)
 
-if False:
-    # personal
-    FONTS.legend   = FONTS.small
-    FONTS.figtitle = FONTS.med
-    FONTS.axtitle  = FONTS.small
-    FONTS.subtitle = FONTS.med
-    #FONTS.xlabel   = FONTS.smaller
-    FONTS.xlabel   = FONTS.small
-    FONTS.ylabel   = FONTS.small
-    FONTS.relative = FONTS.smallest
-else:
-    # personal
-    FONTS.legend   = FONTS.med
-    FONTS.figtitle = FONTS.large
-    FONTS.axtitle  = FONTS.med
-    FONTS.subtitle = FONTS.med
-    #FONTS.xlabel   = FONTS.smaller
-    FONTS.xlabel   = FONTS.med
-    FONTS.ylabel   = FONTS.med
-    FONTS.relative = FONTS.med
+
+@ub.memoize
+def _build_fonts():
+    # SPECIFIC FONTS
+    FONTS = ut.DynStruct()
+    FONTS.smallest  = FontProp(weight='light', size=SMALLEST)
+    FONTS.small     = FontProp(weight='light', size=SMALL)
+    FONTS.smaller   = FontProp(weight='light', size=SMALLER)
+    FONTS.med       = FontProp(weight='light', size=MED)
+    FONTS.large     = FontProp(weight='light', size=LARGE)
+    FONTS.medbold   = FontProp(weight='bold', size=MED)
+    FONTS.largebold = FontProp(weight='bold', size=LARGE)
+    if False:
+        # personal
+        FONTS.legend   = FONTS.small
+        FONTS.figtitle = FONTS.med
+        FONTS.axtitle  = FONTS.small
+        FONTS.subtitle = FONTS.med
+        #FONTS.xlabel   = FONTS.smaller
+        FONTS.xlabel   = FONTS.small
+        FONTS.ylabel   = FONTS.small
+        FONTS.relative = FONTS.smallest
+    else:
+        # personal
+        FONTS.legend   = FONTS.med
+        FONTS.figtitle = FONTS.large
+        FONTS.axtitle  = FONTS.med
+        FONTS.subtitle = FONTS.med
+        #FONTS.xlabel   = FONTS.smaller
+        FONTS.xlabel   = FONTS.med
+        FONTS.ylabel   = FONTS.med
+        FONTS.relative = FONTS.med
+    return FONTS
+
 
 # COLORS
 

@@ -1,1 +1,1 @@
-pygraphviz
+pyqt5>= 5.11.2

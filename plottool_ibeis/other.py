@@ -2,15 +2,15 @@
 from __future__ import absolute_import, division, print_function
 from six.moves import zip
 import numpy as np
-import cv2
-import matplotlib.pyplot as plt
 import vtool_ibeis.histogram as htool
 import utool as ut
 ut.noinject(__name__, '[pt.other]')
 
 
 def color_orimag(gori, gmag):
+    import matplotlib.pyplot as plt
     # Turn a 0 to 1 orienation map into hsv colors
+    import cv2
     gori_01 = (gori - gori.min()) / (gori.max() - gori.min())
     cmap_ = plt.get_cmap('hsv')
     flat_rgb = np.array(cmap_(gori_01.flatten()), dtype=np.float32)
@@ -26,6 +26,7 @@ def color_orimag(gori, gmag):
 
 
 def draw_hist_subbin_maxima(hist, centers=None):
+    import matplotlib.pyplot as plt
     # Find maxima
     maxima_x, maxima_y, argmaxima = htool.hist_argmaxima(hist, centers)
     # Expand parabola points around submaxima

@@ -4,7 +4,7 @@ Wrappers around matplotlib
 """
 from __future__ import absolute_import, division, print_function
 
-__version__ = '2.1.2'
+__version__ = '2.2.0'
 
 import utool as ut
 ut.noinject(__name__, '[plottool_ibeis.__init__]')
@@ -18,7 +18,16 @@ __MPL_INIT__.init_matplotlib()
 
 import matplotlib as mpl
 #mpl.use('Qt4Agg')
-import matplotlib.pyplot as plt
+
+def __getattr__(key):
+    # Lazy loading
+    if key == 'plt':
+        import matplotlib.pyplot as plt
+        return plt
+    else:
+        raise AttributeError(key)
+
+# import matplotlib.pyplot as plt
 
 from plottool_ibeis import plot_helpers as ph
 from plottool_ibeis import plot_helpers

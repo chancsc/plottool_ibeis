@@ -347,7 +347,8 @@ class AbstractInteraction(object):
         """ Adds a button to the current page """
 
         if rect is not None:
-            new_ax = df2.plt.axes(rect)
+            from matplotlib import pyplot as plt
+            new_ax = plt.axes(rect)
         if rect is None and divider is None:
             if ax is None:
                 ax = df2.gca()

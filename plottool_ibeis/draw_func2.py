@@ -14,7 +14,6 @@ import six
 import itertools as it
 import utool as ut  # NOQA
 import matplotlib as mpl
-import matplotlib.pyplot as plt
 try:
     from mpl_toolkits.axes_grid1 import make_axes_locatable
 except ImportError as ex:
@@ -39,6 +38,15 @@ from plottool_ibeis import custom_figure
 from plottool_ibeis import fig_presenter
 DEBUG = False
 (print, rrr, profile) = ut.inject2(__name__)
+
+
+def __getattr__(key):
+    # Lazy loading hack
+    if key == 'plt':
+        import matplotlib.pyplot as plt
+        return plt
+    else:
+        raise AttributeError(key)
 
 
 def is_texmode():
@@ -285,15 +293,15 @@ def overlay_icon(icon, coords=(0, 0), coord_type='axes', bbox_alignment=(0, 0),
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon zebra.png
-        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon lena.png
-        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon lena.png --artist
+        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon astro.png
+        python -m plottool_ibeis.draw_func2 --exec-overlay_icon --show --icon astro.png --artist
 
     Example:
         >>> # DISABLE_DOCTEST
         >>> from plottool_ibeis.draw_func2 import *  # NOQA
         >>> import plottool_ibeis as pt
         >>> pt.plot2(np.arange(100), np.arange(100))
-        >>> icon = ut.get_argval('--icon', type_=str, default='lena.png')
+        >>> icon = ut.get_argval('--icon', type_=str, default='astro.png')
         >>> coords = (0, 0)
         >>> coord_type = 'axes'
         >>> bbox_alignment = (0, 0)
@@ -308,6 +316,7 @@ def overlay_icon(icon, coords=(0, 0), coord_type='axes', bbox_alignment=(0, 0),
     """
     #from mpl_toolkits.axes_grid.anchored_artists import AnchoredAuxTransformBox
     import vtool_ibeis as vt
+    import matplotlib.pyplot as plt
     ax = gca()
     if isinstance(icon, six.string_types):
         # hack because icon is probably a url
@@ -488,8 +497,9 @@ class RenderingContext(object):
             return False  # return a falsey value on error
         # Ensure that this figure will not pop up
         import plottool_ibeis as pt
+        import matplotlib.pyplot as plt
         self.image = pt.render_figure_to_image(self.fig, **self.savekw)
-        pt.plt.close(self.fig)
+        plt.close(self.fig)
         if self.was_interactive:
             mpl.interactive(self.was_interactive)
 
@@ -747,6 +757,7 @@ def show_if_requested(N=1):
         http://stackoverflow.com/questions/4325733/save-a-subplot-in-matplotlib
 
     """
+    import matplotlib.pyplot as plt
 
     if ut.NOT_QUIET:
         print('[pt] ' + str(ut.get_caller_name(range(3))) + ' show_if_requested()')
@@ -890,12 +901,12 @@ def show_if_requested(N=1):
         if False and ut.is_developer() and len(fpath_list) <= 4:
             if len(fpath_list) == 1:
                 latex_block = (
-                    '\ImageCommand{' + ''.join(fpath_list) + '}{' +
+                    r'\ImageCommand{' + ''.join(fpath_list) + '}{' +
                     width_str + '}{\n' + caption_str + '\n}{' + label_str + '}')
             else:
                 width_str = '1'
                 latex_block = (
-                    '\MultiImageCommandII' + '{' + label_str + '}' +
+                    r'\MultiImageCommandII' + '{' + label_str + '}' +
                     '{' + width_str + '}' + '{' + caplbl_str + '}' + '{\n' + caption_str + '\n}'
                     '{' + '}{'.join(fpath_list) + '}'
                 )
@@ -911,7 +922,7 @@ def show_if_requested(N=1):
                 unflat_fpath_list = ut.list_reshape(fpath_list, newshape, trail=True)
                 fpath_list = ut.flatten(ut.list_transpose(unflat_fpath_list))
 
-            caption_str = '\caplbl{' + caplbl_str + '}' + caption_str
+            caption_str = r'\caplbl{' + caplbl_str + '}' + caption_str
             figure_str  = ut.util_latex.get_latex_figure_str(fpath_list,
                                                              label_str=label_str,
                                                              caption_str=caption_str,
@@ -1487,6 +1498,7 @@ def draw_bbox(bbox, lbl=None, bbox_color=(1, 0, 0), lbl_bgcolor=(0, 0, 0),
 
 
 def plot(*args, **kwargs):
+    import matplotlib.pyplot as plt
     yscale = kwargs.pop('yscale', 'linear')
     xscale = kwargs.pop('xscale', 'linear')
     logscale_kwargs = kwargs.pop('logscale_kwargs', {})  # , {'nonposx': 'clip'})
@@ -1634,7 +1646,8 @@ def adjust_subplots(left=None, right=None, bottom=None, top=None, wspace=None,
         fig = gcf()
     subplotpars = fig.subplotpars
     adjust_dict = subplotpars.__dict__.copy()
-    del adjust_dict['validate']
+    adjust_dict.pop('validate', None)
+    adjust_dict.pop('_validate', None)
     adjust_dict.update(kwargs)
     if use_argv:
         # hack to take args from commandline
@@ -1966,6 +1979,7 @@ def show_histogram(data, bins=None, **kwargs):
 
 
 def show_signature(sig, **kwargs):
+    import matplotlib.pyplot as plt
     fig = figure(**kwargs)
     plt.plot(sig)
     fig.show()
@@ -2046,8 +2060,8 @@ def draw_stems(x_data=None, y_data=None, setlims=True, color=None,
             pylab.setp(markerline, 'markerfacecolor', 'w')
             pylab.setp(stemlines, 'markerfacecolor', 'w')
             if color is not None:
-                for l in stemlines:
-                    l.set_color(color)
+                for sl in stemlines:
+                    sl.set_color(color)
             pylab.setp(baseline, 'linewidth', 0)  # baseline should be invisible
     if setlims:
         ax = gca()
@@ -2275,6 +2289,7 @@ def append_phantom_legend_label(label, color, type_='circle', alpha=1.0, ax=None
         >>> pt.show_phantom_legend_labels(ax=ax)
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     #pass
     #, loc=loc
     if ax is None:
@@ -2460,6 +2475,7 @@ def scores_to_color(score_list, cmap_='hot', logscale=False, reverse_cmap=False,
         ...        -2: LIGHT_BLUE,
         ...    }
     """
+    import matplotlib.pyplot as plt
     assert len(score_list.shape) == 1, 'score must be 1d'
     if len(score_list) == 0:
         return []
@@ -2609,6 +2625,7 @@ def ensure_divider(ax):
 
 def get_binary_svm_cmap():
     # useful for svms
+    import matplotlib.pyplot as plt
     return reverse_colormap(plt.get_cmap('bwr'))
 
 
@@ -2868,6 +2885,7 @@ def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     from plottool_ibeis import plot_helpers as ph
     assert len(scalars) == len(colors), 'scalars and colors must be corresponding'
     if len(scalars) == 0:
@@ -2926,6 +2944,9 @@ def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
             ticklabels = [float_format % scalar for scalar in unique_scalars]
         else:
             ticklabels = unique_scalars
+
+        ticks = ticks[:len(ticklabels)] # HACK!!
+
         cb.set_ticks(ticks)  # tick locations
         cb.set_ticklabels(ticklabels)  # tick labels
     elif ticklabels is not None:
@@ -3313,7 +3334,7 @@ def draw_keypoint_patch(rchip, kp, sift=None, warped=False, patch_dict={}, **kwa
         >>> # DISABLE_DOCTEST
         >>> from plottool_ibeis.draw_func2 import *  # NOQA
         >>> import vtool_ibeis as vt
-        >>> rchip = vt.imread(ut.grab_test_imgpath('lena.png'))
+        >>> rchip = vt.imread(ut.grab_test_imgpath('astro.png'))
         >>> kp = [100, 100, 20, 0, 20, 0]
         >>> sift = None
         >>> warped = True
@@ -3404,6 +3425,7 @@ def imshow(img, fnum=None, title=None, figtitle=None, pnum=None,
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     if ax is not None:
         fig = ax.figure
         nospecial = True
@@ -3556,6 +3578,7 @@ def draw_vector_field(gx, gy, fnum=None, pnum=None, title=None, invert=True,
     """
     # https://stackoverflow.com/questions/1843194/plotting-vector-fields-in-python-matplotlib
     # http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.quiver
+    import matplotlib.pyplot as plt
     quiv_kw = {
         'units': 'xy',
         'scale_units': 'xy',
@@ -4026,6 +4049,7 @@ def get_orientation_color(radians_list):
         >>> # verify results
         >>> print(result)
     """
+    import matplotlib.pyplot as plt
     TAU = np.pi * 2
     # Map radians to 0 to 1
     ori01_list = (radians_list % TAU) / TAU
@@ -4275,6 +4299,7 @@ def plot_surface3d(xgrid, ygrid, zdata, xlabel=None, ylabel=None, zlabel=None,
         >>>                   cmap=mpl.cm.coolwarm, title=title)
         >>> pt.show_if_requested()
     """
+    import matplotlib.pyplot as plt
     if titlekw is None:
         titlekw = {}
     if labelkw is None:
@@ -4417,6 +4442,7 @@ def draw_text_annotations(text_list,
 
 
 def set_figsize(w, h, dpi):
+    import matplotlib.pyplot as plt
     fig = plt.gcf()
     fig.set_size_inches(w, h)
     fig.set_dpi(dpi)
@@ -4537,10 +4563,11 @@ def test_save():
         python -m plottool_ibeis.draw_func2 test_save
     """
     import plottool_ibeis as pt
+    import matplotlib.pyplot as plt
     import utool as ut
     from os.path import join
     fig = pt.figure(fnum=1)
-    ax = pt.plt.gca()
+    ax = plt.plt.gca()
     ax.plot([1, 2, 3], [4, 5, 7])
     dpath = ut.ensure_app_cache_dir('plottool_ibeis')
     fpath = join(dpath, 'test.png')
