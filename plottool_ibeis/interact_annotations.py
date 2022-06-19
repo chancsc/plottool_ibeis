@@ -1148,7 +1148,7 @@ class AnnotationInteraction(abstract_interaction.AbstractInteraction):
             self._selected_poly.set_species(DEFAULT_SPECIES_TAG)
         if re.match('^tab$', event.key):
             self._selected_poly.increment_species(amount=1)
-        if re.match('^ctrl\+tab$', event.key):
+        if re.match(r'^ctrl\+tab$', event.key) or event.key == 'ctrl+tab':
             self._selected_poly.increment_species(amount=-1)
 
         # NEXT ANND PREV COMMAND
@@ -1379,13 +1379,11 @@ def test_interact_annots():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m plottool_ibeis.interact_annotations --exec-test_interact_annots --show
+        python -m plottool_ibeis.interact_annotations test_interact_annots --show
     CommandLine:
         python -m plottool_ibeis.interact_annotations
         python -m plottool_ibeis.interact_annotations --allexamples
         python -m plottool_ibeis.interact_annotations --allexamples --noface --nosrc
     """
-    import multiprocessing
-    multiprocessing.freeze_support()  # for win32
-    import utool as ut  # NOQA
-    ut.doctest_funcs()
+    import xdoctest
+    xdoctest.doctest_module(__file__)
