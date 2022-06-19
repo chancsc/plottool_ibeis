@@ -216,10 +216,12 @@ def _mpl_set_backend(target_backend):
         print('[pt] not changing mpl backend')
     else:
         #mpl.use(target_backend, warn=True, force=True)
-        if ub.DARWIN:
+        if ub.DARWIN or ub.WIN32:
             mpl.use(target_backend, force=False)
         else:
-            mpl.use(target_backend, warn=True, force=False)
+            kw = {'warn': True, 'force': False}
+            kw = ub.compatible(kw, mpl.use)
+            mpl.use(target_backend, **kw)
         #mpl.use(target_backend, warn=False, force=False)
         current_backend = mpl.get_backend()
     if not ut.QUIET and ut.VERBOSE:
