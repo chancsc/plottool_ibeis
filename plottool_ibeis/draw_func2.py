@@ -8,6 +8,7 @@
 # More useful for graphs draw_<funcname> same as plot for now. More useful for
 # images
 import six
+import ubelt as ub
 import itertools as it
 import utool as ut  # NOQA
 import matplotlib as mpl
@@ -18,7 +19,6 @@ except ImportError as ex:
                'try pip install mpl_toolkits.axes_grid1 or something.  idk yet',
                iswarning=False)
     raise
-#import colorsys
 import pylab
 import warnings
 import numpy as np
@@ -57,7 +57,7 @@ lighten_rgb = color_fns.lighten_rgb
 to_base255 = color_fns.to_base255
 
 DARKEN = ut.get_argval(
-    '--darken', type_=float, default=(.7 if ut.get_argflag('--darken') else None))
+    '--darken', type_=float, default=(.7 if ut.argflag('--darken') else None))
 
 # print('DARKEN = %r' % (DARKEN,))
 
@@ -110,7 +110,7 @@ set_xticks   = custom_figure.set_xticks
 set_ylabel   = custom_figure.set_ylabel
 set_yticks   = custom_figure.set_yticks
 
-VERBOSE = ut.get_argflag(('--verbose-df2', '--verb-pt'))
+VERBOSE = ub.argflag(('--verbose-df2', '--verb-pt'))
 
 #================
 # GLOBALS
@@ -126,9 +126,8 @@ def show_was_requested():
     IPython (and presumably want some sort of interaction
     """
     return (
-        not ut.get_argflag(('--noshow')) and
-        (ut.get_argflag(('--show', '--save')) or ut.inIPython()))
-    #return ut.show_was_requested()
+        not ub.argflag(('--noshow')) and
+        (ub.argflag(('--show', '--save')) or ut.inIPython()))
 
 
 class OffsetImage2(mpl.offsetbox.OffsetBox):
@@ -304,7 +303,7 @@ def overlay_icon(icon, coords=(0, 0), coord_type='axes', bbox_alignment=(0, 0),
         >>> bbox_alignment = (0, 0)
         >>> max_dsize = None  # (128, None)
         >>> max_asize = (60, 40)
-        >>> as_artist = not ut.get_argflag('--noartist')
+        >>> as_artist = not ub.argflag('--noartist')
         >>> result = overlay_icon(icon, coords, coord_type, bbox_alignment,
         >>>                       max_asize, max_dsize, as_artist)
         >>> print(result)
@@ -445,7 +444,7 @@ def udpate_adjust_subplots():
                 ('vals must be len (1, 3, or 6) not %d, adjust_list=%r. '
                  'Expects keys=%r') % (len(adjust_list), adjust_list, keys))
         adjust_kw = dict(zip(keys, vals))
-        print('**adjust_kw = %s' % (ut.repr2(adjust_kw),))
+        print('**adjust_kw = %s' % (ub.repr2(adjust_kw),))
         adjust_subplots(**adjust_kw)
 
 
@@ -584,7 +583,7 @@ def extract_axes_extents(fig, combine=False, pad=0.0):
                 atomic_axes.append([ax])
                 seen_.add(ax)
 
-    hack_axes_group_row = ut.get_argflag('--grouprows')
+    hack_axes_group_row = ub.argflag('--grouprows')
     if hack_axes_group_row:
         groupid_list = []
         for axs in atomic_axes:
@@ -725,12 +724,12 @@ def save_parts(fig, fpath, grouped_axes=None, dpi=None):
 
     subpaths = []
     _iter = enumerate(grouped_axes, start=0)
-    _iter = ut.ProgIter(list(_iter), label='save subfig')
+    _iter = ub.ProgIter(list(_iter), label='save subfig')
     for count, axs in _iter:
         subpath = ut.augpath(fpath, chr(count + 65))
         extent = axes_extent(axs).transformed(fig.dpi_scale_trans.inverted())
         savekw = {}
-        savekw['transparent'] = ut.get_argflag('--alpha')
+        savekw['transparent'] = ub.argflag('--alpha')
         if dpi is not None:
             savekw['dpi'] = dpi
         savekw['edgecolor'] = 'none'
@@ -742,7 +741,7 @@ def save_parts(fig, fpath, grouped_axes=None, dpi=None):
 def quit_if_noshow():
     import utool as ut
     saverequest = ut.get_argval('--save', default=None)
-    if not (saverequest or ut.get_argflag(('--show', '--save')) or ut.inIPython()):
+    if not (saverequest or ub.argflag(('--show', '--save')) or ut.inIPython()):
         raise ut.ExitTestException('This should be caught gracefully by ut.run_test')
 
 
@@ -767,7 +766,7 @@ def show_if_requested(N=1):
     update_figsize()
 
     dpi = ut.get_argval('--dpi', type_=int, default=custom_constants.DPI)
-    SAVE_PARTS = ut.get_argflag('--saveparts')
+    SAVE_PARTS = ub.argflag('--saveparts')
 
     fpath_ = ut.get_argval('--save', type_=str, default=None)
     if fpath_ is None:
@@ -804,7 +803,7 @@ def show_if_requested(N=1):
         fig.dpi = dpi
 
         fpath_strict = ut.truepath(fpath)
-        CLIP_WHITE = ut.get_argflag('--clipwhite')
+        CLIP_WHITE = ub.argflag('--clipwhite')
 
         if SAVE_PARTS:
             # TODO: call save_parts instead, but we still need to do the
@@ -826,7 +825,7 @@ def show_if_requested(N=1):
                         atomic_axes.append([ax])
                         seen_.add(ax)
 
-            hack_axes_group_row = ut.get_argflag('--grouprows')
+            hack_axes_group_row = ub.argflag('--grouprows')
             if hack_axes_group_row:
                 groupid_list = []
                 for axs in atomic_axes:
@@ -834,7 +833,7 @@ def show_if_requested(N=1):
                         groupid = ax.colNum
                     groupid_list.append(groupid)
 
-                groups = ut.group_items(atomic_axes, groupid_list)
+                groups = ub.group_items(atomic_axes, groupid_list)
                 new_groups = ut.emap(ut.flatten, groups.values())
                 atomic_axes = new_groups
                 #[[(ax.rowNum, ax.colNum) for ax in axs] for axs in atomic_axes]
@@ -853,7 +852,7 @@ def show_if_requested(N=1):
         else:
             savekw = {}
             # savekw['transparent'] = fpath.endswith('.png') and not noalpha
-            savekw['transparent'] = ut.get_argflag('--alpha')
+            savekw['transparent'] = ub.argflag('--alpha')
             savekw['dpi'] = dpi
             savekw['edgecolor'] = 'none'
             savekw['bbox_inches'] = extract_axes_extents(fig, combine=True)  # replaces need for clipwhite
@@ -864,17 +863,6 @@ def show_if_requested(N=1):
                 # remove white borders
                 fpath_in = fpath_out = absfpath_
                 vt.clipwhite_ondisk(fpath_in, fpath_out)
-                #img = vt.imread(absfpath_)
-                #thresh = 128
-                #fillval = [255, 255, 255]
-                #cropped_img = vt.crop_out_imgfill(img, fillval=fillval, thresh=thresh)
-                #print('img.shape = %r' % (img.shape,))
-                #print('cropped_img.shape = %r' % (cropped_img.shape,))
-                #vt.imwrite(absfpath_, cropped_img)
-            #if dpath is not None:
-            #    fpath_ = ut.unixjoin(dpath, basename(absfpath_))
-            #else:
-            #    fpath_ = fpath
             fpath_list = [fpath_]
 
         # Print out latex info
@@ -886,7 +874,6 @@ def show_if_requested(N=1):
             caption_str = caption_list
         else:
             caption_str = ' '.join(caption_list)
-        #caption_str = ut.get_argval('--caption', type_=str,
         #default=basename(fpath).replace('_', ' '))
         label_str   = ut.get_argval('--label', type_=str, default=default_label)
         width_str = ut.get_argval('--width', type_=str, default=r'\textwidth')
@@ -929,13 +916,6 @@ def show_if_requested(N=1):
             #print(sys.argv)
             latex_block = figure_str
             latex_block = ut.latex_newcommand(label_str, latex_block)
-        #latex_block = ut.codeblock(
-        #    r'''
-        #    \newcommand{\%s}{
-        #    %s
-        #    }
-        #    '''
-        #) % (label_str, latex_block,)
         try:
             import os
             import psutil
@@ -948,7 +928,7 @@ def show_if_requested(N=1):
             cmdline_str = ' '.join([
                 pipes.quote(_).replace(home, '~')
                 for _ in proc.cmdline()])
-            latex_block = ut.codeblock(
+            latex_block = ub.codeblock(
                 r'''
                 \begin{comment}
                 %s
@@ -961,20 +941,20 @@ def show_if_requested(N=1):
         #latex_indent = ' ' * (4 * 2)
         latex_indent = ' ' * (0)
 
-        latex_block_ = (ut.indent(latex_block, latex_indent))
+        latex_block_ = (ub.indent(latex_block, latex_indent))
         ut.print_code(latex_block_, 'latex')
 
         if 'append' in arg_dict:
             append_fpath = arg_dict['append']
             ut.write_to(append_fpath, '\n\n' + latex_block_, mode='a')
 
-        if ut.get_argflag(('--diskshow', '--ds')):
+        if ub.argflag(('--diskshow', '--ds')):
             # show what we wrote
             ut.startfile(absfpath_)
 
         # Hack write the corresponding logfile next to the output
         log_fpath = ut.get_current_log_fpath()
-        if ut.get_argflag('--savelog'):
+        if ub.argflag('--savelog'):
             if log_fpath is not None:
                 ut.copy(log_fpath, splitext(absfpath_)[0] + '.txt')
             else:
@@ -982,20 +962,20 @@ def show_if_requested(N=1):
     if ut.inIPython():
         import plottool_ibeis as pt
         pt.iup()
-    # elif ut.get_argflag('--cmd'):
+    # elif ub.argflag('--cmd'):
     #     import plottool_ibeis as pt
     #     pt.draw()
     #     ut.embed(N=N)
-    elif ut.get_argflag('--cmd'):
+    elif ub.argflag('--cmd'):
         # cmd must handle show I think
         pass
-    elif ut.get_argflag('--show'):
-        if ut.get_argflag('--tile'):
+    elif ub.argflag('--show'):
+        if ub.argflag('--tile'):
             if ut.get_computer_name().lower() in ['hyrule']:
                 fig_presenter.all_figures_tile(percent_w=.5, monitor_num=0)
             else:
                 fig_presenter.all_figures_tile()
-        if ut.get_argflag('--present'):
+        if ub.argflag('--present'):
             fig_presenter.present()
         for fig in fig_presenter.get_all_figures():
             fig.set_dpi(80)
@@ -1184,22 +1164,30 @@ def make_pnum_nextgen(nRows=None, nCols=None, base=0, nSubplots=None, start=0):
         python -m plottool_ibeis.draw_func2 --exec-make_pnum_nextgen --show
 
     GridParams:
+        >>> # ENABLE_DOCTEST
+        >>> from plottool_ibeis.draw_func2 import *  # NOQA
+        >>> import ubelt as ub
         >>> param_grid = dict(
         >>>     nRows=[None, 3],
         >>>     nCols=[None, 3],
         >>>     nSubplots=[None, 9],
         >>> )
-        >>> combos = ut.all_dict_combinations(param_grid)
-
-    GridExample:
-        >>> # ENABLE_DOCTEST
-        >>> from plottool_ibeis.draw_func2 import *  # NOQA
-        >>> base, start = 0, 0
-        >>> pnum_next = make_pnum_nextgen(nRows, nCols, base, nSubplots, start)
-        >>> pnum_list = list( (pnum_next() for _ in it.count()) )
-        >>> print((nRows, nCols, nSubplots))
-        >>> result = ('pnum_list = %s' % (ut.repr2(pnum_list),))
-        >>> print(result)
+        >>> combos = ub.named_product(param_grid)
+        >>> for combo in combos:
+        >>>     nRows = combo['nRows']
+        >>>     nCols = combo['nCols']
+        >>>     nSubplots = combo['nSubplots']
+        >>>     base, start = 0, 0
+        >>>     pnum_next = make_pnum_nextgen(nRows, nCols, base, nSubplots, start)
+        >>>     pnum_list = []
+        >>>     try:
+        >>>         for _ in it.count():
+        >>>             pnum_list.append(pnum_next())
+        >>>     except StopIteration:
+        >>>         ...
+        >>>     print((nRows, nCols, nSubplots))
+        >>>     result = ('pnum_list = %s' % (ub.repr2(pnum_list),))
+        >>>     print(result)
     """
     import functools
     nRows, nCols = get_num_rc(nSubplots, nRows, nCols)
@@ -1239,7 +1227,7 @@ def get_num_rc(nSubplots=None, nRows=None, nCols=None):
         >>>     size = get_num_rc(**kw)
         >>>     if kw['nSubplots'] is not None:
         >>>         assert size[0] * size[1] >= kw['nSubplots']
-        >>>     print('**kw = %s' % (ut.repr2(kw),))
+        >>>     print('**kw = %s' % (ub.repr2(kw),))
         >>>     print('size = %r' % (size,))
     """
     if nSubplots is None:
@@ -1967,7 +1955,7 @@ def show_histogram(data, bins=None, **kwargs):
 
     use_darkbackground = None
     if use_darkbackground is None:
-        use_darkbackground = not ut.get_argflag('--save')
+        use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background(ax)
     return fig
@@ -2008,7 +1996,6 @@ def draw_stems(x_data=None, y_data=None, setlims=True, color=None,
         >>> x_data = np.append(np.arange(1, 10), np.arange(1, 10))
         >>> rng = np.random.RandomState(0)
         >>> y_data = sorted(rng.rand(len(x_data)) * 10)
-        >>> # y_data = np.array([ut.get_nth_prime(n) for n in x_data])
         >>> setlims = False
         >>> color = [1.0, 0.0, 0.0, 1.0]
         >>> markersize = 2
@@ -2038,17 +2025,16 @@ def draw_stems(x_data=None, y_data=None, setlims=True, color=None,
         if bottom is None:
             bottom = 0
         # Faster way of drawing stems
-        #with ut.Timer('new stem'):
         stemlines = []
         ax = gca()
-        x_segments = ut.flatten([[thisx, thisx, None] for thisx in x_data_sort])
+        x_segments = list(ub.flatten([[thisx, thisx, None] for thisx in x_data_sort]))
         if linestyle == '':
-            y_segments = ut.flatten([[thisy, thisy, None] for thisy in y_data_sort])
+            y_segments = list(ub.flatten([[thisy, thisy, None] for thisy in y_data_sort]))
         else:
-            y_segments = ut.flatten([[bottom, thisy, None] for thisy in y_data_sort])
+            y_segments = list(ub.flatten([[bottom, thisy, None] for thisy in y_data_sort]))
         ax.plot(x_segments, y_segments, linestyle, color=color, marker=marker)
     else:
-        with ut.Timer('old stem'):
+        with ub.Timer('old stem'):
             markerline, stemlines, baseline = pylab.stem(
                 x_data_sort, y_data_sort, linefmt='-', bottom=bottom)
             if markersize is not None:
@@ -2110,7 +2096,7 @@ def plot_sift_signature(sift, title='', fnum=None, pnum=None):
 
     use_darkbackground = None
     if use_darkbackground is None:
-        use_darkbackground = not ut.get_argflag('--save')
+        use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background(ax)
     return ax
@@ -2161,7 +2147,7 @@ def plot_descriptor_signature(vec, title='', fnum=None, pnum=None):
 
     use_darkbackground = None
     if use_darkbackground is None:
-        use_darkbackground = not ut.get_argflag('--save')
+        use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background(ax)
 
@@ -2188,7 +2174,7 @@ def dark_background(ax=None, doubleit=False, force=False):
     """
     def is_using_style(style):
         style_dict = mpl.style.library[style]
-        return len(ut.dict_isect(style_dict, mpl.rcParams)) == len(style_dict)
+        return len(ub.dict_isect(style_dict, mpl.rcParams)) == len(style_dict)
 
     #is_using_style('classic')
     #is_using_style('ggplot')
@@ -2822,7 +2808,7 @@ def print_valid_cmaps():
     import pylab
     import utool as ut
     maps = [m for m in pylab.cm.datad if not m.endswith("_r")]
-    print(ut.repr2(sorted(maps)))
+    print(ub.repr2(sorted(maps)))
 
 
 def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
@@ -3103,7 +3089,7 @@ def draw_patches_and_sifts(patch_list, sift_list, fnum=None, pnum=(1, 1, 1)):
     cols = num // rows
     # TODO: recursive stack
     #stacked_img = patch_list.transpose(2, 0, 1).reshape(height * rows, width * cols)
-    stacked_img = np.vstack([np.hstack(chunk) for chunk in ut.ichunks(patch_list, rows)])
+    stacked_img = np.vstack([np.hstack(chunk) for chunk in ub.chunks(patch_list, chunksize=rows)])
 
     x_base = ((np.arange(rows) + .5 ) * width) - .5
     y_base = ((np.arange(cols) + .5 ) * height) - .5
@@ -4261,7 +4247,6 @@ def width_from(num, pad=.05, start=0, stop=1):
 def param_plot_iterator(param_list, fnum=None, projection=None):
     from plottool_ibeis import plot_helpers
     nRows, nCols = plot_helpers.get_square_row_cols(len(param_list), fix=True)
-    #next_pnum = make_pnum_nextgen(nRows=nRows, nCols=nCols)
     pnum_gen = pnum_generator(nRows, nCols)
     pnum = (nRows, nCols, 1)
     fig = figure(fnum=fnum, pnum=pnum)
@@ -4357,7 +4342,7 @@ def plot_surface3d(xgrid, ygrid, zdata, xlabel=None, ylabel=None, zlabel=None,
         ax.set_zlabel(zlabel, **zlabelkw)
     use_darkbackground = dark
     #if use_darkbackground is None:
-    #    use_darkbackground = not ut.get_argflag('--save')
+    #    use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background()
     return ax
