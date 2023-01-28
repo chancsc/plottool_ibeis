@@ -1,6 +1,3 @@
-from __future__ import absolute_import, division, print_function
-from six.moves import range
-#import matplotlib.image as mpimg
 from plottool_ibeis import viz_image2
 from plottool_ibeis import interact_annotations
 from plottool_ibeis import draw_func2 as df2

@@ -1,16 +1,18 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
 import warnings
-from six.moves import zip, range, zip_longest
+from itertools import zip_longest
+from functools import reduce
 from plottool_ibeis import draw_func2 as df2
-import six
-from six.moves import reduce
 import ubelt as ub
 import scipy.stats
 import matplotlib as mpl
 import utool as ut  # NOQA
 import numpy as np
 print, rrr, profile = ut.inject2(__name__)
+
+
+__docstubs__ = """
+from typing import Union
+"""
 
 
 def is_default_dark_bg():
@@ -31,7 +33,7 @@ def multi_plot(xdata=None, ydata_list=[], **kwargs):
 
     Args:
         xdata (ndarray): can also be a list of arrays
-        ydata_list (list of ndarrays): can also be a single array
+        ydata_list (List[ndarray]): can also be a single array
 
     Kwargs:
         Misc:
@@ -88,7 +90,7 @@ def multi_plot(xdata=None, ydata_list=[], **kwargs):
 
     if isinstance(ydata_list, dict):
         # Special case where ydata is a dictionary
-        if isinstance(xdata, six.string_types):
+        if isinstance(xdata, str):
             # Special-er case where xdata is specified in ydata
             xkey = xdata
             ykeys = ut.setdiff(ydata_list.keys(), [xkey])
@@ -417,7 +419,7 @@ def multi_plot(xdata=None, ydata_list=[], **kwargs):
     ymin = kwargs.get('ymin', ax.get_ylim()[0])
     ymax = kwargs.get('ymax', ax.get_ylim()[1])
 
-    text_type = six.text_type
+    text_type = str
 
     if text_type(xmax) == 'data':
         xmax = max([xd.max() for xd in xdata_list])
@@ -620,7 +622,7 @@ def plot_multiple_scores(known_nd_data, known_target_points, nd_labels,
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
     """
-    assert(len(known_nd_data.T) == 2), 'cannot do more than 2 right now'
+    assert (len(known_nd_data.T) == 2), 'cannot do more than 2 right now'
 
     # Put the data into a dense field grid
     nd_basis = [np.unique(arr) for arr in known_nd_data.T]
@@ -745,7 +747,7 @@ def draw_hist_subbin_maxima(hist, centers=None, bin_colors=None,
     r"""
     Args:
         hist (ndarray):
-        centers (None):
+        centers (Any):
 
     CommandLine:
         python -m plottool_ibeis.plots --test-draw_hist_subbin_maxima --show
@@ -839,7 +841,7 @@ def draw_subextrema(ydata, xdata=None, op='max', bin_colors=None,
     r"""
     Args:
         ydata (ndarray):
-        xdata (None):
+        xdata (Any):
 
     CommandLine:
         python -m plottool_ibeis.plots --test-draw_subextrema --show
@@ -930,9 +932,10 @@ def zoom_effect01(ax1, ax2, xmin, xmax, **kwargs):
     patches.
 
     Args:
-        ax1 (mpl.axes): the main axes
-        ax2 (mpl.axes): the zoomed axes
-        (xmin,xmax) : the limits of the colored area in both plot axes.
+        ax1 (mpl.axes.Axes): the main axes
+        ax2 (mpl.axes.Axes): the zoomed axes
+        xmin (float) : the limits of the colored area in both plot axes.
+        xmax (float) : the limits of the colored area in both plot axes.
 
     Returns:
         tuple: (c1, c2, bbox_patch1, bbox_patch2, p)
@@ -1181,14 +1184,13 @@ def plot_score_histograms(scores_list,
             title = 'Histogram of ' + score_label + 's'
     title += kwargs.get('titlesuf', '')
     if score_lbls is None:
-        score_lbls = [six.text_type(lblx) for lblx in range(len(scores_list))]
+        score_lbls = [str(lblx) for lblx in range(len(scores_list))]
     if score_markers is None:
         score_markers = ['o' for lblx in range(len(scores_list))]
     if score_colors is None:
         score_colors = pt.distinct_colors(len(scores_list))[::-1]
     if markersizes is None:
         markersizes = [12 / (1.0 + lblx) for lblx in range(len(scores_list))]
-    #labelx_list = [[lblx] * len(scores_) for lblx, scores_ in enumerate(scores_list)]
 
     # append amount of support
     score_lbls_ = ['%s %d' % (lbl, len(ydata),) for lbl, ydata in
@@ -1202,10 +1204,6 @@ def plot_score_histograms(scores_list,
         fnum = pt.next_fnum()
 
     pt.figure(fnum=fnum, pnum=pnum, doclf=False, docla=False)
-
-    # agg_scores  = np.hstack(scores_list)
-    # dmin = agg_scores.min()
-    # dmax = agg_scores.max()
 
     bins = None
     bin_width = kwargs.get('bin_width', None)
@@ -1225,9 +1223,6 @@ def plot_score_histograms(scores_list,
     if bin_width is not None:
         total_min = np.floor(min([min(scores) for scores in scores_list]))
         total_max = np.ceil(max([max(scores) for scores in scores_list]))
-        #ave_diff = np.mean(ut.flatten([np.diff(sorted(scores)) for scores in scores_list]))
-        #std_diff = np.std(ut.flatten([np.diff(sorted(scores)) for scores in scores_list]))
-        #(total_max - total_min) / bin_width
         num_bins = kwargs.get('num_bins', None)
         total_min = min(0, total_min)  # HACK
         bins = make_bins(bin_width, total_min, total_max, num_bins)
@@ -1236,26 +1231,7 @@ def plot_score_histograms(scores_list,
         # _, agg_bins = np.histogram(agg_scores, 'auto')
         bin_width = min([np.diff(np.histogram(scores)[1])[0] for scores in scores_list])
         print('bin_width = %r' % (bin_width,))
-        # total_min = np.floor(min([min(scores) for scores in scores_list]))
-        # total_max = np.ceil(max([max(scores) for scores in scores_list]))
-        # start = total_min - bin_width / 2
-        # end = total_max + bin_width / 2
-        # if total_min > 0:
-        #     start = max(0, start)
-        # bin_width = np.mean(np.diff(agg_bins))
-        # num_bins = len(agg_bins)
-        # d_min, d_max = scores.min(), scores.max()
-        # width = bin_width
-        # import utool
-        # utool.embed()
         bin_list = [make_bins2(bin_width, scores.min(), scores.max()) for scores in scores_list]
-    # else:
-    #     import scipy as sp
-    #     sortscores = np.sort(np.hstack(scores_list))
-    #     area = sp.integrate.cumtrapz(sortscores, initial=0)
-    #     area = area / area[-1]
-    #     inlier_scores = sortscores[np.logical_and(area < .95, area > .05)]
-    #     (inlier_scores.max() - inlier_scores.min())
 
     # Plot each datapoint on a line
     _n_max = 0
@@ -1410,13 +1386,13 @@ def plot_probabilities(prob_list,
 
     Args:
         prob_list (list):
-        prob_lbls (None): (default = None)
-        prob_colors (None): (default = None)
-        xdata (None): (default = None)
-        prob_thresh (None): (default = None)
+        prob_lbls (Any): (default = None)
+        prob_colors (Any): (default = None)
+        xdata (Any): (default = None)
+        prob_thresh (Any): (default = None)
         figtitle (str): (default = 'plot_probabilities')
         fnum (int):  figure number(default = None)
-        pnum (tuple):  plot number(default = (1, 1, 1))
+        pnum (tuple | str | None):  plot number(default = (1, 1, 1))
         fill (bool): (default = False)
 
     CommandLine:
@@ -1505,10 +1481,10 @@ def plot_sorted_scores(scores_list,
 
     Args:
         scores_list (list): a list of scores
-        score_lbls (None):
-        score_markers (None):
-        score_colors (None):
-        markersizes (None):
+        score_lbls (Any):
+        score_markers (Any):
+        score_colors (Any):
+        markersizes (Any):
         fnum (int):  figure number
         pnum (tuple):  plot number
         logscale (bool):
@@ -1797,14 +1773,13 @@ def interval_stats_plot(param2_stat_dict, fnum=None, pnum=(1, 1, 1), x_label='',
     """
     if fnum is None:
         fnum = df2.next_fnum()
-    import six
-    x_data = np.array(list(six.iterkeys(param2_stat_dict)))
+    x_data = np.array(list(param2_stat_dict.keys()))
     sortx = x_data.argsort()
     x_data_sort = x_data[sortx]
     from matplotlib import pyplot as plt
     # Prepare y data for boxplot
     y_data_keys = ['std', 'mean', 'max', 'min']
-    y_data_dict = list(six.itervalues(param2_stat_dict))
+    y_data_dict = list(param2_stat_dict.values())
     def get_dictlist_key(dict_list, key):
         return [dict_[key] for dict_ in dict_list]
     y_data_components = [get_dictlist_key(y_data_dict, key) for key in y_data_keys]
@@ -1891,14 +1866,14 @@ def plot_search_surface(known_nd_data, known_target_points, nd_labels,
     3D Function
 
     Args:
-        known_nd_data (?): should be integral for now
-        known_target_points (?):
-        nd_labels (?):
-        target_label (?):
+        known_nd_data (Any): should be integral for now
+        known_target_points (Any):
+        nd_labels (Any):
+        target_label (Any):
         fnum (int):  figure number(default = None)
 
     Returns:
-        ?: ax
+        mpl.axes.Axes: ax
 
     CommandLine:
         python -m plottool_ibeis.plots --exec-plot_search_surface --show
@@ -2207,10 +2182,10 @@ def draw_histogram(bin_labels, bin_values, xlabel='',  ylabel='Freq',
                    **kwargs):
     r"""
     Args:
-        bin_labels (?):
-        bin_values (?):
-        xlabel (unicode): (default = u'')
-        ylabel (unicode): (default = u'Freq')
+        bin_labels (Any):
+        bin_values (Any):
+        xlabel (str): (default = '')
+        ylabel (str): (default = 'Freq')
         xtick_rotation (int): (default = 0)
         transpose (bool): (default = False)
 

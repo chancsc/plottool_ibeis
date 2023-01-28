@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ Lots of functions for drawing and plotting visiony things """
 # TODO: New naming scheme
 # viz_<funcname> should clear everything. The current axes and fig: clf, cla.
@@ -8,9 +7,8 @@
 # Might # add annotates?  plot_<funcname> should not clear the axes or figure.
 # More useful for graphs draw_<funcname> same as plot for now. More useful for
 # images
-from __future__ import absolute_import, division, print_function
-from six.moves import range, zip, map
 import six
+import ubelt as ub
 import itertools as it
 import utool as ut  # NOQA
 import matplotlib as mpl
@@ -21,7 +19,6 @@ except ImportError as ex:
                'try pip install mpl_toolkits.axes_grid1 or something.  idk yet',
                iswarning=False)
     raise
-#import colorsys
 import pylab
 import warnings
 import numpy as np
@@ -60,7 +57,7 @@ lighten_rgb = color_fns.lighten_rgb
 to_base255 = color_fns.to_base255
 
 DARKEN = ut.get_argval(
-    '--darken', type_=float, default=(.7 if ut.get_argflag('--darken') else None))
+    '--darken', type_=float, default=(.7 if ut.argflag('--darken') else None))
 
 # print('DARKEN = %r' % (DARKEN,))
 
@@ -113,7 +110,7 @@ set_xticks   = custom_figure.set_xticks
 set_ylabel   = custom_figure.set_ylabel
 set_yticks   = custom_figure.set_yticks
 
-VERBOSE = ut.get_argflag(('--verbose-df2', '--verb-pt'))
+VERBOSE = ub.argflag(('--verbose-df2', '--verb-pt'))
 
 #================
 # GLOBALS
@@ -129,9 +126,8 @@ def show_was_requested():
     IPython (and presumably want some sort of interaction
     """
     return (
-        not ut.get_argflag(('--noshow')) and
-        (ut.get_argflag(('--show', '--save')) or ut.inIPython()))
-    #return ut.show_was_requested()
+        not ub.argflag(('--noshow')) and
+        (ub.argflag(('--show', '--save')) or ut.inIPython()))
 
 
 class OffsetImage2(mpl.offsetbox.OffsetBox):
@@ -229,7 +225,6 @@ class OffsetImage2(mpl.offsetbox.OffsetBox):
 
         #w /= dpi_cor
         #h /= dpi_cor
-        #import utool
         #if self.axes:
         # Hack, find right axes
         ax = self.figure.axes[0]
@@ -285,7 +280,7 @@ def overlay_icon(icon, coords=(0, 0), coord_type='axes', bbox_alignment=(0, 0),
         /usr/local/lib/python2.7/dist-packages/matplotlib/offsetbox.py
 
     Args:
-        icon (ndarray or str): image icon data or path
+        icon (ndarray | str): image icon data or path
         coords (tuple): (default = (0, 0))
         coord_type (str): (default = 'axes')
         bbox_alignment (tuple): (default = (0, 0))
@@ -307,7 +302,7 @@ def overlay_icon(icon, coords=(0, 0), coord_type='axes', bbox_alignment=(0, 0),
         >>> bbox_alignment = (0, 0)
         >>> max_dsize = None  # (128, None)
         >>> max_asize = (60, 40)
-        >>> as_artist = not ut.get_argflag('--noartist')
+        >>> as_artist = not ub.argflag('--noartist')
         >>> result = overlay_icon(icon, coords, coord_type, bbox_alignment,
         >>>                       max_asize, max_dsize, as_artist)
         >>> print(result)
@@ -448,7 +443,7 @@ def udpate_adjust_subplots():
                 ('vals must be len (1, 3, or 6) not %d, adjust_list=%r. '
                  'Expects keys=%r') % (len(adjust_list), adjust_list, keys))
         adjust_kw = dict(zip(keys, vals))
-        print('**adjust_kw = %s' % (ut.repr2(adjust_kw),))
+        print('**adjust_kw = %s' % (ub.repr2(adjust_kw),))
         adjust_subplots(**adjust_kw)
 
 
@@ -587,7 +582,7 @@ def extract_axes_extents(fig, combine=False, pad=0.0):
                 atomic_axes.append([ax])
                 seen_.add(ax)
 
-    hack_axes_group_row = ut.get_argflag('--grouprows')
+    hack_axes_group_row = ub.argflag('--grouprows')
     if hack_axes_group_row:
         groupid_list = []
         for axs in atomic_axes:
@@ -674,7 +669,7 @@ def save_parts(fig, fpath, grouped_axes=None, dpi=None):
     FIXME: this works in mpl 2.0.0, but not 2.0.2
 
     Args:
-        fig (?):
+        fig (mpl.figure.Figure):
         fpath (str):  file path string
         dpi (None): (default = None)
 
@@ -728,12 +723,12 @@ def save_parts(fig, fpath, grouped_axes=None, dpi=None):
 
     subpaths = []
     _iter = enumerate(grouped_axes, start=0)
-    _iter = ut.ProgIter(list(_iter), label='save subfig')
+    _iter = ub.ProgIter(list(_iter), label='save subfig')
     for count, axs in _iter:
         subpath = ut.augpath(fpath, chr(count + 65))
         extent = axes_extent(axs).transformed(fig.dpi_scale_trans.inverted())
         savekw = {}
-        savekw['transparent'] = ut.get_argflag('--alpha')
+        savekw['transparent'] = ub.argflag('--alpha')
         if dpi is not None:
             savekw['dpi'] = dpi
         savekw['edgecolor'] = 'none'
@@ -745,7 +740,7 @@ def save_parts(fig, fpath, grouped_axes=None, dpi=None):
 def quit_if_noshow():
     import utool as ut
     saverequest = ut.get_argval('--save', default=None)
-    if not (saverequest or ut.get_argflag(('--show', '--save')) or ut.inIPython()):
+    if not (saverequest or ub.argflag(('--show', '--save')) or ut.inIPython()):
         raise ut.ExitTestException('This should be caught gracefully by ut.run_test')
 
 
@@ -770,7 +765,7 @@ def show_if_requested(N=1):
     update_figsize()
 
     dpi = ut.get_argval('--dpi', type_=int, default=custom_constants.DPI)
-    SAVE_PARTS = ut.get_argflag('--saveparts')
+    SAVE_PARTS = ub.argflag('--saveparts')
 
     fpath_ = ut.get_argval('--save', type_=str, default=None)
     if fpath_ is None:
@@ -807,7 +802,7 @@ def show_if_requested(N=1):
         fig.dpi = dpi
 
         fpath_strict = ut.truepath(fpath)
-        CLIP_WHITE = ut.get_argflag('--clipwhite')
+        CLIP_WHITE = ub.argflag('--clipwhite')
 
         if SAVE_PARTS:
             # TODO: call save_parts instead, but we still need to do the
@@ -829,7 +824,7 @@ def show_if_requested(N=1):
                         atomic_axes.append([ax])
                         seen_.add(ax)
 
-            hack_axes_group_row = ut.get_argflag('--grouprows')
+            hack_axes_group_row = ub.argflag('--grouprows')
             if hack_axes_group_row:
                 groupid_list = []
                 for axs in atomic_axes:
@@ -837,7 +832,7 @@ def show_if_requested(N=1):
                         groupid = ax.colNum
                     groupid_list.append(groupid)
 
-                groups = ut.group_items(atomic_axes, groupid_list)
+                groups = ub.group_items(atomic_axes, groupid_list)
                 new_groups = ut.emap(ut.flatten, groups.values())
                 atomic_axes = new_groups
                 #[[(ax.rowNum, ax.colNum) for ax in axs] for axs in atomic_axes]
@@ -856,7 +851,7 @@ def show_if_requested(N=1):
         else:
             savekw = {}
             # savekw['transparent'] = fpath.endswith('.png') and not noalpha
-            savekw['transparent'] = ut.get_argflag('--alpha')
+            savekw['transparent'] = ub.argflag('--alpha')
             savekw['dpi'] = dpi
             savekw['edgecolor'] = 'none'
             savekw['bbox_inches'] = extract_axes_extents(fig, combine=True)  # replaces need for clipwhite
@@ -867,17 +862,6 @@ def show_if_requested(N=1):
                 # remove white borders
                 fpath_in = fpath_out = absfpath_
                 vt.clipwhite_ondisk(fpath_in, fpath_out)
-                #img = vt.imread(absfpath_)
-                #thresh = 128
-                #fillval = [255, 255, 255]
-                #cropped_img = vt.crop_out_imgfill(img, fillval=fillval, thresh=thresh)
-                #print('img.shape = %r' % (img.shape,))
-                #print('cropped_img.shape = %r' % (cropped_img.shape,))
-                #vt.imwrite(absfpath_, cropped_img)
-            #if dpath is not None:
-            #    fpath_ = ut.unixjoin(dpath, basename(absfpath_))
-            #else:
-            #    fpath_ = fpath
             fpath_list = [fpath_]
 
         # Print out latex info
@@ -889,7 +873,6 @@ def show_if_requested(N=1):
             caption_str = caption_list
         else:
             caption_str = ' '.join(caption_list)
-        #caption_str = ut.get_argval('--caption', type_=str,
         #default=basename(fpath).replace('_', ' '))
         label_str   = ut.get_argval('--label', type_=str, default=default_label)
         width_str = ut.get_argval('--width', type_=str, default=r'\textwidth')
@@ -932,13 +915,6 @@ def show_if_requested(N=1):
             #print(sys.argv)
             latex_block = figure_str
             latex_block = ut.latex_newcommand(label_str, latex_block)
-        #latex_block = ut.codeblock(
-        #    r'''
-        #    \newcommand{\%s}{
-        #    %s
-        #    }
-        #    '''
-        #) % (label_str, latex_block,)
         try:
             import os
             import psutil
@@ -951,7 +927,7 @@ def show_if_requested(N=1):
             cmdline_str = ' '.join([
                 pipes.quote(_).replace(home, '~')
                 for _ in proc.cmdline()])
-            latex_block = ut.codeblock(
+            latex_block = ub.codeblock(
                 r'''
                 \begin{comment}
                 %s
@@ -964,20 +940,20 @@ def show_if_requested(N=1):
         #latex_indent = ' ' * (4 * 2)
         latex_indent = ' ' * (0)
 
-        latex_block_ = (ut.indent(latex_block, latex_indent))
+        latex_block_ = (ub.indent(latex_block, latex_indent))
         ut.print_code(latex_block_, 'latex')
 
         if 'append' in arg_dict:
             append_fpath = arg_dict['append']
             ut.write_to(append_fpath, '\n\n' + latex_block_, mode='a')
 
-        if ut.get_argflag(('--diskshow', '--ds')):
+        if ub.argflag(('--diskshow', '--ds')):
             # show what we wrote
             ut.startfile(absfpath_)
 
         # Hack write the corresponding logfile next to the output
         log_fpath = ut.get_current_log_fpath()
-        if ut.get_argflag('--savelog'):
+        if ub.argflag('--savelog'):
             if log_fpath is not None:
                 ut.copy(log_fpath, splitext(absfpath_)[0] + '.txt')
             else:
@@ -985,20 +961,17 @@ def show_if_requested(N=1):
     if ut.inIPython():
         import plottool_ibeis as pt
         pt.iup()
-    # elif ut.get_argflag('--cmd'):
+    # elif ub.argflag('--cmd'):
     #     import plottool_ibeis as pt
     #     pt.draw()
     #     ut.embed(N=N)
-    elif ut.get_argflag('--cmd'):
+    elif ub.argflag('--cmd'):
         # cmd must handle show I think
         pass
-    elif ut.get_argflag('--show'):
-        if ut.get_argflag('--tile'):
-            if ut.get_computer_name().lower() in ['hyrule']:
-                fig_presenter.all_figures_tile(percent_w=.5, monitor_num=0)
-            else:
-                fig_presenter.all_figures_tile()
-        if ut.get_argflag('--present'):
+    elif ub.argflag('--show'):
+        if ub.argflag('--tile'):
+            fig_presenter.all_figures_tile()
+        if ub.argflag('--present'):
             fig_presenter.present()
         for fig in fig_presenter.get_all_figures():
             fig.set_dpi(80)
@@ -1008,7 +981,7 @@ def show_if_requested(N=1):
 def distinct_markers(num, style='astrisk', total=None, offset=0):
     r"""
     Args:
-        num (?):
+        num (int):
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-distinct_markers --show
@@ -1181,28 +1154,36 @@ def make_pnum_nextgen(nRows=None, nCols=None, base=0, nSubplots=None, start=0):
         start (int): (default = 0)
 
     Returns:
-        iterator: pnum_next
+        Callable: pnum_next
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-make_pnum_nextgen --show
 
     GridParams:
+        >>> # ENABLE_DOCTEST
+        >>> from plottool_ibeis.draw_func2 import *  # NOQA
+        >>> import ubelt as ub
         >>> param_grid = dict(
         >>>     nRows=[None, 3],
         >>>     nCols=[None, 3],
         >>>     nSubplots=[None, 9],
         >>> )
-        >>> combos = ut.all_dict_combinations(param_grid)
-
-    GridExample:
-        >>> # ENABLE_DOCTEST
-        >>> from plottool_ibeis.draw_func2 import *  # NOQA
-        >>> base, start = 0, 0
-        >>> pnum_next = make_pnum_nextgen(nRows, nCols, base, nSubplots, start)
-        >>> pnum_list = list( (pnum_next() for _ in it.count()) )
-        >>> print((nRows, nCols, nSubplots))
-        >>> result = ('pnum_list = %s' % (ut.repr2(pnum_list),))
-        >>> print(result)
+        >>> combos = ub.named_product(param_grid)
+        >>> for combo in combos:
+        >>>     nRows = combo['nRows']
+        >>>     nCols = combo['nCols']
+        >>>     nSubplots = combo['nSubplots']
+        >>>     base, start = 0, 0
+        >>>     pnum_next = make_pnum_nextgen(nRows, nCols, base, nSubplots, start)
+        >>>     pnum_list = []
+        >>>     try:
+        >>>         for _ in it.count():
+        >>>             pnum_list.append(pnum_next())
+        >>>     except StopIteration:
+        >>>         ...
+        >>>     print((nRows, nCols, nSubplots))
+        >>>     result = ('pnum_list = %s' % (ub.repr2(pnum_list),))
+        >>>     print(result)
     """
     import functools
     nRows, nCols = get_num_rc(nSubplots, nRows, nCols)
@@ -1242,7 +1223,7 @@ def get_num_rc(nSubplots=None, nRows=None, nCols=None):
         >>>     size = get_num_rc(**kw)
         >>>     if kw['nSubplots'] is not None:
         >>>         assert size[0] * size[1] >= kw['nSubplots']
-        >>>     print('**kw = %s' % (ut.repr2(kw),))
+        >>>     print('**kw = %s' % (ub.repr2(kw),))
         >>>     print('size = %r' % (size,))
     """
     if nSubplots is None:
@@ -1306,26 +1287,6 @@ def label_to_colors(labels_):
     label2_color = dict(zip(unique_labels, unique_colors))
     color_list = [label2_color[label] for label in labels_]
     return color_list
-
-
-#def distinct_colors(N, brightness=.878, shuffle=True):
-#    """
-#    Args:
-#        N (int): number of distinct colors
-#        brightness (float): brightness of colors (maximum distinctiveness is .5) default is .878
-#    Returns:
-#        RGB_tuples
-#    Example:
-#        >>> from plottool_ibeis.draw_func2 import *  # NOQA
-#    """
-#    # http://blog.jianhuashao.com/2011/09/generate-n-distinct-colors.html
-#    sat = brightness
-#    val = brightness
-#    HSV_tuples = [(x * 1.0 / N, sat, val) for x in range(N)]
-#    RGB_tuples = list(map(lambda x: colorsys.hsv_to_rgb(*x), HSV_tuples))
-#    if shuffle:
-#        ut.deterministic_shuffle(RGB_tuples)
-#    return RGB_tuples
 
 
 def add_alpha(colors):
@@ -1970,7 +1931,7 @@ def show_histogram(data, bins=None, **kwargs):
 
     use_darkbackground = None
     if use_darkbackground is None:
-        use_darkbackground = not ut.get_argflag('--save')
+        use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background(ax)
     return fig
@@ -2011,7 +1972,6 @@ def draw_stems(x_data=None, y_data=None, setlims=True, color=None,
         >>> x_data = np.append(np.arange(1, 10), np.arange(1, 10))
         >>> rng = np.random.RandomState(0)
         >>> y_data = sorted(rng.rand(len(x_data)) * 10)
-        >>> # y_data = np.array([ut.get_nth_prime(n) for n in x_data])
         >>> setlims = False
         >>> color = [1.0, 0.0, 0.0, 1.0]
         >>> markersize = 2
@@ -2041,17 +2001,16 @@ def draw_stems(x_data=None, y_data=None, setlims=True, color=None,
         if bottom is None:
             bottom = 0
         # Faster way of drawing stems
-        #with ut.Timer('new stem'):
         stemlines = []
         ax = gca()
-        x_segments = ut.flatten([[thisx, thisx, None] for thisx in x_data_sort])
+        x_segments = list(ub.flatten([[thisx, thisx, None] for thisx in x_data_sort]))
         if linestyle == '':
-            y_segments = ut.flatten([[thisy, thisy, None] for thisy in y_data_sort])
+            y_segments = list(ub.flatten([[thisy, thisy, None] for thisy in y_data_sort]))
         else:
-            y_segments = ut.flatten([[bottom, thisy, None] for thisy in y_data_sort])
+            y_segments = list(ub.flatten([[bottom, thisy, None] for thisy in y_data_sort]))
         ax.plot(x_segments, y_segments, linestyle, color=color, marker=marker)
     else:
-        with ut.Timer('old stem'):
+        with ub.Timer('old stem'):
             markerline, stemlines, baseline = pylab.stem(
                 x_data_sort, y_data_sort, linefmt='-', bottom=bottom)
             if markersize is not None:
@@ -2075,13 +2034,13 @@ def plot_sift_signature(sift, title='', fnum=None, pnum=None):
     into different colors
 
     Args:
-        sift (ndarray[dtype=np.uint8]):
+        sift (ndarray): [dtype=np.uint8]
         title (str):  (default = '')
         fnum (int):  figure number(default = None)
-        pnum (tuple):  plot number(default = None)
+        pnum (tuple | str | int | None):  plot number(default = None)
 
     Returns:
-        AxesSubplot: ax
+        mpl.axes.AxesSubplot: ax
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-plot_sift_signature --show
@@ -2113,7 +2072,7 @@ def plot_sift_signature(sift, title='', fnum=None, pnum=None):
 
     use_darkbackground = None
     if use_darkbackground is None:
-        use_darkbackground = not ut.get_argflag('--save')
+        use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background(ax)
     return ax
@@ -2130,7 +2089,7 @@ def plot_descriptor_signature(vec, title='', fnum=None, pnum=None):
         pnum (tuple):  plot number(default = None)
 
     Returns:
-        AxesSubplot: ax
+        mpl.axes.AxesSubplot: ax
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-plot_descriptor_signature --show
@@ -2164,7 +2123,7 @@ def plot_descriptor_signature(vec, title='', fnum=None, pnum=None):
 
     use_darkbackground = None
     if use_darkbackground is None:
-        use_darkbackground = not ut.get_argflag('--save')
+        use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background(ax)
 
@@ -2191,7 +2150,7 @@ def dark_background(ax=None, doubleit=False, force=False):
     """
     def is_using_style(style):
         style_dict = mpl.style.library[style]
-        return len(ut.dict_isect(style_dict, mpl.rcParams)) == len(style_dict)
+        return len(ub.dict_isect(style_dict, mpl.rcParams)) == len(style_dict)
 
     #is_using_style('classic')
     #is_using_style('ggplot')
@@ -2266,9 +2225,8 @@ def append_phantom_legend_label(label, color, type_='circle', alpha=1.0, ax=None
     adds a legend label without displaying an actor
 
     Args:
-        label (?):
-        color (?):
-        loc (str):
+        label (Any):
+        color (Any):
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-append_phantom_legend_label --show
@@ -2438,7 +2396,7 @@ def scores_to_color(score_list, cmap_='hot', logscale=False, reverse_cmap=False,
         cmap_range (tuple): restricts to only a portion of the cmap to avoid extremes
 
     Returns:
-        <class '_ast.ListComp'>
+        list
 
     SeeAlso:
         python -m plottool_ibeis.color_funcs --test-show_all_colormaps --show --type "Perceptually Uniform Sequential"
@@ -2716,8 +2674,8 @@ def interpolated_colormap(color_frac_list, resolution=64, space='lch-ab'):
         color_frac_list = list(zip(color_frac_list,
                                    np.linspace(0, 1, len(color_frac_list))))
 
-    colors = ut.take_column(color_frac_list, 0)
-    fracs = ut.take_column(color_frac_list, 1)
+    colors = [c[0] for c in color_frac_list]
+    fracs = [c[1] for c in color_frac_list]
 
     # resolution = 17
     basis = np.linspace(0, 1, resolution)
@@ -2825,7 +2783,7 @@ def print_valid_cmaps():
     import pylab
     import utool as ut
     maps = [m for m in pylab.cm.datad if not m.endswith("_r")]
-    print(ut.repr2(sorted(maps)))
+    print(ub.repr2(sorted(maps)))
 
 
 def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
@@ -2842,7 +2800,7 @@ def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
         See plt.colorbar
 
     Returns:
-        cb : matplotlib colorbar object
+        mpl.colorbar.Colorbar: matplotlib colorbar object
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-colorbar --show
@@ -2945,7 +2903,7 @@ def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
         else:
             ticklabels = unique_scalars
 
-        ticks = ticks[:len(ticklabels)] # HACK!!
+        ticks = ticks[:len(ticklabels)]  # HACK!!
 
         cb.set_ticks(ticks)  # tick locations
         cb.set_ticklabels(ticklabels)  # tick labels
@@ -3014,15 +2972,24 @@ def draw_lines2(kpts1, kpts2, fm=None, fs=None, kpts2_offset=(0, 0),
     #line_alpha = line_alpha
     #line_alpha = np.linspace(0, 1, len(fm))
 
-    if ut.isiterable(line_alpha):
+    if ub.iterable(line_alpha):
         # Hack for multiple alphas
         for segment, alpha, color in zip(segments, line_alpha, color_list):
-            line_group = mpl.collections.LineCollection(
-                [segment], linewidth, color, alpha=alpha)
+            try:
+                line_group = mpl.collections.LineCollection(
+                    [segment], linewidth, color, alpha=alpha)
+            except TypeError:
+                line_group = mpl.collections.LineCollection(
+                    [segment], linewidths=linewidth, colors=color, alpha=alpha)
             ax.add_collection(line_group)
     else:
-        line_group = mpl.collections.LineCollection(
-            segments, linewidth, color_list, alpha=line_alpha)
+        try:
+            line_group = mpl.collections.LineCollection(
+                segments, linewidth, color_list, alpha=line_alpha)
+        except TypeError:
+            line_group = mpl.collections.LineCollection(
+                segments, linewidths=linewidth, colors=color_list,
+                alpha=line_alpha)
     #plt.colorbar(line_group, ax=ax)
         ax.add_collection(line_group)
     #figure(100)
@@ -3068,8 +3035,13 @@ def draw_line_segments2(pts1, pts2, ax=None, **kwargs):
     alpha = kwargs.pop('alpha', 1.0)
     # if 'color' in kwargs:
     #     kwargs['color'] = mpl.colors.ColorConverter().to_rgb(kwargs['color'])
-    line_group = mpl.collections.LineCollection(segments, linewidth,
-                                                alpha=alpha, **kwargs)
+    try:
+        line_group = mpl.collections.LineCollection(segments, linewidth,
+                                                    alpha=alpha, **kwargs)
+    except TypeError:
+        line_group = mpl.collections.LineCollection(segments,
+                                                    linewidths=linewidth,
+                                                    alpha=alpha, **kwargs)
     ax.add_collection(line_group)
 
 
@@ -3082,17 +3054,6 @@ def draw_line_segments(segments_list, **kwargs):
     for data in segments_list:
         pt.plot(data.T[0], data.T[1], marker, **kwargs)
 
-    #from matplotlib.collections import LineCollection
-    #points_list = [np.array([pts[0], pts[1]]).T.reshape(-1, 1, 2) for pts in segments_list]
-    #segments_list = [np.concatenate([points[:-1], points[1:]], axis=1) for points in points_list]
-    #linewidth = 2
-    #alpha = 1.0
-    #lc_list = [LineCollection(segments, linewidth=linewidth, alpha=alpha)
-    #           for segments in segments_list]
-    #ax = plt.gca()
-    #for lc in lc_list:
-    #    ax.add_collection(lc)
-
 
 def draw_patches_and_sifts(patch_list, sift_list, fnum=None, pnum=(1, 1, 1)):
     # Hacked together will not work on inputs of all sizes
@@ -3103,7 +3064,7 @@ def draw_patches_and_sifts(patch_list, sift_list, fnum=None, pnum=(1, 1, 1)):
     cols = num // rows
     # TODO: recursive stack
     #stacked_img = patch_list.transpose(2, 0, 1).reshape(height * rows, width * cols)
-    stacked_img = np.vstack([np.hstack(chunk) for chunk in ut.ichunks(patch_list, rows)])
+    stacked_img = np.vstack([np.hstack(chunk) for chunk in ub.chunks(patch_list, chunksize=rows)])
 
     x_base = ((np.arange(rows) + .5 ) * width) - .5
     y_base = ((np.arange(cols) + .5 ) * height) - .5
@@ -3125,7 +3086,6 @@ def draw_patches_and_sifts(patch_list, sift_list, fnum=None, pnum=(1, 1, 1)):
     if sift_list is not None:
         pt.draw_kpts2(tmp_kpts, sifts=sift_list)
     return gca()
-    #pt.iup()
 
 
 def show_kpts(kpts, fnum=None, pnum=None, **kwargs):
@@ -3133,7 +3093,7 @@ def show_kpts(kpts, fnum=None, pnum=None, **kwargs):
     Show keypoints in a new figure. Note: use draw_kpts2 to overlay keypoints on a existing figure.
 
     Args:
-        kpts (ndarray[float32_t, ndim=2]):  keypoints
+        kpts (ndarray):  keypoints [float32_t, ndim=2]
 
     CommandLine:
         xdoctest -m ~/code/plottool/plottool_ibeis/draw_func2.py show_kpts
@@ -3184,7 +3144,7 @@ def draw_kpts2(kpts, offset=(0, 0), scale_factor=1,
     FIXME: seems to be off by (.5, .5) translation
 
     Args:
-        kpts (?):
+        kpts (ndarray):
         offset (tuple):
         scale_factor (int):
         ell (bool):
@@ -3228,20 +3188,10 @@ def draw_kpts2(kpts, offset=(0, 0), scale_factor=1,
         # ensure numpy
         kpts = np.array(kpts)
 
-    #if ut.DEBUG2:
-    #    print('-------------')
-    #    print('draw_kpts2():')
-    #    #print(' * kwargs.keys()=%r' % (kwargs.keys(),))
-    #    print(' * kpts.shape=%r:' % (kpts.shape,))
-    #    print(' * ell=%r pts=%r' % (ell, pts))
-    #    print(' * rect=%r eig=%r, ori=%r' % (rect, eig, ori))
-    #    print(' * scale_factor=%r' % (scale_factor,))
-    #    print(' * offset=%r' % (offset,))
-    #    print(' * drawing kpts.shape=%r' % (kpts.shape,))
     try:
         assert len(kpts) > 0, 'len(kpts) < 0'
     except AssertionError as ex:
-        ut.printex(ex)
+        print('ex = {}'.format(ub.urepr(ex, nl=1)))
         return
     if ax is None:
         ax = gca()
@@ -3314,18 +3264,17 @@ def draw_keypoint_gradient_orientations(rchip, kpt, sift=None, mode='vec',
     return fig
 
 
-#@ut.indent_func('[df2.dkp]')
 def draw_keypoint_patch(rchip, kp, sift=None, warped=False, patch_dict={}, **kwargs):
     r"""
     Args:
-        rchip (ndarray[uint8_t, ndim=2]):  rotated annotation image data
-        kp (ndarray[float32_t, ndim=1]):  a single keypoint
-        sift (None): (default = None)
+        rchip (ndarray):  rotated annotation image data [uint8_t, ndim=2]
+        kp (ndarray):  a single keypoint [float32_t, ndim=1]
+        sift (Any): (default = None)
         warped (bool): (default = False)
         patch_dict (dict): (default = {})
 
     Returns:
-        ?: ax
+        mpl.axes.Axes: ax
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-draw_keypoint_patch --show
@@ -3391,7 +3340,7 @@ def imshow(img, fnum=None, title=None, figtitle=None, pnum=None,
         fnum (int): figure number
         title (str):
         figtitle (None):
-        pnum (tuple): plot number
+        pnum (tuple | str | int): plot number
         interpolation (str): other interpolations = nearest, bicubic, bilinear
         cmap (None):
         heatmap (bool):
@@ -3571,7 +3520,7 @@ def draw_vector_field(gx, gy, fnum=None, pnum=None, title=None, invert=True,
         >>> import vtool_ibeis as vt
         >>> patch = vt.testdata_patch()
         >>> gx, gy = vt.patch_gradient(patch, gaussian_weighted=False)
-        >>> stride = ut.get_argval('--stride', default=1)
+        >>> stride = int(ub.argval('--stride', default=1))
         >>> pt.draw_vector_field(gx, gy, stride=stride)
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
@@ -3641,21 +3590,21 @@ def show_chipmatch2(rchip1, rchip2, kpts1=None, kpts2=None, fm=None, fs=None,
         kpts1 (ndarray): keypoints for annotation 1 [x, y, a=1, c=0, d=1, theta=0]
         kpts2 (ndarray): keypoints for annotation 2 [x, y, a=1, c=0, d=1, theta=0]
         fm (list):  list of feature matches as tuples (qfx, dfx)
-        fs (list):  list of feature scores
+        fs (list | None):  list of feature scores
         fm_norm (None): (default = None)
         title (str):  (default = None)
         vert (None): (default = None)
         fnum (int):  figure number(default = None)
-        pnum (tuple):  plot number(default = None)
+        pnum (tuple | str | int):  plot number(default = None)
         heatmap (bool): (default = False)
         modifysize (bool): (default = False)
         new_return (bool): (default = False)
         draw_fmatch (bool): (default = True)
-        darken (None): (default = None)
-        H1 (None): (default = None)
-        H2 (None): (default = None)
+        darken (float | None): (default = None)
+        H1 (ndarray | None): (default = None)
+        H2 (ndarray | None): (default = None)
         sel_fm (list): (default = [])
-        ax (None): (default = None)
+        ax (mpl.axes.Axes | None): (default = None)
         heatmask (bool): (default = False)
         **kwargs: all_kpts, lbl1, lbl2, rect, colorbar_, draw_border, cmap,
                   scale_factor1, scale_factor2, draw_pts, draw_ell,
@@ -3780,7 +3729,7 @@ def plot_fmatch(xywh1, xywh2, kpts1, kpts2, fm, fs=None, fm_norm=None,
         lbl1 (None): rchip1 label
         lbl2 (None): rchip2 label
         fnum (None): figure number
-        pnum (None): plot number
+        pnum (None | tuple | str | int): plot number
         rect (bool):
         colorbar_ (bool):
         draw_border (bool):
@@ -3792,9 +3741,6 @@ def plot_fmatch(xywh1, xywh2, kpts1, kpts2, fm, fs=None, fm_norm=None,
 
     Kwargs:
         draw_pts, draw_ell, draw_lines, show_nMatches, all_kpts
-
-    Returns:
-        ?: None
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-plot_fmatch
@@ -3942,9 +3888,16 @@ def draw_boxedX(xywh=None, color=RED, lw=2, alpha=.5, theta=0, ax=None):
     trans = trans + ax.transData
     width_list = [lw] * len(segments)
     color_list = [color] * len(segments)
-    line_group = mpl.collections.LineCollection(segments, width_list,
-                                                color_list, alpha=alpha,
-                                                transOffset=trans)
+    try:
+        line_group = mpl.collections.LineCollection(segments, width_list,
+                                                    color_list, alpha=alpha,
+                                                    transOffset=trans)
+    except TypeError:
+        line_group = mpl.collections.LineCollection(segments,
+                                                    linewidths=width_list,
+                                                    colors=color_list,
+                                                    alpha=alpha,
+                                                    transOffset=trans)
     ax.add_collection(line_group)
 
 
@@ -4184,7 +4137,7 @@ def imshow_null(msg=None, ax=None, **kwargs):
         ax = gca()
     subkeys = [key for key in ['fontsize'] if key in kwargs]
     print('kwargs = %r' % (kwargs,))
-    kwargs_ = ut.dict_subset(kwargs, subkeys)
+    kwargs_ = ub.udict(kwargs).subset(subkeys)
     print('kwargs_ = %r' % (kwargs_,))
     imshow(np.zeros((10, 10), dtype=np.uint8), ax=ax, **kwargs)
     if msg is None:
@@ -4255,7 +4208,6 @@ def width_from(num, pad=.05, start=0, stop=1):
 def param_plot_iterator(param_list, fnum=None, projection=None):
     from plottool_ibeis import plot_helpers
     nRows, nCols = plot_helpers.get_square_row_cols(len(param_list), fix=True)
-    #next_pnum = make_pnum_nextgen(nRows=nRows, nCols=nCols)
     pnum_gen = pnum_generator(nRows, nCols)
     pnum = (nRows, nCols, 1)
     fig = figure(fnum=fnum, pnum=pnum)
@@ -4351,7 +4303,7 @@ def plot_surface3d(xgrid, ygrid, zdata, xlabel=None, ylabel=None, zlabel=None,
         ax.set_zlabel(zlabel, **zlabelkw)
     use_darkbackground = dark
     #if use_darkbackground is None:
-    #    use_darkbackground = not ut.get_argflag('--save')
+    #    use_darkbackground = not ub.argflag('--save')
     if use_darkbackground:
         dark_background()
     return ax
@@ -4453,7 +4405,7 @@ def plot_func(funcs, start=0, stop=1, num=100, setup=None, fnum=None, pnum=None)
     plots a numerical function in a given range
 
     Args:
-        funcs (list of function):  live python function
+        funcs (List[callable]):  live python function
         start (int): (default = 0)
         stop (int): (default = 1)
         num (int): (default = 100)
@@ -4529,7 +4481,7 @@ def plot_func(funcs, start=0, stop=1, num=100, setup=None, fnum=None, pnum=None)
     """
     import plottool_ibeis as pt
     xdata = np.linspace(start, stop, num)
-    if not ut.isiterable(funcs):
+    if not ub.iterable(funcs):
         funcs = [funcs]
     import scipy  # NOQA
     import scipy.special  # NOQA
@@ -4549,7 +4501,7 @@ def plot_func(funcs, start=0, stop=1, num=100, setup=None, fnum=None, pnum=None)
                    else func for func in funcs]
         ydatas = [func(xdata) for func in funcs_]
     except Exception:
-        print(ut.repr3(funcs))
+        print('funcs = {}'.format(ub.urepr(funcs, nl=1)))
         raise
     fnum = pt.ensure_fnum(fnum)
     pt.multi_plot(xdata, ydatas, label_list=labels, marker='', fnum=fnum,
@@ -4564,12 +4516,11 @@ def test_save():
     """
     import plottool_ibeis as pt
     import matplotlib.pyplot as plt
-    import utool as ut
     from os.path import join
     fig = pt.figure(fnum=1)
     ax = plt.plt.gca()
     ax.plot([1, 2, 3], [4, 5, 7])
-    dpath = ut.ensure_app_cache_dir('plottool_ibeis')
+    dpath = ub.Path.appdir('plottool_ibeis').ensuredir()
     fpath = join(dpath, 'test.png')
     fig.savefig(fpath)
     return fpath
@@ -4582,6 +4533,5 @@ if __name__ == '__main__':
         python -m plottool_ibeis.draw_func2 --allexamples
         python -m plottool_ibeis.draw_func2 --allexamples --noface --nosrc
     """
-    import multiprocessing
-    multiprocessing.freeze_support()  # for win32
-    ut.doctest_funcs()
+    import xdoctest
+    xdoctest.doctest_module(__file__)

@@ -1,6 +1,4 @@
-from __future__ import absolute_import, division, print_function
 import six
-from six.moves import range
 import sys
 import utool as ut
 import numpy as np

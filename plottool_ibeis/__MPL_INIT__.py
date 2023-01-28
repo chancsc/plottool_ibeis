@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Notes:
     To use various backends certian packages are required
@@ -35,19 +34,11 @@ CommandLine:
     python -m plottool_ibeis.draw_func2 --exec-imshow --show --mplbe=cairo
 
 """
-from __future__ import absolute_import, division, print_function, unicode_literals
 import sys
 import os
 import utool as ut
 import ubelt as ub
-from six.moves import builtins
 ut.noinject(__name__, '[plottool_ibeis.__MPL_INIT__]')
-
-try:
-    profile = getattr(builtins, 'profile')
-except AttributeError:
-    def profile(func):
-        return func
 
 
 __IS_INITIALIZED__ = False
@@ -255,7 +246,6 @@ def _init_mpl_mainprocess(verbose=VERBOSE_MPLINIT):
     _init_mpl_rcparams()
 
 
-@profile
 def init_matplotlib(verbose=VERBOSE_MPLINIT):
     if ut.in_main_process():
         PyQt, pyqt_version = get_pyqt()

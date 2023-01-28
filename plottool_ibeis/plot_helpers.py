@@ -1,13 +1,7 @@
-from __future__ import absolute_import, division, print_function
 import numpy as np
-# import plottool_ibeis.draw_func2 as df2
 from plottool_ibeis import fig_presenter
-#from plottool_ibeis import custom_figure
-#from plottool_ibeis import custom_constants
-#from os.path import join
 import utool as ut
 ut.noinject(__name__, '[plot_helpers]')
-#(print, print_, printDBG, rrr, profile) = ut.inject(__name__, '[plot_helpers]', DEBUG=False)
 
 
 SIFT_OR_VECFIELD = ut.get_argval('--vecfield', type_=bool)
@@ -15,31 +9,6 @@ SIFT_OR_VECFIELD = ut.get_argval('--vecfield', type_=bool)
 
 def draw():
     fig_presenter.draw()
-
-
-#def dump_figure(dumpdir, subdir=None, quality=False, overwrite=False, verbose=2,
-#                   reset=True):
-#    """ Dumps figure to disk based on the figurename """
-#    if quality is True:
-#        custom_constants.FIGSIZE = custom_constants.golden_wh2(14)
-#        #custom_constants.DPI = 120
-#        custom_constants.DPI = 120
-#        #custom_constants.FIGSIZE = custom_constants.golden_wh2(12)
-#        #custom_constants.DPI = 120
-#        custom_constants.FONTS.figtitle = custom_constants.FONTS.small
-#    elif quality is False:
-#        #custom_constants.FIGSIZE = custom_constants.golden_wh2(8)
-#        #custom_constants.FIGSIZE = custom_constants.golden_wh2(14)
-#        #custom_constants.DPI = 100
-#        custom_constants.FIGSIZE = custom_constants.golden_wh2(8)
-#        custom_constants.DPI = 90
-#        custom_constants.FONTS.figtitle = custom_constants.FONTS.smaller
-#    fpath = dumpdir
-#    if subdir is not None:
-#        fpath = join(fpath, subdir)
-#        ut.ensurepath(fpath)
-#    fpath_clean = custom_figure.save_figure(fpath=fpath, usetitle=True, overwrite=overwrite, verbose=verbose)
-#    return fpath_clean
 
 
 def get_square_row_cols(nSubplots, max_cols=None, fix=False, inclusive=True):

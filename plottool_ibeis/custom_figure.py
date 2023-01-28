@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
 from os.path import exists, splitext, join, split
-import six
 import utool as ut
 import matplotlib as mpl
 import warnings
@@ -11,32 +8,7 @@ import matplotlib.gridspec as gridspec  # NOQA
 ut.noinject(__name__, '[customfig]')
 
 
-# LABEL_SIZE = ut.get_argval('--labelsize', default=None)
-# TITLE_SIZE = ut.get_argval('--titlesize', default=None)
-# FIGTITLE_SIZE = ut.get_argval('--figtitlesize', default=None) # figure.titlesize
-# LEGEND_SIZE = ut.get_argval('--legendsize', default=None)
-# TICK_SIZE = ut.get_argval('--ticksize', default=None)
-
-# CUSTOM_RC = {
-#     'legend.fontsize': LEGEND_SIZE,
-#     'axes.titlesize': TITLE_SIZE,
-#     'axes.labelsize': LABEL_SIZE,
-#     # 'legend.facecolor': 'w',
-#     # 'font.family': 'DejaVu Sans',
-#     'xtick.labelsize': TICK_SIZE,
-#     'ytick.labelsize': TICK_SIZE,
-# }
-# for key, val in CUSTOM_RC.items():
-#     print(key)
-#     print(val)
-#     if val is not None:
-#         mpl.rcParams[key] = val
-
-
 def customize_figure(fig, docla):
-    #if 'user_stat_list' not in fig.__dict__.keys() or docla:
-    #    fig.user_stat_list = []
-    #    fig.user_notes = []
     fig.df2_closed = False
     fig.pt_save = functools.partial(save_figure, fig=fig)
     fig.pt_save_and_view = lambda *args, **kwargs: ut.startfile(fig.pt_save(*args, **kwargs))
@@ -115,7 +87,7 @@ def _convert_pnum_int_to_tup(int_pnum):
 
 
 def _pnum_to_subspec(pnum):
-    if isinstance(pnum, six.string_types):
+    if isinstance(pnum, str):
         pnum = list(pnum)
     nrow, ncols, plotnum = pnum
     # if kwargs.get('use_gridspec', True):
@@ -137,7 +109,7 @@ def figure(fnum=None, pnum=(1, 1, 1), docla=False, title=None, figtitle=None,
 
     Args:
         fnum (int): fignum = figure number
-        pnum (int, str, or tuple(int, int, int)): plotnum = plot tuple
+        pnum (int | str | Tuple[int, int, int]): plotnum = plot tuple
         docla (bool): (default = False)
         title (str):  (default = None)
         figtitle (None): (default = None)
@@ -145,7 +117,7 @@ def figure(fnum=None, pnum=(1, 1, 1), docla=False, title=None, figtitle=None,
         projection (None): (default = None)
 
     Returns:
-        ?: fig
+        mpl.figure.Figure: fig
 
     CommandLine:
         python -m plottool_ibeis.custom_figure --exec-figure:0 --show
@@ -334,7 +306,7 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
     Helper to save the figure image to disk. Tries to be smart about filename
     lengths, extensions, overwrites, etc...
 
-    DEPCIATE
+    DEPRECATE
 
     Args:
         fnum (int):  figure number
@@ -345,8 +317,8 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
         defaultext (str): default extension
         verbose (int):  verbosity flag
         dpi (int): dots per inch
-        figsize (tuple(int, int)): figure size
-        saveax (bool or Axes): specifies if the axes should be saved instead of
+        figsize (tuple[int, int]): figure size
+        saveax (bool | mpl.axes.Axes): specifies if the axes should be saved instead of
             the figure
 
     References:
@@ -364,7 +336,6 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
             defaultext = '.pdf'
         else:
             defaultext = '.jpg'
-    #print('figsize = %r' % (figsize,))
     fig, fnum = prepare_figure_for_save(fnum, dpi, figsize, fig)
     if fpath_strict is None:
         fpath_clean = prepare_figure_fpath(fig, fpath, fnum, usetitle, defaultext, verbose, dpath)
@@ -385,8 +356,6 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
             print("\n[pt.save_figure] SAVING ONLY EXTENT saveax=%r\n" % (saveax,))
         if saveax is True:
             saveax = plt.gca()
-        #ut.embed()
-        #saveax.set_aspect('auto')
         import plottool_ibeis as pt
         import numpy as np
         xy, w, h = pt.get_axis_xy_width_height(saveax)
@@ -404,9 +373,7 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
         savekw['bbox_inches'] = extent.expanded(1.0, 1.0)
         if verbose == 2:
             print('[pt.save_figure] savekw = ' + ut.repr2(savekw))
-        #ut.embed()
 
-    #fname_clean = split(fpath_clean)[1]
     with warnings.catch_warnings():
         warnings.filterwarnings('ignore', category=DeprecationWarning)
         if overwrite or not exists(fpath_clean):
@@ -415,12 +382,9 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
             elif verbose == 1:
                 fpathndir = ut.path_ndir_split(fpath_clean, 5)
                 print('[pt.save_figure] save_figure() ndir=%r' % (fpathndir))
-            #fig.savefig(fpath_clean)
             if verbose > 1 or ut.VERBOSE:
                 print(']pt.save_figure] fpath_clean = %s' % (fpath_clean, ))
                 print('[pt.save_figure] savekw = ' + ut.repr2(savekw))
-            # savekw['bbox_inches'] = 'tight'
-            #print('savekw = %r' % (savekw,))
             if fpath_clean.endswith('.png'):
                 savekw['transparent'] = True
                 savekw['edgecolor'] = 'none'
@@ -521,11 +485,6 @@ def set_xlabel(lbl, ax=None, **kwargs):
 def set_ylabel(lbl, ax=None, **kwargs):
     if ax is None:
         ax = gca()
-    # labelsize = kwargs.get('labelsize', mpl.rcParams['axes.labelsize'])
-    # labelkw = {
-    #     'fontproperties': mpl.font_manager.FontProperties(
-    #         weight=kwargs.get('weight', 'light'), size=labelsize)
-    # }
     fontkw = {}
     labelkw = {}
     if 'labelsize' in kwargs:
@@ -596,7 +555,13 @@ def set_figtitle(figtitle, subtitle='', forcefignum=True, incanvas=True,
     # Set title in the window
     window_figtitle = ('fig(%d) ' % fig.number) + figtitle
     window_figtitle = window_figtitle.replace('\n', ' ')
-    fig.canvas.set_window_title(window_figtitle)
+    try:
+        fig.canvas.set_window_title(window_figtitle)
+    except AttributeError:
+        if fig.canvas.manager is not None:
+            fig.canvas.manager.set_window_title(window_figtitle)
+        else:
+            print(f'Unable to set window_figtitle={window_figtitle}')
 
 
 if __name__ == '__main__':

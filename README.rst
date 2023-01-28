@@ -3,8 +3,8 @@ plottool_ibeis
 
 |Pypi| |Downloads| |Codecov| |GithubActions| 
 
-Helpers for matplotlib computer vision plots for the IBEIS / WildMe project
 
+Helpers for matplotlib computer vision plots for the IBEIS / WildMe project
 
 Repos relevant to the ibeis project:
 
@@ -23,6 +23,18 @@ Repos relevant to the ibeis project:
 * https://github.com/Erotemic/utool
 
 * https://github.com/Erotemic/ibeis
+
+
+This project is maintained for the benefit of IBEIS, but is not recommended for
+use in other projects.
+
+
+For new developement the (generally useful) tools in this repo are largely
+superceded by Kitware projects:
+
+* https://gitlab.kitware.com/computer-vision/kwimage
+
+* https://gitlab.kitware.com/computer-vision/kwplot
 
 
 .. |CircleCI| image:: https://circleci.com/gh/Erotemic/plottool_ibeis.svg?style=svg

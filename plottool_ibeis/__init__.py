@@ -2,9 +2,7 @@
 """
 Wrappers around matplotlib
 """
-from __future__ import absolute_import, division, print_function
-
-__version__ = '2.2.0'
+__version__ = '2.2.1'
 
 import utool as ut
 ut.noinject(__name__, '[plottool_ibeis.__init__]')
@@ -148,7 +146,7 @@ if DOELSE:
                                         all_figures_tile, bring_to_front,
                                         close_all_figures, close_figure,
                                         get_all_figures, get_all_qt4_wins,
-                                        get_all_windows, get_fig,
+                                        get_all_windows,
                                         get_figure_window, get_geometry,
                                         get_main_win_base, iup, iupdate,
                                         present, register_qt4_win, reset,
@@ -171,8 +169,7 @@ if DOELSE:
                                            SMALLEST, TRUE_BLUE, TRUE_GREEN,
                                            UNKNOWN_PURP, WHITE, YELLOW,
                                            golden_wh, golden_wh2,)
-    from plottool_ibeis.custom_figure import (FIGTITLE_SIZE, LABEL_SIZE, LEGEND_SIZE,
-                                        TITLE_SIZE, cla, clf, customize_figure,
+    from plottool_ibeis.custom_figure import (cla, clf, customize_figure,
                                         customize_fontprop, figure, gca, gcf,
                                         get_ax, get_image_from_figure,
                                         prepare_figure_for_save,
@@ -180,7 +177,7 @@ if DOELSE:
                                         sanitize_img_fname, save_figure,
                                         set_figtitle, set_ticks, set_title,
                                         set_xlabel, set_xticks, set_ylabel,
-                                        set_yticks, split,)
+                                        set_yticks)
     from plottool_ibeis.plots import (colorline, draw_histogram,
                                 draw_time_distribution, draw_time_histogram,
                                 draw_timedelta_pie, estimate_pdf,
@@ -192,7 +189,7 @@ if DOELSE:
                                 plot_rank_cumhist, plot_score_histograms,
                                 plot_search_surface, plot_sorted_scores,
                                 plot_stems, set_logyscale_from_data,
-                                unicode_literals, word_histogram2, wordcloud,
+                                word_histogram2, wordcloud,
                                 zoom_effect01,)
     from plottool_ibeis.draw_func2 import (BASE_FNUM, DARKEN, DEBUG, DF2_DIVIDER_KEY,
                                      FALSE, LEGEND_LOCATION, OffsetImage2,
@@ -254,11 +251,10 @@ if DOELSE:
     from plottool_ibeis.interactions import (ExpandableInteraction, PanEvents,
                                        check_if_subinteract, pan_factory,
                                        zoom_factory,)
-    from plottool_ibeis.interact_multi_image import (BASE_CLASS, Button,
+    from plottool_ibeis.interact_multi_image import (BASE_CLASS,
                                                MultiImageInteraction,)
     from plottool_ibeis.interact_keypoints import (KeypointInteraction,
-                                             draw_feat_row, ishow_keypoints,
-                                             show_keypoints,)
+                                             ishow_keypoints,)
     from plottool_ibeis.interact_matches import (MatchInteraction2,
                                            show_keypoint_gradient_orientations,)
     from plottool_ibeis.nx_helpers import (GraphVizLayoutConfig, LARGE_GRAPH,
@@ -266,7 +262,6 @@ if DOELSE:
                                      dump_nx_ondisk, ensure_nonhex_color,
                                      format_anode_pos, get_explicit_graph,
                                      get_nx_layout, make_agraph,
-                                     make_agraph_args,
                                      netx_draw_images_at_positions,
                                      nx_agraph_layout,
                                      parse_aedge_layout_attrs,

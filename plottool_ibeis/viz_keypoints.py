@@ -1,4 +1,3 @@
-from __future__ import absolute_import, division, print_function
 import utool
 import plottool_ibeis.draw_func2 as df2
 import numpy as np
@@ -21,10 +20,10 @@ def testdata_kpts():
 def show_keypoints(chip, kpts, fnum=0, pnum=None, **kwargs):
     r"""
     Args:
-        chip (ndarray[uint8_t, ndim=2]):  annotation image data
-        kpts (ndarray[float32_t, ndim=2]):  keypoints
+        chip (ndarray):  annotation image data [uint8_t, ndim=2]
+        kpts (ndarray):  keypoints [float32_t, ndim=2]
         fnum (int):  figure number(default = 0)
-        pnum (tuple):  plot number(default = None)
+        pnum (tuple | None | Any):  plot number(default = None)
 
     Kwargs:
         ddd, title, figtitle, interpolation, cmap, heatmap, data_colorbar,
@@ -57,13 +56,10 @@ def _annotate_kpts(kpts_, sel_fx=None, **kwargs):
     r"""
     Args:
         kpts_ (ndarray): keypoints
-        sel_fx (None):
+        sel_fx (None | Any):
 
     Keywords:
         color:  3/4-tuple, ndarray, or str
-
-    Returns:
-        None
 
     Example:
         >>> from plottool_ibeis.viz_keypoints import *  # NOQA

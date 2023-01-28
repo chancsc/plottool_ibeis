@@ -1,5 +1,3 @@
-from __future__ import absolute_import, division, print_function
-from six.moves import zip, map
 import utool
 import plottool_ibeis.draw_func2 as df2
 from plottool_ibeis import custom_constants

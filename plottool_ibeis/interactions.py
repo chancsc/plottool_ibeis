@@ -1,9 +1,12 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function
 import utool as ut
 import plottool_ibeis as pt
 from plottool_ibeis import abstract_interaction
 import plottool_ibeis.interact_helpers as ih
+
+
+__docstubs__ = """
+from typing import Union
+"""
 
 
 def check_if_subinteract(func):

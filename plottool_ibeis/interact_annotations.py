@@ -27,7 +27,6 @@ References:
 CommandLine:
     python -m plottool_ibeis.interact_annotations --test-test_interact_annots --show
 """
-from __future__ import absolute_import, division, print_function
 import six
 import re
 import numpy as np
@@ -38,7 +37,6 @@ except ImportError:
 import utool as ut
 import itertools as it
 import matplotlib as mpl
-from six.moves import zip, range
 from plottool_ibeis import draw_func2 as df2
 from plottool_ibeis import abstract_interaction
 print, rrr, profile = ut.inject2(__name__)

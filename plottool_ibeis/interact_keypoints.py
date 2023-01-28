@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
 import utool as ut
-import six
 from plottool_ibeis import draw_func2 as df2
 from plottool_ibeis import plot_helpers as ph
 from plottool_ibeis import interact_helpers as ih
@@ -26,7 +23,7 @@ class KeypointInteraction(abstract_interaction.AbstractInteraction):
         >>> import pyhesaff
         >>> import vtool_ibeis as vt
         >>> kpts, vecs, imgBGR = pt.viz_keypoints.testdata_kpts()
-        >>> ut.quit_if_noshow()
+        >>> # xdoctest: +REQUIRES(--show)
         >>> #pt.interact_keypoints.ishow_keypoints(imgBGR, kpts, vecs, ori=True, ell_alpha=.4, color='distinct')
         >>> pt.interact_keypoints.KeypointInteraction(imgBGR, kpts, vecs, ori=True, ell_alpha=.4, autostart=True)
         >>> pt.show_if_requested()
@@ -111,16 +108,15 @@ def ishow_keypoints(chip, kpts, desc, fnum=0, figtitle=None, nodraw=False, **kwa
         >>> from plottool_ibeis.interact_keypoints import *  # NOQA
         >>> import numpy as np
         >>> import plottool_ibeis as pt
-        >>> import utool as ut
         >>> import pyhesaff
         >>> import vtool_ibeis as vt
         >>> kpts, vecs, imgBGR = pt.viz_keypoints.testdata_kpts()
-        >>> ut.quit_if_noshow()
+        >>> # xdoctest: +REQUIRES(--show)
         >>> #pt.interact_keypoints.ishow_keypoints(imgBGR, kpts, vecs, ori=True, ell_alpha=.4, color='distinct')
         >>> pt.interact_keypoints.ishow_keypoints(imgBGR, kpts, vecs, ori=True, ell_alpha=.4)
         >>> pt.show_if_requested()
     """
-    if isinstance(chip, six.string_types):
+    if isinstance(chip, str):
         import vtool_ibeis as vt
         chip = vt.imread(chip)
     fig = ih.begin_interaction('keypoint', fnum)
@@ -210,7 +206,5 @@ if __name__ == '__main__':
         python -m plottool_ibeis.interact_keypoints --allexamples
         python -m plottool_ibeis.interact_keypoints --allexamples --noface --nosrc
     """
-    import multiprocessing
-    multiprocessing.freeze_support()  # for win32
-    import utool as ut  # NOQA
-    ut.doctest_funcs()
+    import xdoctest
+    xdoctest.doctest_module(__file__)
