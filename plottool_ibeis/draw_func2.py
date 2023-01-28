@@ -3017,8 +3017,12 @@ def draw_lines2(kpts1, kpts2, fm=None, fs=None, kpts2_offset=(0, 0),
     if ut.isiterable(line_alpha):
         # Hack for multiple alphas
         for segment, alpha, color in zip(segments, line_alpha, color_list):
-            line_group = mpl.collections.LineCollection(
-                [segment], linewidth, color, alpha=alpha)
+            try:
+                line_group = mpl.collections.LineCollection(
+                    [segment], linewidth, color, alpha=alpha)
+            except TypeError:
+                line_group = mpl.collections.LineCollection(
+                    [segment], linewidths=linewidth, colors=color, alpha=alpha)
             ax.add_collection(line_group)
     else:
         try:
@@ -3073,8 +3077,13 @@ def draw_line_segments2(pts1, pts2, ax=None, **kwargs):
     alpha = kwargs.pop('alpha', 1.0)
     # if 'color' in kwargs:
     #     kwargs['color'] = mpl.colors.ColorConverter().to_rgb(kwargs['color'])
-    line_group = mpl.collections.LineCollection(segments, linewidth,
-                                                alpha=alpha, **kwargs)
+    try:
+        line_group = mpl.collections.LineCollection(segments, linewidth,
+                                                    alpha=alpha, **kwargs)
+    except TypeError:
+        line_group = mpl.collections.LineCollection(segments,
+                                                    linewidths=linewidth,
+                                                    alpha=alpha, **kwargs)
     ax.add_collection(line_group)
 
 
@@ -3086,17 +3095,6 @@ def draw_line_segments(segments_list, **kwargs):
     marker = '.-'
     for data in segments_list:
         pt.plot(data.T[0], data.T[1], marker, **kwargs)
-
-    #from matplotlib.collections import LineCollection
-    #points_list = [np.array([pts[0], pts[1]]).T.reshape(-1, 1, 2) for pts in segments_list]
-    #segments_list = [np.concatenate([points[:-1], points[1:]], axis=1) for points in points_list]
-    #linewidth = 2
-    #alpha = 1.0
-    #lc_list = [LineCollection(segments, linewidth=linewidth, alpha=alpha)
-    #           for segments in segments_list]
-    #ax = plt.gca()
-    #for lc in lc_list:
-    #    ax.add_collection(lc)
 
 
 def draw_patches_and_sifts(patch_list, sift_list, fnum=None, pnum=(1, 1, 1)):
@@ -3130,7 +3128,6 @@ def draw_patches_and_sifts(patch_list, sift_list, fnum=None, pnum=(1, 1, 1)):
     if sift_list is not None:
         pt.draw_kpts2(tmp_kpts, sifts=sift_list)
     return gca()
-    #pt.iup()
 
 
 def show_kpts(kpts, fnum=None, pnum=None, **kwargs):
@@ -3947,9 +3944,16 @@ def draw_boxedX(xywh=None, color=RED, lw=2, alpha=.5, theta=0, ax=None):
     trans = trans + ax.transData
     width_list = [lw] * len(segments)
     color_list = [color] * len(segments)
-    line_group = mpl.collections.LineCollection(segments, width_list,
-                                                color_list, alpha=alpha,
-                                                transOffset=trans)
+    try:
+        line_group = mpl.collections.LineCollection(segments, width_list,
+                                                    color_list, alpha=alpha,
+                                                    transOffset=trans)
+    except TypeError:
+        line_group = mpl.collections.LineCollection(segments,
+                                                    linewidths=width_list,
+                                                    colors=color_list,
+                                                    alpha=alpha,
+                                                    transOffset=trans)
     ax.add_collection(line_group)
 
 
