@@ -971,10 +971,7 @@ def show_if_requested(N=1):
         pass
     elif ub.argflag('--show'):
         if ub.argflag('--tile'):
-            if ut.get_computer_name().lower() in ['hyrule']:
-                fig_presenter.all_figures_tile(percent_w=.5, monitor_num=0)
-            else:
-                fig_presenter.all_figures_tile()
+            fig_presenter.all_figures_tile()
         if ub.argflag('--present'):
             fig_presenter.present()
         for fig in fig_presenter.get_all_figures():
@@ -1291,26 +1288,6 @@ def label_to_colors(labels_):
     label2_color = dict(zip(unique_labels, unique_colors))
     color_list = [label2_color[label] for label in labels_]
     return color_list
-
-
-#def distinct_colors(N, brightness=.878, shuffle=True):
-#    """
-#    Args:
-#        N (int): number of distinct colors
-#        brightness (float): brightness of colors (maximum distinctiveness is .5) default is .878
-#    Returns:
-#        RGB_tuples
-#    Example:
-#        >>> from plottool_ibeis.draw_func2 import *  # NOQA
-#    """
-#    # http://blog.jianhuashao.com/2011/09/generate-n-distinct-colors.html
-#    sat = brightness
-#    val = brightness
-#    HSV_tuples = [(x * 1.0 / N, sat, val) for x in range(N)]
-#    RGB_tuples = list(map(lambda x: colorsys.hsv_to_rgb(*x), HSV_tuples))
-#    if shuffle:
-#        ut.deterministic_shuffle(RGB_tuples)
-#    return RGB_tuples
 
 
 def add_alpha(colors):
@@ -2699,8 +2676,8 @@ def interpolated_colormap(color_frac_list, resolution=64, space='lch-ab'):
         color_frac_list = list(zip(color_frac_list,
                                    np.linspace(0, 1, len(color_frac_list))))
 
-    colors = ut.take_column(color_frac_list, 0)
-    fracs = ut.take_column(color_frac_list, 1)
+    colors = [c[0] for c in color_frac_list]
+    fracs = [c[1] for c in color_frac_list]
 
     # resolution = 17
     basis = np.linspace(0, 1, resolution)
@@ -2928,7 +2905,7 @@ def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
         else:
             ticklabels = unique_scalars
 
-        ticks = ticks[:len(ticklabels)] # HACK!!
+        ticks = ticks[:len(ticklabels)]  # HACK!!
 
         cb.set_ticks(ticks)  # tick locations
         cb.set_ticklabels(ticklabels)  # tick labels
@@ -2997,7 +2974,7 @@ def draw_lines2(kpts1, kpts2, fm=None, fs=None, kpts2_offset=(0, 0),
     #line_alpha = line_alpha
     #line_alpha = np.linspace(0, 1, len(fm))
 
-    if ut.isiterable(line_alpha):
+    if ub.iterable(line_alpha):
         # Hack for multiple alphas
         for segment, alpha, color in zip(segments, line_alpha, color_list):
             try:
@@ -3213,20 +3190,10 @@ def draw_kpts2(kpts, offset=(0, 0), scale_factor=1,
         # ensure numpy
         kpts = np.array(kpts)
 
-    #if ut.DEBUG2:
-    #    print('-------------')
-    #    print('draw_kpts2():')
-    #    #print(' * kwargs.keys()=%r' % (kwargs.keys(),))
-    #    print(' * kpts.shape=%r:' % (kpts.shape,))
-    #    print(' * ell=%r pts=%r' % (ell, pts))
-    #    print(' * rect=%r eig=%r, ori=%r' % (rect, eig, ori))
-    #    print(' * scale_factor=%r' % (scale_factor,))
-    #    print(' * offset=%r' % (offset,))
-    #    print(' * drawing kpts.shape=%r' % (kpts.shape,))
     try:
         assert len(kpts) > 0, 'len(kpts) < 0'
     except AssertionError as ex:
-        ut.printex(ex)
+        print('ex = {}'.format(ub.urepr(ex, nl=1)))
         return
     if ax is None:
         ax = gca()
@@ -3299,7 +3266,6 @@ def draw_keypoint_gradient_orientations(rchip, kpt, sift=None, mode='vec',
     return fig
 
 
-#@ut.indent_func('[df2.dkp]')
 def draw_keypoint_patch(rchip, kp, sift=None, warped=False, patch_dict={}, **kwargs):
     r"""
     Args:
@@ -3556,7 +3522,7 @@ def draw_vector_field(gx, gy, fnum=None, pnum=None, title=None, invert=True,
         >>> import vtool_ibeis as vt
         >>> patch = vt.testdata_patch()
         >>> gx, gy = vt.patch_gradient(patch, gaussian_weighted=False)
-        >>> stride = ut.get_argval('--stride', default=1)
+        >>> stride = int(ub.argval('--stride', default=1))
         >>> pt.draw_vector_field(gx, gy, stride=stride)
         >>> import plottool_ibeis as pt
         >>> pt.show_if_requested()
@@ -4176,7 +4142,7 @@ def imshow_null(msg=None, ax=None, **kwargs):
         ax = gca()
     subkeys = [key for key in ['fontsize'] if key in kwargs]
     print('kwargs = %r' % (kwargs,))
-    kwargs_ = ut.dict_subset(kwargs, subkeys)
+    kwargs_ = ub.udict(kwargs).subset(subkeys)
     print('kwargs_ = %r' % (kwargs_,))
     imshow(np.zeros((10, 10), dtype=np.uint8), ax=ax, **kwargs)
     if msg is None:
@@ -4520,7 +4486,7 @@ def plot_func(funcs, start=0, stop=1, num=100, setup=None, fnum=None, pnum=None)
     """
     import plottool_ibeis as pt
     xdata = np.linspace(start, stop, num)
-    if not ut.isiterable(funcs):
+    if not ub.iterable(funcs):
         funcs = [funcs]
     import scipy  # NOQA
     import scipy.special  # NOQA
@@ -4540,7 +4506,7 @@ def plot_func(funcs, start=0, stop=1, num=100, setup=None, fnum=None, pnum=None)
                    else func for func in funcs]
         ydatas = [func(xdata) for func in funcs_]
     except Exception:
-        print(ut.repr3(funcs))
+        print('funcs = {}'.format(ub.urepr(funcs, nl=1)))
         raise
     fnum = pt.ensure_fnum(fnum)
     pt.multi_plot(xdata, ydatas, label_list=labels, marker='', fnum=fnum,
@@ -4555,12 +4521,11 @@ def test_save():
     """
     import plottool_ibeis as pt
     import matplotlib.pyplot as plt
-    import utool as ut
     from os.path import join
     fig = pt.figure(fnum=1)
     ax = plt.plt.gca()
     ax.plot([1, 2, 3], [4, 5, 7])
-    dpath = ut.ensure_app_cache_dir('plottool_ibeis')
+    dpath = ub.Path.appdir('plottool_ibeis').ensuredir()
     fpath = join(dpath, 'test.png')
     fig.savefig(fpath)
     return fpath
@@ -4573,6 +4538,5 @@ if __name__ == '__main__':
         python -m plottool_ibeis.draw_func2 --allexamples
         python -m plottool_ibeis.draw_func2 --allexamples --noface --nosrc
     """
-    import multiprocessing
-    multiprocessing.freeze_support()  # for win32
-    ut.doctest_funcs()
+    import xdoctest
+    xdoctest.doctest_module(__file__)
