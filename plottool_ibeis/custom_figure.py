@@ -137,7 +137,7 @@ def figure(fnum=None, pnum=(1, 1, 1), docla=False, title=None, figtitle=None,
 
     Args:
         fnum (int): fignum = figure number
-        pnum (int, str, or tuple(int, int, int)): plotnum = plot tuple
+        pnum (int | str | Tuple[int, int, int]): plotnum = plot tuple
         docla (bool): (default = False)
         title (str):  (default = None)
         figtitle (None): (default = None)
