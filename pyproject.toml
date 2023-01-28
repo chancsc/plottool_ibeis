@@ -9,11 +9,13 @@ ignore_missing_imports = true
 tags = [ "erotemic", "purepy", "github", "cv2"]
 mod_name = "plottool_ibeis"
 repo_name = "plottool_ibeis"
+os = [ "win", "linux", "osx",]
 version = "2.2.0"
 description = "Plottool - tools matplotlib computer vision plots"
 url="https://github.com/Erotemic/plottool_ibeis"
 author="Jon Crall"
 author_email="erotemic@gmail.com"
+license = "Apache 2"
 dev_status = "beta"
 autostage = true
 
