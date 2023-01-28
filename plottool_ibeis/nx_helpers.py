@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 r"""
 Helpers for graph plotting
 
@@ -23,7 +22,6 @@ Ignore:
 
 """
 from __future__ import absolute_import, division, print_function
-from six.moves import zip
 import six
 try:
     import dtool as dt
@@ -31,8 +29,7 @@ except ImportError:
     pass
 import numpy as np
 import utool as ut
-# from plottool_ibeis import colorfuncs
-from six.moves import reduce
+from functools import reduce
 (print, rrr, profile) = ut.inject2(__name__)
 
 

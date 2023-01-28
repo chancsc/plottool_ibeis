@@ -1,5 +1,3 @@
-from __future__ import absolute_import, division, print_function
-from six.moves import map
 import numpy as np
 import ubelt as ub
 import matplotlib as mpl
@@ -36,7 +34,7 @@ def FontProp(*args, **kwargs):
     return font_prop
 
 
-def __getattr__(self, key):
+def __getattr__(key):
     if key == 'FONTS':
         return _build_fonts()
     else:

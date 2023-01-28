@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function
 import utool as ut
 import six
-#import itertools
 import plottool_ibeis.draw_func2 as df2
 from plottool_ibeis import plot_helpers as ph
 from plottool_ibeis import custom_constants

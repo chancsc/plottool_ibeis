@@ -179,7 +179,7 @@ if DOELSE:
                                         sanitize_img_fname, save_figure,
                                         set_figtitle, set_ticks, set_title,
                                         set_xlabel, set_xticks, set_ylabel,
-                                        set_yticks, split,)
+                                        set_yticks)
     from plottool_ibeis.plots import (colorline, draw_histogram,
                                 draw_time_distribution, draw_time_histogram,
                                 draw_timedelta_pie, estimate_pdf,

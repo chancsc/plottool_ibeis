@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ Lots of functions for drawing and plotting visiony things """
 # TODO: New naming scheme
 # viz_<funcname> should clear everything. The current axes and fig: clf, cla.
@@ -8,8 +7,6 @@
 # Might # add annotates?  plot_<funcname> should not clear the axes or figure.
 # More useful for graphs draw_<funcname> same as plot for now. More useful for
 # images
-from __future__ import absolute_import, division, print_function
-from six.moves import range, zip, map
 import six
 import itertools as it
 import utool as ut  # NOQA

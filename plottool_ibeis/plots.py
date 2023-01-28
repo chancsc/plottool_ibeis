@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
 import warnings
-from six.moves import zip, range, zip_longest
+from itertools import zip_longest
+from functools import reduce
 from plottool_ibeis import draw_func2 as df2
-import six
-from six.moves import reduce
 import ubelt as ub
 import scipy.stats
 import matplotlib as mpl
@@ -88,7 +85,7 @@ def multi_plot(xdata=None, ydata_list=[], **kwargs):
 
     if isinstance(ydata_list, dict):
         # Special case where ydata is a dictionary
-        if isinstance(xdata, six.string_types):
+        if isinstance(xdata, str):
             # Special-er case where xdata is specified in ydata
             xkey = xdata
             ykeys = ut.setdiff(ydata_list.keys(), [xkey])
@@ -417,7 +414,7 @@ def multi_plot(xdata=None, ydata_list=[], **kwargs):
     ymin = kwargs.get('ymin', ax.get_ylim()[0])
     ymax = kwargs.get('ymax', ax.get_ylim()[1])
 
-    text_type = six.text_type
+    text_type = str
 
     if text_type(xmax) == 'data':
         xmax = max([xd.max() for xd in xdata_list])
@@ -1181,7 +1178,7 @@ def plot_score_histograms(scores_list,
             title = 'Histogram of ' + score_label + 's'
     title += kwargs.get('titlesuf', '')
     if score_lbls is None:
-        score_lbls = [six.text_type(lblx) for lblx in range(len(scores_list))]
+        score_lbls = [str(lblx) for lblx in range(len(scores_list))]
     if score_markers is None:
         score_markers = ['o' for lblx in range(len(scores_list))]
     if score_colors is None:
@@ -1797,14 +1794,13 @@ def interval_stats_plot(param2_stat_dict, fnum=None, pnum=(1, 1, 1), x_label='',
     """
     if fnum is None:
         fnum = df2.next_fnum()
-    import six
-    x_data = np.array(list(six.iterkeys(param2_stat_dict)))
+    x_data = np.array(list(param2_stat_dict.keys()))
     sortx = x_data.argsort()
     x_data_sort = x_data[sortx]
     from matplotlib import pyplot as plt
     # Prepare y data for boxplot
     y_data_keys = ['std', 'mean', 'max', 'min']
-    y_data_dict = list(six.itervalues(param2_stat_dict))
+    y_data_dict = list(param2_stat_dict.values())
     def get_dictlist_key(dict_list, key):
         return [dict_[key] for dict_ in dict_list]
     y_data_components = [get_dictlist_key(y_data_dict, key) for key in y_data_keys]

@@ -1,10 +1,7 @@
-from __future__ import absolute_import, division, print_function
 import utool as ut
 import numpy as np
 import plottool_ibeis.draw_func2 as df2
 from plottool_ibeis import custom_constants
-#from vtool_ibeis import keypoint as ktool
-#(print, print_, printDBG, rrr, profile) = ut.inject(__name__, '[viz_sv]', DEBUG=False)
 ut.noinject(__name__, '[viz_sv]')
 
 

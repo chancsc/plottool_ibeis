@@ -1,6 +1,5 @@
 # I'm not quite sure how to organize these functions yet
 from __future__ import absolute_import, division, print_function
-from six.moves import zip
 import numpy as np
 import vtool_ibeis.histogram as htool
 import utool as ut

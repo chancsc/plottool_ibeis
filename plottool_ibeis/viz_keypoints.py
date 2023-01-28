@@ -1,4 +1,3 @@
-from __future__ import absolute_import, division, print_function
 import utool
 import plottool_ibeis.draw_func2 as df2
 import numpy as np
