@@ -2,8 +2,6 @@
 """
 Wrappers around matplotlib
 """
-from __future__ import absolute_import, division, print_function
-
 __version__ = '2.2.1'
 
 import utool as ut
@@ -191,7 +189,7 @@ if DOELSE:
                                 plot_rank_cumhist, plot_score_histograms,
                                 plot_search_surface, plot_sorted_scores,
                                 plot_stems, set_logyscale_from_data,
-                                unicode_literals, word_histogram2, wordcloud,
+                                word_histogram2, wordcloud,
                                 zoom_effect01,)
     from plottool_ibeis.draw_func2 import (BASE_FNUM, DARKEN, DEBUG, DF2_DIVIDER_KEY,
                                      FALSE, LEGEND_LOCATION, OffsetImage2,
