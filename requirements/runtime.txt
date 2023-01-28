@@ -1,7 +1,7 @@
 six >= 1.10.0
 ubelt >= 0.9.0
 
-matplotlib
+matplotlib>=1.5.1
 
 utool >= 2.1.5
 vtool_ibeis >= 2.2.0

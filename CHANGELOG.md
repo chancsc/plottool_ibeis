@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixed
 * Fixed issue with LineCollection which now needs keyword args only
 * Fixed issue in `set_figtitle`
+* Fix numpy float issue
 
 ### Changed
 
