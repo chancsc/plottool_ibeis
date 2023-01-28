@@ -251,11 +251,10 @@ if DOELSE:
     from plottool_ibeis.interactions import (ExpandableInteraction, PanEvents,
                                        check_if_subinteract, pan_factory,
                                        zoom_factory,)
-    from plottool_ibeis.interact_multi_image import (BASE_CLASS, Button,
+    from plottool_ibeis.interact_multi_image import (BASE_CLASS,
                                                MultiImageInteraction,)
     from plottool_ibeis.interact_keypoints import (KeypointInteraction,
-                                             draw_feat_row, ishow_keypoints,
-                                             show_keypoints,)
+                                             ishow_keypoints,)
     from plottool_ibeis.interact_matches import (MatchInteraction2,
                                            show_keypoint_gradient_orientations,)
     from plottool_ibeis.nx_helpers import (GraphVizLayoutConfig, LARGE_GRAPH,

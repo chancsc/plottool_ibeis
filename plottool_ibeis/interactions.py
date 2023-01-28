@@ -4,6 +4,11 @@ from plottool_ibeis import abstract_interaction
 import plottool_ibeis.interact_helpers as ih
 
 
+__docstubs__ = """
+from typing import Union
+"""
+
+
 def check_if_subinteract(func):
     try:
         if ut.VERBOSE:

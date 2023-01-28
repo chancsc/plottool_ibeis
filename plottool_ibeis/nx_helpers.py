@@ -21,8 +21,6 @@ Ignore:
     python3 -c "import pygraphviz; print(pygraphviz.__file__)"
 
 """
-from __future__ import absolute_import, division, print_function
-import six
 try:
     import dtool as dt
 except ImportError:
@@ -31,6 +29,10 @@ import numpy as np
 import utool as ut
 from functools import reduce
 (print, rrr, profile) = ut.inject2(__name__)
+
+__docstubs__ = """
+from typing import Union
+"""
 
 
 LARGE_GRAPH = 100
@@ -45,7 +47,7 @@ def dump_nx_ondisk(graph, fpath):
 
 def ensure_nonhex_color(orig_color):
     # TODO: move to ensure color
-    if isinstance(orig_color, six.string_types) and orig_color.startswith('#'):
+    if isinstance(orig_color, str) and orig_color.startswith('#'):
         hex_color = orig_color
         import matplotlib.colors as colors
         color = colors.hex2color(hex_color[0:7])
@@ -210,7 +212,7 @@ def netx_draw_images_at_positions(img_list, pos_list, size_list, color_list,
     import matplotlib.pyplot as plt
     # Ensure all images have been read
     img_list_ = [vt.convert_colorspace(vt.imread(img), 'RGB')
-                 if isinstance(img, six.string_types) else img
+                 if isinstance(img, str) else img
                  for img in img_list]
     size_list_ = [vt.get_size(img) if size is None else size
                   for size, img in zip(size_list, img_list)]
@@ -491,7 +493,7 @@ def apply_graph_layout_attrs(graph, layout_info):
 
     def noneish(v):
         isNone = v is None
-        isNoneStr = isinstance(v, six.string_types) and v.lower() == 'none'
+        isNoneStr = isinstance(v, str) and v.lower() == 'none'
         return isNone or isNoneStr
     for key, vals in layout_info['node'].items():
         vals = {n: v for n, v in vals.items() if not noneish(n)}
@@ -1536,11 +1538,11 @@ def draw_network2(graph, layout_info, ax, as_directed=None, hacknoedge=False,
             headlabel = layout_info['edge'].get('headlabel', {}).get(edge, None)
             label = layout_info['edge'].get('label', {}).get(edge, None)
             # hack
-            if isinstance(taillabel, six.string_types) and taillabel == 'None':
+            if isinstance(taillabel, str) and taillabel == 'None':
                 taillabel = None
-            if isinstance(headlabel, six.string_types) and headlabel == 'None':
+            if isinstance(headlabel, str) and headlabel == 'None':
                 headlabel = None
-            if isinstance(label, six.string_types) and label == 'None':
+            if isinstance(label, str) and label == 'None':
                 label = None
             #ha = 'left'
             #ha = 'right'

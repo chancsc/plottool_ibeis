@@ -117,7 +117,7 @@ def figure(fnum=None, pnum=(1, 1, 1), docla=False, title=None, figtitle=None,
         projection (None): (default = None)
 
     Returns:
-        ?: fig
+        mpl.figure.Figure: fig
 
     CommandLine:
         python -m plottool_ibeis.custom_figure --exec-figure:0 --show
@@ -306,7 +306,7 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
     Helper to save the figure image to disk. Tries to be smart about filename
     lengths, extensions, overwrites, etc...
 
-    DEPCIATE
+    DEPRECATE
 
     Args:
         fnum (int):  figure number
@@ -317,8 +317,8 @@ def save_figure(fnum=None, fpath=None, fpath_strict=None, usetitle=False,
         defaultext (str): default extension
         verbose (int):  verbosity flag
         dpi (int): dots per inch
-        figsize (tuple(int, int)): figure size
-        saveax (bool or Axes): specifies if the axes should be saved instead of
+        figsize (tuple[int, int]): figure size
+        saveax (bool | mpl.axes.Axes): specifies if the axes should be saved instead of
             the figure
 
     References:

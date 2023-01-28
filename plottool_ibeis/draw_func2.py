@@ -225,7 +225,6 @@ class OffsetImage2(mpl.offsetbox.OffsetBox):
 
         #w /= dpi_cor
         #h /= dpi_cor
-        #import utool
         #if self.axes:
         # Hack, find right axes
         ax = self.figure.axes[0]
@@ -281,7 +280,7 @@ def overlay_icon(icon, coords=(0, 0), coord_type='axes', bbox_alignment=(0, 0),
         /usr/local/lib/python2.7/dist-packages/matplotlib/offsetbox.py
 
     Args:
-        icon (ndarray or str): image icon data or path
+        icon (ndarray | str): image icon data or path
         coords (tuple): (default = (0, 0))
         coord_type (str): (default = 'axes')
         bbox_alignment (tuple): (default = (0, 0))
@@ -670,7 +669,7 @@ def save_parts(fig, fpath, grouped_axes=None, dpi=None):
     FIXME: this works in mpl 2.0.0, but not 2.0.2
 
     Args:
-        fig (?):
+        fig (mpl.figure.Figure):
         fpath (str):  file path string
         dpi (None): (default = None)
 
@@ -982,7 +981,7 @@ def show_if_requested(N=1):
 def distinct_markers(num, style='astrisk', total=None, offset=0):
     r"""
     Args:
-        num (?):
+        num (int):
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-distinct_markers --show
@@ -1155,7 +1154,7 @@ def make_pnum_nextgen(nRows=None, nCols=None, base=0, nSubplots=None, start=0):
         start (int): (default = 0)
 
     Returns:
-        iterator: pnum_next
+        Callable: pnum_next
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-make_pnum_nextgen --show
@@ -2035,13 +2034,13 @@ def plot_sift_signature(sift, title='', fnum=None, pnum=None):
     into different colors
 
     Args:
-        sift (ndarray[dtype=np.uint8]):
+        sift (ndarray): [dtype=np.uint8]
         title (str):  (default = '')
         fnum (int):  figure number(default = None)
-        pnum (tuple):  plot number(default = None)
+        pnum (tuple | str | int | None):  plot number(default = None)
 
     Returns:
-        AxesSubplot: ax
+        mpl.axes.AxesSubplot: ax
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-plot_sift_signature --show
@@ -2090,7 +2089,7 @@ def plot_descriptor_signature(vec, title='', fnum=None, pnum=None):
         pnum (tuple):  plot number(default = None)
 
     Returns:
-        AxesSubplot: ax
+        mpl.axes.AxesSubplot: ax
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-plot_descriptor_signature --show
@@ -2226,9 +2225,8 @@ def append_phantom_legend_label(label, color, type_='circle', alpha=1.0, ax=None
     adds a legend label without displaying an actor
 
     Args:
-        label (?):
-        color (?):
-        loc (str):
+        label (Any):
+        color (Any):
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-append_phantom_legend_label --show
@@ -2398,7 +2396,7 @@ def scores_to_color(score_list, cmap_='hot', logscale=False, reverse_cmap=False,
         cmap_range (tuple): restricts to only a portion of the cmap to avoid extremes
 
     Returns:
-        <class '_ast.ListComp'>
+        list
 
     SeeAlso:
         python -m plottool_ibeis.color_funcs --test-show_all_colormaps --show --type "Perceptually Uniform Sequential"
@@ -2802,7 +2800,7 @@ def colorbar(scalars, colors, custom=False, lbl=None, ticklabels=None,
         See plt.colorbar
 
     Returns:
-        cb : matplotlib colorbar object
+        mpl.colorbar.Colorbar: matplotlib colorbar object
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-colorbar --show
@@ -3095,7 +3093,7 @@ def show_kpts(kpts, fnum=None, pnum=None, **kwargs):
     Show keypoints in a new figure. Note: use draw_kpts2 to overlay keypoints on a existing figure.
 
     Args:
-        kpts (ndarray[float32_t, ndim=2]):  keypoints
+        kpts (ndarray):  keypoints [float32_t, ndim=2]
 
     CommandLine:
         xdoctest -m ~/code/plottool/plottool_ibeis/draw_func2.py show_kpts
@@ -3146,7 +3144,7 @@ def draw_kpts2(kpts, offset=(0, 0), scale_factor=1,
     FIXME: seems to be off by (.5, .5) translation
 
     Args:
-        kpts (?):
+        kpts (ndarray):
         offset (tuple):
         scale_factor (int):
         ell (bool):
@@ -3269,14 +3267,14 @@ def draw_keypoint_gradient_orientations(rchip, kpt, sift=None, mode='vec',
 def draw_keypoint_patch(rchip, kp, sift=None, warped=False, patch_dict={}, **kwargs):
     r"""
     Args:
-        rchip (ndarray[uint8_t, ndim=2]):  rotated annotation image data
-        kp (ndarray[float32_t, ndim=1]):  a single keypoint
-        sift (None): (default = None)
+        rchip (ndarray):  rotated annotation image data [uint8_t, ndim=2]
+        kp (ndarray):  a single keypoint [float32_t, ndim=1]
+        sift (Any): (default = None)
         warped (bool): (default = False)
         patch_dict (dict): (default = {})
 
     Returns:
-        ?: ax
+        mpl.axes.Axes: ax
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --test-draw_keypoint_patch --show
@@ -3342,7 +3340,7 @@ def imshow(img, fnum=None, title=None, figtitle=None, pnum=None,
         fnum (int): figure number
         title (str):
         figtitle (None):
-        pnum (tuple): plot number
+        pnum (tuple | str | int): plot number
         interpolation (str): other interpolations = nearest, bicubic, bilinear
         cmap (None):
         heatmap (bool):
@@ -3592,21 +3590,21 @@ def show_chipmatch2(rchip1, rchip2, kpts1=None, kpts2=None, fm=None, fs=None,
         kpts1 (ndarray): keypoints for annotation 1 [x, y, a=1, c=0, d=1, theta=0]
         kpts2 (ndarray): keypoints for annotation 2 [x, y, a=1, c=0, d=1, theta=0]
         fm (list):  list of feature matches as tuples (qfx, dfx)
-        fs (list):  list of feature scores
+        fs (list | None):  list of feature scores
         fm_norm (None): (default = None)
         title (str):  (default = None)
         vert (None): (default = None)
         fnum (int):  figure number(default = None)
-        pnum (tuple):  plot number(default = None)
+        pnum (tuple | str | int):  plot number(default = None)
         heatmap (bool): (default = False)
         modifysize (bool): (default = False)
         new_return (bool): (default = False)
         draw_fmatch (bool): (default = True)
-        darken (None): (default = None)
-        H1 (None): (default = None)
-        H2 (None): (default = None)
+        darken (float | None): (default = None)
+        H1 (ndarray | None): (default = None)
+        H2 (ndarray | None): (default = None)
         sel_fm (list): (default = [])
-        ax (None): (default = None)
+        ax (mpl.axes.Axes | None): (default = None)
         heatmask (bool): (default = False)
         **kwargs: all_kpts, lbl1, lbl2, rect, colorbar_, draw_border, cmap,
                   scale_factor1, scale_factor2, draw_pts, draw_ell,
@@ -3731,7 +3729,7 @@ def plot_fmatch(xywh1, xywh2, kpts1, kpts2, fm, fs=None, fm_norm=None,
         lbl1 (None): rchip1 label
         lbl2 (None): rchip2 label
         fnum (None): figure number
-        pnum (None): plot number
+        pnum (None | tuple | str | int): plot number
         rect (bool):
         colorbar_ (bool):
         draw_border (bool):
@@ -3743,9 +3741,6 @@ def plot_fmatch(xywh1, xywh2, kpts1, kpts2, fm, fs=None, fm_norm=None,
 
     Kwargs:
         draw_pts, draw_ell, draw_lines, show_nMatches, all_kpts
-
-    Returns:
-        ?: None
 
     CommandLine:
         python -m plottool_ibeis.draw_func2 --exec-plot_fmatch
@@ -4410,7 +4405,7 @@ def plot_func(funcs, start=0, stop=1, num=100, setup=None, fnum=None, pnum=None)
     plots a numerical function in a given range
 
     Args:
-        funcs (list of function):  live python function
+        funcs (List[callable]):  live python function
         start (int): (default = 0)
         stop (int): (default = 1)
         num (int): (default = 100)
