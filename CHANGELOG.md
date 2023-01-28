@@ -6,6 +6,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Version 2.2.1] -
 
+
+### Fixed
+* Fixed issue with LineCollection which now needs keyword args only
+* Fixed issue in `set_figtitle`
+
 ### Changed
 
 * Moved all imports of matplotlib.pyplot to be local to functions or activated by lazy loading

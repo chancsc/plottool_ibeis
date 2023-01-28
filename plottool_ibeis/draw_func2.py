@@ -3021,8 +3021,13 @@ def draw_lines2(kpts1, kpts2, fm=None, fs=None, kpts2_offset=(0, 0),
                 [segment], linewidth, color, alpha=alpha)
             ax.add_collection(line_group)
     else:
-        line_group = mpl.collections.LineCollection(
-            segments, linewidth, color_list, alpha=line_alpha)
+        try:
+            line_group = mpl.collections.LineCollection(
+                segments, linewidth, color_list, alpha=line_alpha)
+        except TypeError:
+            line_group = mpl.collections.LineCollection(
+                segments, linewidths=linewidth, colors=color_list,
+                alpha=line_alpha)
     #plt.colorbar(line_group, ax=ax)
         ax.add_collection(line_group)
     #figure(100)
