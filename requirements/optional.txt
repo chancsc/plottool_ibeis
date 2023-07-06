@@ -1,1 +1,2 @@
-pyqt5>=5.15.5
+# commented by sc
+#pyqt5>=5.15.5
