@@ -41,4 +41,5 @@ codecov>=2.0.15
 
 requests>=2.25.1
 
-pyqt5>=5.15.5
+# commented by sc
+#pyqt5>=5.15.5
